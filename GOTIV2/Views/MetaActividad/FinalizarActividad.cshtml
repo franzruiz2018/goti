@@ -1,0 +1,37 @@
+﻿@model GOTIV2.Models.MetaActividad
+@{
+    ViewBag.Title = "FinalizarActividad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Finalizar Actividad</h2>
+
+@using (Html.BeginForm())
+    {
+    <div class="panel panel-primary" >
+        <div class="panel-heading">Cerrar Actividad</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                @Html.TextBoxFor(x => x.MetaActividad_id, new { @Value = @ViewBag.Actividad.MetaActividad_id, @type = "hidden", @class = "form-control" })
+            </div>
+            <div class="col-md-12">
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Documento</div>
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(x => x.DocumentoDeEntrega, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer text-right">
+            <input type="submit" value="Guardar" class="btn btn-primary" onclick="return confirm('Deseas Cerrar la Actividad?')"  />
+        </div>
+
+
+    </div> 
+    
+    
+    }
+     

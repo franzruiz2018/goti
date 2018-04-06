@@ -1,0 +1,84 @@
+﻿@model GOTIV2.Models.Usuario
+@{
+   Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI Bootstrap 4 Admin Template">
+    <meta name="author" content="Lukasz Holeczek">
+    <meta name="keyword" content="CoreUI Bootstrap 4 Admin Template">
+    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+    <title>@ViewBag.Title - Sistema para la Gestión de la Oficina de Tecnologia de la Información</title>
+    <!-- Icons -->
+    @Styles.Render("~/Content/font-awesome.min.css")
+    @Styles.Render("~/Content/simple-line-icons.css")
+    <!-- Main styles for this application -->
+    @Styles.Render("~/Content/style.css")
+
+</head>
+<body class="">
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm())
+            {
+                <div class="col-md-6 m-x-auto pull-xs-none vamiddle">
+                    <div class="card-group ">
+                        <div class="card p-a-2">
+                            <div class="card-block">
+                                <h3>SG-OTI</h3>
+                                <p class="text-muted">Inicia sesion en tu cuenta</p>
+                                <div class="input-group m-b-1">
+                                    <span class="input-group-addon"><i class="icon-envelope"></i></span>
+                                    @Html.TextBoxFor(x => x.LoginName, new { @class = "form-control", @placeholder = "Email" })
+                                </div>
+                                <div class="input-group m-b-2">
+                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                    @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <button type="submit" class="btn btn-primary p-x-2">Ingresar</button>
+                                    </div>
+                                    <div class="col-xs-6 text-xs-right">
+                                        <button type="button" class="btn btn-link p-x-0">Olvidé mi constraseña?</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <!-- Bootstrap and necessary plugins -->
+    <!-- Bootstrap and necessary plugins -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/tether.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+    <script type="text/javascript">
+        function verticalAlignMiddle() {
+            var bodyHeight = $(window).height();
+            var formHeight = $('.vamiddle').height();
+            var marginTop = (bodyHeight / 2) - (formHeight / 2);
+            if (marginTop > 0) {
+                $('.vamiddle').css('margin-top', marginTop);
+            }
+        }
+        $(document).ready(function () {
+            verticalAlignMiddle();
+        });
+        $(window).bind('resize', verticalAlignMiddle);
+    </script>
+</body>
+
+</html>

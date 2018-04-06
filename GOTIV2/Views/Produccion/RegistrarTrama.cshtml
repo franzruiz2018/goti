@@ -1,0 +1,235 @@
+﻿@model GOTIV2.Models.SGP_Trama
+@{
+    ViewBag.Title = "Registrar Trama";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>&nbsp;</h4>
+<h4>Registrar Trama</h4>
+<h4>&nbsp;</h4>
+@if (ViewBag.Exito == true)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+    <div class="form-group">
+        @Html.ActionLink("Listar", "Listar Trama", null, new { @class = "btn btn-primary" })
+
+        @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 3)
+        {
+            @Html.ActionLink("Registrar Trama", "RegistrarTrama", null, new { @class = "btn btn-primary" })
+        }
+    </div>
+}
+else
+{
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+
+    using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Registrar Trama</div>
+            <div class="panel-body">
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">RENAES</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.Renaes, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Tipo Trama</div>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(x => x.TipoTrama, new SelectList(
+                         new[] {new SelectListItem { Text = "Oncológico", Value= "Oncológico"   }
+                                ,new SelectListItem { Text = "TPH", Value= "TPH"   }
+                              
+                                 }, "Value", "Text"
+                              ),
+                              new
+                              {
+                                  @class = "form-control"
+                              })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Expediente</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.NroExpediente, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Doc. Recepcionado</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.DocumentoRecepcionado, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Recepción </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaRecepcion, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones Reportadas</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.NumeroAtenciones, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Procesamiento</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaProcesamiento, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones Migradas</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.NumeroAtencionesMigradas, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Producción FISSAL</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.ProduccionFissal, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Doc.Respuesta</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Documentorespuesta, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Observación</div>
+                    <div class="col-md-2">
+                        @Html.TextAreaFor(x => x.Observacion, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2012</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2012, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2013</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2013, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2014</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2014, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2015</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2015, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2016</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2016, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2017</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2017, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2018</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2018, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Atenciones 2019</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Atenciones2019, new { @class = "form-control" })
+                    </div>
+                </div>
+               
+            </div>
+            <div class="panel-footer text-right">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+
+
+    }
+}
+
+<div class="modal fade" id="modal-app" role="dialog">
+    <div class="modal-dialog" id="ventana-modal">
+
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaRecepcionOTI").mask("99/99/9999");
+            $("#FechaLimite").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#btnSelect").click(function (e) {
+
+                $.ajax({
+                    url: '@Url.Action("Persona")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async:false,
+                    success: function (result) {
+
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+            $("#btnSelect2").click(function (e) {
+
+                $.ajax({
+                    url: '@Url.Action("PersonaDestinatario")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async: false,
+                    success: function (result) {
+
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+
+}

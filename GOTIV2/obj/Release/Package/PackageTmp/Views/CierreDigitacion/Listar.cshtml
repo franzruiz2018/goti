@@ -1,0 +1,119 @@
+﻿@model IEnumerable<GOTIV2.Models.sp_SGP_Cierre_Digitacion_Lista_Result>
+
+@{
+    ViewBag.Title = "Index";
+    var msj = TempData["Mensaje"];
+}
+
+<div class="row">
+    <p>&nbsp;</p>
+    <h4>Lista de Cierre de Digitación en Ipress Publicas</h4>
+    <p>&nbsp;</p>
+    @using (Html.BeginForm())
+    {
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Búsqueda</div>
+            <div class="panel-body">
+          
+                <div class="row form-group">
+                    <div class="col-md-2 control-label" style="line-height:34px">Establecimiento :</div>
+                    <div class="col-md-5">
+                        @Html.DropDownList("Establecimiento", (SelectList)ViewBag.Establecimiento, "Seleccionar", new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="panel-footer " style="text-align:right">
+                <input type="submit" value="Consultar" class="btn btn-primary" />
+                @Html.ActionLink("Crear Nuevo", "Registrar", "CierreDigitacion", null, new { @class = "btn btn-warning" })
+            </div>
+        </div>
+
+
+        <div class="alert alert-info" role="alert" style="margin-bottom:20px">
+            Total de Registros de Cierre encontrados: @Model.Count()
+        </div>
+
+        <div class="row" style="margin:0 1px 0 1px">
+            @if (msj != null)
+            {
+                <div class="alert alert-success" role="alert">  @msj</div>
+            }
+        </div>
+
+        <table class="table table-bordered" style="font-size: smaller">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle">
+                        ID
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        RENAES
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Establecimiento
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Fecha Cierre
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Atenciones Cerradas
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Atenciones Migradas
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Personal Asignado
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Registro
+                    </th>                   
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.CierreID)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.EstablecimientoId)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.Abreviatura)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaCierre != null)
+                            {
+                                @item.FechaCierre.Value.ToShortDateString()
+                            }
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.CantidadAtenciones)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                           @Html.DisplayFor(modelItem => item.CantidadAtencionesMigradas)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                           @Html.DisplayFor(modelItem => item.NombreCorto)
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaRegistro != null)
+                            {
+                                @item.FechaRegistro.Value.ToShortDateString()
+                            }
+                        </td>                       
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

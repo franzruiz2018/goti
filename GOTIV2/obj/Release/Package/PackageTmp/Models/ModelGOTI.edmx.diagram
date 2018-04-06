@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d8dc4cfee6340be848cf90dbd9feece" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="gotiModel.Area" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.Direccion" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.Estado" Width="1.5" PointX="10.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.Meta" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.MetaActividad" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.MetaEstado" Width="1.5" PointX="12.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.SubArea" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gotiModel.Version" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="gotiModel.FK_Area_Direccion" ManuallyRouted="false" />
+        <AssociationConnector Association="gotiModel.FK_SubArea_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="gotiModel.FK_MetaEstado_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="gotiModel.FK_Meta_SubArea" ManuallyRouted="false" />
+        <AssociationConnector Association="gotiModel.FK_Meta_Version" ManuallyRouted="false" />
+        <AssociationConnector Association="gotiModel.FK_MetaActividad_Meta" ManuallyRouted="false" />
+        <AssociationConnector Association="gotiModel.FK_MetaEstado_Meta" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="gotiModel.vw_resumen_metas" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="gotiModel.vw_resumen_avance_actividad" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gotiModel.vw_Actividades_por_area" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="gotiModel.vw_Actividades_Segun_POI" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="gotiModel.Usuario" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="gotiModel.vw_Actividades_lista" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="gotiModel.SPE_AreaInstitucion" Width="1.5" PointX="3.375" PointY="12.375" />
+        <EntityTypeShape EntityType="gotiModel.STG_Documento" Width="1.5" PointX="13.125" PointY="7.5" />
+        <EntityTypeShape EntityType="gotiModel.STG_Expediente" Width="3.625" PointX="8.375" PointY="11.75" />
+        <EntityTypeShape EntityType="gotiModel.STG_TipoDocumento" Width="1.5" PointX="10.75" PointY="7.875" />
+        <AssociationConnector Association="gotiModel.FK_STG_Documento_STG_TipoDocumento" />
+        <EntityTypeShape EntityType="gotiModel.SGP_Trama" Width="1.5" PointX="13.5" PointY="10.5" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_Actividad" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_Actividad_EstadoScrum" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_EstadoScrum" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_Iteracion" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_Proyecto" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_Requisito" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="gotiModel.SGPRY_Prioridad" Width="1.5" PointX="5.375" PointY="16.75" />
+        <EntityTypeShape EntityType="gotiModel.MetaActividadSeguimiento" Width="1.5" PointX="16.375" PointY="10.75" />
+        <EntityTypeShape EntityType="gotiModel.CSU_MedioDeSolicitud" Width="1.5" PointX="13.375" PointY="16.75" />
+        <EntityTypeShape EntityType="gotiModel.CSU_TipoDeAtencion" Width="1.5" PointX="7.375" PointY="17.75" />
+        <EntityTypeShape EntityType="gotiModel.CSU_MovimientoCSU" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="gotiModel.CSU_CatalogoDeServicio" Width="1.5" PointX="16.375" PointY="13.75" />
+        <EntityTypeShape EntityType="gotiModel.CSU_TipoDeAtencion_Colaborador" Width="1.5" PointX="9.375" PointY="17.75" />
+        <EntityTypeShape EntityType="gotiModel.SGP_CierreDigitacion" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="gotiModel.SPE_ServicioTercero" Width="1.5" PointX="18.375" PointY="0.75" />
+        <EntityTypeShape EntityType="gotiModel.SGRQ_Sistema" Width="1.5" PointX="18.75" PointY="11.75" />
+        <EntityTypeShape EntityType="gotiModel.SGRQ_TipoRequerimiento" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="gotiModel.SGRQ_TipoSistema" Width="1.5" PointX="2.75" PointY="19.75" />
+        <EntityTypeShape EntityType="gotiModel.SGRQ_Requerimiento" Width="1.5" PointX="18.375" PointY="5.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_ObjetivosOTI" Width="1.5" PointX="11.375" PointY="19.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_Tarea" Width="1.5" PointX="19.375" PointY="14.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_TareaAvance" Width="1.5" PointX="19.375" PointY="17.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_Automatizacion" Width="1.5" PointX="20.375" PointY="0.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_DocumentosNormativos" Width="1.5" PointX="20.375" PointY="3.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_AvanceProyecto" Width="1.5" PointX="5.375" PointY="20.75" />
+        <EntityTypeShape EntityType="gotiModel.SPS_Reunion" Width="1.5" PointX="20.375" PointY="7.75" />
+        <EntityTypeShape EntityType="gotiModel.SPE_Persona" Width="2.5" PointX="5.625" PointY="11.5" />
+        <AssociationConnector Association="gotiModel.FK_MetaActividad_SPE_Persona" />
+        <AssociationConnector Association="gotiModel.FK_SPE_Persona_SPE_AreaInstitucion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

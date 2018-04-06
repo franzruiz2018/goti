@@ -1,0 +1,140 @@
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\GOTIV2.dll.config
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\GOTIV2.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\GOTIV2.pdb
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\Antlr3.Runtime.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\EntityFramework.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\Newtonsoft.Json.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Helpers.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Mvc.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Optimization.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Razor.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.WebPages.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\WebGrease.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\EntityFramework.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Helpers.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Mvc.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Optimization.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.Razor.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.WebPages.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\Newtonsoft.Json.xml
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\Antlr3.Runtime.pdb
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.Helpers.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.Mvc.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.Optimization.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.Razor.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\obj\Release\GOTIV2.dll
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\obj\Release\GOTIV2.pdb
+C:\Users\franz\Desktop\GOTIV2\GOTIV2\obj\Release\GOTIV2.csprojResolveAssemblyReference.cache
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\GOTIV2.dll.config
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\GOTIV2.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\GOTIV2.pdb
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Antlr3.Runtime.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\EntityFramework.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Microsoft.Web.Infrastructure.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Newtonsoft.Json.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Helpers.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Mvc.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Optimization.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Razor.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\WebGrease.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\EntityFramework.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Helpers.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Mvc.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Optimization.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Razor.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Newtonsoft.Json.xml
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Antlr3.Runtime.pdb
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Helpers.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Mvc.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Optimization.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Razor.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Deployment.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Razor.resources.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\obj\Release\GOTIV2.csprojResolveAssemblyReference.cache
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\obj\Release\GOTIV2.dll
+Q:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\obj\Release\GOTIV2.pdb
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\GOTIV2.dll.config
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\GOTIV2.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\GOTIV2.pdb
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Antlr3.Runtime.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\EntityFramework.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Microsoft.Web.Infrastructure.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Newtonsoft.Json.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Helpers.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Mvc.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Optimization.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Razor.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\WebGrease.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\EntityFramework.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Helpers.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Mvc.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Optimization.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.Razor.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Newtonsoft.Json.xml
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\Antlr3.Runtime.pdb
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Helpers.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Mvc.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Optimization.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.Razor.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Deployment.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Razor.resources.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\obj\Release\GOTIV2.csprojResolveAssemblyReference.cache
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\obj\Release\GOTIV2.dll
+O:\Backup 2017\Escritorio\Escritorio 17032017\GOTIV2\GOTIV2\obj\Release\GOTIV2.pdb
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\GOTIV2.dll.config
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\GOTIV2.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\GOTIV2.pdb
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\Antlr3.Runtime.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\EntityFramework.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\Microsoft.Web.Infrastructure.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\Newtonsoft.Json.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Helpers.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Mvc.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Optimization.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Razor.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.WebPages.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\WebGrease.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\EntityFramework.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Helpers.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Mvc.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Optimization.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.Razor.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.WebPages.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.WebPages.Deployment.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\System.Web.WebPages.Razor.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\Newtonsoft.Json.xml
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\Antlr3.Runtime.pdb
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.Helpers.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.Mvc.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.Optimization.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.Razor.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\obj\Release\GOTIV2.csprojResolveAssemblyReference.cache
+D:\Proyectos .Net\GOTIV2\GOTIV2\obj\Release\GOTIV2.dll
+D:\Proyectos .Net\GOTIV2\GOTIV2\obj\Release\GOTIV2.pdb

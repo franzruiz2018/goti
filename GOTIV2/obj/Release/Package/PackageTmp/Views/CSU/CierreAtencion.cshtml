@@ -1,0 +1,93 @@
+﻿@model GOTIV2.Models.CSU_MovimientoCSU
+@{
+    ViewBag.Title = "Cerrar Inicidencia Infraestrcutura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>&nbsp;</p>
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary" >
+        <div class="panel-heading">Cerrar Atención</div>
+        <div class="panel-body">
+
+            <div class="col-md-12">
+               
+                <h5>  Tipo de Atención :<span style="font-size:12px; color:blue"> @ViewBag.Atencion.TipoDeAtencion_Descripcion</span></h5>
+                <h5>Catálogo de Servicio : <span style="font-size:12px; color:blue">@ViewBag.Atencion.CatalogoServicio_Descripcion </span></h5>
+                <h5>Usuario Solicitante :<span style="font-size:12px; color:blue">@ViewBag.Atencion.UsuarioSolicitante  </span></h5>
+                <h5> Especialista :<span style="font-size:12px; color:blue">@ViewBag.Atencion.Especialista </span></h5>
+              
+                <div class="row form-group">
+                    @Html.TextBoxFor(x => x.MovimientoCSU_Id, new { @Value = @ViewBag.Atencion.MovimientoCSU_Id, @type = "hidden", @class = "form-control" })
+                </div>
+                <div class="row form-group">
+
+
+                    <div class="col-md-2 control-label">&nbsp; </div>
+
+                    <div class="col-md-4" style="font-size:12px; color:blue">
+                        @ViewBag.Atencion.AsuntoDeLaAtencion_Usuario
+                    </div>
+
+
+                    <div class="row ">
+
+                    </div>
+                    <div class="col-md-2 control-label">Modificar Asunto </div>
+
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(x => x.AsuntoDeLaAtencion_Especilista, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="row form-group">
+
+                    <div class="col-md-2 control-label">&nbsp; </div>
+
+                    <div class="col-md-4" style="font-size: 12px; color: blue">
+                        @ViewBag.Atencion.DescripcionDeLaAtencion_Usuario
+                    </div>
+                    <div class="row ">
+
+                    </div>
+
+                    <div class="col-md-2 control-label">Modificar Descripción</div>
+
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(x => x.DescripcionDeLaAtencion_Especialista, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+
+                   <div class="col-md-2 control-label">Solución Aplicada</div>
+
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(x => x.SolucionAplicada, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+
+                    <div class="col-md-2 control-label">Tiempo (Minutos)</div>
+                    <div class="col-md-1">
+                        @Html.TextBoxFor(x => x.TiempoUtilizado, new { @class = "form-control", @required=true} )
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer text-right">
+            <input type="submit" value="Guardar" class="btn btn-primary" @*onclick="return confirm('Deseas Cerrar la Atención?')"*@  />
+        </div>
+
+
+    </div>
+}
+

@@ -1,0 +1,210 @@
+﻿@model List<GOTIV2.Models.sp_SGPRY_listar_actividades_Result>
+@{
+    ViewBag.Title = "ActualizarAvanceEquipo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var t = TempData["Mensaje"];
+    var pry = TempData["Proyecto"];
+    int registro = 0;
+    string f = "";
+    int reg = 0;
+}
+
+<div class="row" style="margin:0 0 10px 0">
+    <h3>Actualizacion de Avance</h3>
+ 
+
+    <h4><span class="active">Proyecto:</span> @if (ViewBag.Proyecto!=null)
+                                              {
+                                                 <span>@ViewBag.Proyecto.ProyectoDescripcion</span>
+                                              }
+                                              else
+                                              {
+                                                <span> @pry</span> ;
+                                              }  
+    
+    
+    </h4>
+
+</div>
+
+<div class="row" style="margin:0 0 10px 0">
+    @if (t != null)
+    {
+        <div class="alert alert-success" role="alert">  @t</div>
+
+    }
+</div>
+
+ 
+    <div class="row">
+        <table class="table table-bordered" style="font-size:smaller" id="actividades">
+            <thead>
+                <tr style="background-color:#eaeaea">
+                    <th style="text-align:center;vertical-align:middle">ID</th>
+                    <th style="text-align:center;vertical-align:middle">Iteración</th>
+                    <th style="text-align:center;vertical-align:middle">Actividad</th>
+                    <th style="text-align:center;vertical-align:middle">Fecha Inicio</th>
+                    <th style="text-align:center;vertical-align:middle">Fecha Fin</th>
+                    <th style="text-align:center;vertical-align:middle">Análisis</th>
+                   
+                    <th style="text-align:center;vertical-align:middle">Desarrollo</th>
+                  
+                    <th style="text-align:center;vertical-align:middle">Calidad</th>
+                  
+                   
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    registro = registro+1;
+                    <tr>
+                        <td style="text-align:center;vertical-align:middle">@registro</td>
+                        @if (f != item.IteracionDescripcion)
+                        {
+                            reg = Model.Where(x => x.IteracionDescripcion == item.IteracionDescripcion).Count();
+                            f = item.IteracionDescripcion;
+                            <td rowspan="@reg" style="text-align: center; vertical-align: middle">@f</td>
+                        }
+
+                        
+                        <td style="text-align:left;vertical-align:middle">@item.ActividadDescripcion</td>
+
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.FechaInicio_SinHolgura != null)
+                            {
+                                @item.FechaInicio_SinHolgura.Value.ToShortDateString()
+                            }
+                        </td>
+
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.FechaFin_SinHolgura != null)
+                            {
+                                @item.FechaFin_SinHolgura.Value.ToShortDateString()
+                            }
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; font-size: 16px ">
+
+                        @if (item.AseguramientoCalidad != true )
+                        {
+
+                                if (item.Analisis == true)
+                                {
+                                    <span class="fa fa-check-circle"></span>
+                                                        
+                                    if (item.FechaCierreAnalisis != null)
+                                        {
+                                            <h6 >@item.FechaCierreAnalisis.Value.ToShortDateString()</h6>
+                                        }
+                               }
+                               else
+                               {
+                                    if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 5)
+                                    {
+                                        @Html.ActionLink(" ", "CerrarAnalisis", new { Controller = "Proyecto", id = item.Actividad_Id, proyecto_id = item.ProyectoId }, new { @onclick = "return confirm ('Esta seguro de Cerrar') ;", @class = "fa fa-thumbs-o-up", Style = "color:Black" })
+                                    }
+                               }
+                        }
+                        else
+                        {
+                                
+                            <span >-</span>
+                        }
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; font-size: 16px">
+
+@if (item.AseguramientoCalidad != true )
+{
+
+    if (item.Desarrollo == true)
+    {
+        <span class="fa fa-check-circle"></span>
+                                                      
+                            if (item.FechaCierreDesarrollo != null)
+                                {
+                                   <h6> @item.FechaCierreDesarrollo.Value.ToShortDateString()</h6>
+                                }
+                            }
+                           else
+                            {
+                                if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 6) && item.Analisis == true)
+                                {
+
+                                    @Html.ActionLink(" ", "CerrarDesarrollo", "Proyecto", new { id = item.Actividad_Id, proyecto_id = item.ProyectoId }, new { @onclick = "return confirm ('Esta seguro de Cerrar') ;", @class = "fa fa-thumbs-o-up", Style = "color:Black" })
+                                }
+                            }
+}
+else
+{
+
+    <span >-</span>
+}
+                            
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; font-size: 16px" >
+                          
+                            @if (item.AseguramientoCalidad == true)
+{
+
+
+                        if (item.ControlCalidad == true)
+                        {
+                            <span class="fa fa-check-circle"></span>
+                                                       
+                            if (item.FechaCierreControlCalidad != null)
+                                {
+                                    <h6>@item.FechaCierreControlCalidad.Value.ToShortDateString()</h6>
+                                }
+                        }
+                            else
+                            {
+                                if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 7) )
+                                {
+                                    @Html.ActionLink(" ", "CerrarCalidad", "Proyecto", new { id = item.Actividad_Id , proyecto_id=item.ProyectoId }, new { @onclick = "return confirm ('Esta seguro de Cerrar') ;", @class = "fa fa-thumbs-o-up", Style = "color:Black" })
+
+                                }
+                            }
+                    }
+
+else
+                        {
+                                  <span >-</span>
+
+                            }
+
+                        @*else
+                        {
+
+
+                        if (item.ControlCalidad == true)
+                        {
+                            <span class="fa fa-check-circle"></span>
+                               
+                            if (item.FechaCierreControlCalidad != null)
+                                {
+                                    <h6>@item.FechaCierreControlCalidad.Value.ToShortDateString()</h6>
+                                }
+                            }
+                            else
+                            {
+                                if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 7) )
+                                {
+                                    @Html.ActionLink(" ", "CerrarCalidad", "Proyecto", new { id = item.Actividad_Id, proyecto_id = item.ProyectoId }, new { @onclick = "return confirm ('Esta seguro de Cerrar') ;", @class = "fa fa-thumbs-o-up", Style = "color:Black" })
+                                }
+                            }
+                            }*@
+                            
+
+                            
+                        </td>
+                       
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

@@ -1,0 +1,124 @@
+﻿@model GOTIV2.Models.STG_Expediente
+@{
+    ViewBag.Title = "Cerrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>&nbsp;</h4>
+<h4>Cerrar Expediente</h4>
+<h4>&nbsp;</h4>
+
+
+@if (ViewBag.Exito == true)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+    <div class="form-group">
+        @Html.ActionLink("Regresar", "Pendientes", null, new { @class = "btn btn-primary" })
+
+        @if (ViewBag.usuarioId == 1)
+        {
+            @Html.ActionLink("Registrar Expediente", "Save", null, new { @class = "btn btn-primary" })
+
+        }
+
+
+    </div>
+}
+else
+{   
+    
+    
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+ 
+   
+    <h5>ID:  EXP-@string.Format("{0:0000}", @Model.Expediente_Id) </h5>
+    <h5>Nro. Expediente:  @Model.NroExpediente</h5>
+    <h5>&nbsp;</h5>
+    using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Cerrar Expediente</div>
+            <div class="panel-body">
+                <div class="row form-group">
+
+                   @Html.HiddenFor(x=>x.Expediente_Id)
+
+                    <div class="col-md-2 control-label">Nro. Documento de Respuesta</div>
+
+                    @Html.TextBoxFor(x => x.DocumentoAtención, new { @class = "form-control hidden", @Readonly = true ,@id="txtDocumento"})
+                    <div class="col-md-3">
+                        <input id="NroDocumento" type="text" style="width:400px" class=" form-control" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary" id="btnSelect">...</button>
+                    </div>
+
+                </div>              
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Recepción Solictante</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaRecepcionSolicitante, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-right">
+                <input type="submit" value="Cerrar" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+    }
+}
+
+<div class="modal fade" id="modal-app" role="dialog">
+    <div class="modal-dialog" id="ventana-modal">
+
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaRecepcionSolicitante").mask("99/99/9999");
+            $("#FechaLimite").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+<script type="text/javascript">
+        $(function () {
+           
+            $("#btnSelect").click(function (e) {               
+                $.ajax({
+                    url: '@Url.Action("ListaDocumentos")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async:false,
+                    success: function (result) {                      
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+          
+        });
+</script>
+
+
+}

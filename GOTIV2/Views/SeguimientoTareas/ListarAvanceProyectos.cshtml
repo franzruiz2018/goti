@@ -1,0 +1,90 @@
+﻿@model List<GOTIV2.Models.sp_SPS_Listar_Avance_Proyectos_Result>
+@{
+    ViewBag.Title = "Listar Avance de Proyectos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var msj = TempData["Mensaje"];
+}
+
+<div class="row">
+    <p>&nbsp;</p>
+    <h4>Avance de Proyectos</h4>
+    <div style=" margin:10px; text-align:right">
+
+        @if (ViewBag.Perfil == 1)
+        {
+
+            @Html.ActionLink("Crear Nuevo", "RegistrarAvanceProyectos", "SeguimientoTareas", null, new { @class = "btn btn-warning" })
+
+        }
+    </div>
+
+    @using (Html.BeginForm())
+    {
+
+        <div class="alert alert-info" role="alert" style="margin-bottom:20px">
+            Total de Avances Registrados: @Model.Count()
+        </div>
+
+        <div class="row" style="margin:0 1px 0 1px">
+            @if (msj != null)
+            {
+                <div class="alert alert-success" role="alert">  @msj</div>
+            }
+        </div>
+
+        <table class="table table-bordered" style="font-size: smaller">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle">
+                        ID
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Proyecto
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Mes Avance
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Avance
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Registro
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @item.AvanceId
+                        </td>
+                        <td style="text-align: left; vertical-align: middle">
+                            @item.ProyectoDescripcion
+                        </td>
+
+
+                        <td style="text-align: left; vertical-align: middle">
+                            @item.MesAvance
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @item.Avance
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaRegistro != null)
+                            {
+                                @item.FechaRegistro.Value.ToShortDateString()
+                            }
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

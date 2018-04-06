@@ -1,0 +1,563 @@
+﻿@{
+    ViewBag.Title = "ActividadesEspecialistas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    int registroActividades = 0;
+    int ActividadesPendientes = 0;
+    int InformePendientes = 0;
+    int ExpedientesPendientes = 0;
+    int AtencionesPendientes = 0;
+
+
+    if (ViewBag.ActividadePendientes != null)
+    {
+        foreach (var item in ViewBag.ActividadePendientes)
+        {
+            ActividadesPendientes = ActividadesPendientes + 1;
+        }
+    }
+    if (ViewBag.InformesPendientes != null)
+     {
+         foreach (var item in ViewBag.InformesPendientes)
+         {
+             InformePendientes = InformePendientes + 1;
+         }
+     }
+    if (ViewBag.ExpedientePendientes != null)
+     {
+         foreach (var item in ViewBag.ExpedientePendientes)
+         {
+             ExpedientesPendientes = ExpedientesPendientes + 1;
+         }
+     }
+    if (ViewBag.CSU != null)
+     {
+         foreach (var item in ViewBag.CSU)
+         {
+             AtencionesPendientes = AtencionesPendientes + 1;
+         }
+     }    
+}
+
+
+    <p>&nbsp;</p>
+    <h4>Resumen de Actividades por Especialista</h4>
+    <div class="row">
+       @using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Buscar actividades por Especialista</div>
+        <div class="panel-body">
+
+            <div class="row form-group">
+                <div class="col-md-1 control-label">Especialista</div>
+                <div class="col-md-5">
+                    @Html.DropDownList("Id", (SelectList)ViewBag.Especialistas, "Seleccionar", new { @class = "form-control" })
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+}
+
+        <div class="row" >
+            <div class="col-md-4 ">
+                <table class="table table-bordered" style="font-size:smaller">
+                    <thead>
+                        <tr style="background-color:#eaeaea">
+
+                            <th style=" text-align: center; vertical-align: middle">Pendientes</th>
+                            <th style=" text-align: center; vertical-align: middle">Num</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td style=" text-align: left; vertical-align: middle">Actividades</td>
+                            <td style=" text-align: center; vertical-align: middle">@ActividadesPendientes</td>
+                        </tr>
+                        <tr>
+                            <td style=" text-align: left; vertical-align: middle">Informes</td>
+                            <td style=" text-align: center; vertical-align: middle">@InformePendientes</td>
+                        </tr>
+                        <tr>
+                            <td style=" text-align: left; vertical-align: middle">Expedientes</td>
+                            <td style=" text-align: center; vertical-align: middle">@ExpedientesPendientes</td>
+                        </tr>
+                        <tr>
+                            <td style=" text-align: left; vertical-align: middle">Atenciones</td>
+                            <td style=" text-align: center; vertical-align: middle">@AtencionesPendientes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+<div class="row" style="margin:15px 5px 15px 5px;">
+
+
+
+
+
+    @*Pendientes*@
+    @if (ViewBag.ActividadePendientes != null)
+    {
+        <div class="box box-info ">
+            <div class=" box-header with-border">
+                Actividades Programadas Pendientes
+
+            </div>
+            <div class="box-body" style="margin:10px">
+
+
+                <table class="table table-bordered" style="font-size:smaller">
+                    <thead>
+                        <tr style="background-color:#eaeaea">
+
+                            <th style=" text-align: center; vertical-align: middle">Id</th>
+                            <th style=" vertical-align: middle">Actividad</th>
+                            <th style=" text-align: center; vertical-align: middle">POI</th>
+
+                            <th style=" text-align: center; vertical-align: middle">Ejecución</th>
+                            <th style=" text-align: center; vertical-align: middle">Especialista</th>
+
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.ActividadePendientes)
+                        {
+
+                            registroActividades = registroActividades + 1;
+                            <tr>
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.MetaActividad_id
+                                </td>
+                                <td style="vertical-align: middle">
+                                    @item.MetaActividad_descripcion <br />
+                                    <span style="color: #046788"> Meta:  @item.Meta_descripcion</span>
+                                    <span style="color: #046788; font-size:10px;"> &nbsp; &nbsp; @Html.ActionLink(" ", "Index", "MetaActividad", new { id = item.Meta_id }, new { @class = "glyphicon glyphicon-folder-open", Style = "color:#BDBDBD" }) </span>
+
+
+                                </td>
+
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @if (item.POI == true)
+                                    {
+                                        <h6>Si</h6>
+                                    }
+                                    else
+                                    {
+                                        <h6> No</h6>
+                                    }
+
+                                </td>
+
+
+                                <td style="text-align: center; vertical-align: middle">@item.Fecha_ejecucion.Date.ToShortDateString()     </td>
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.NombreCompleto
+                                </td>
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @Html.ActionLink(" ", "VerEvento", "Control", new { id = item.MetaActividad_id }, new { @class = "fa fa-user", Style = "color:Black" })
+                                </td>
+                                <td style="text-align:center;vertical-align:middle">
+
+                                    @if (item.NumEventosUltimaSemana != null)
+                                    {
+                                        <h6><span class="label label-primary">@item.NumEventosUltimaSemana</span></h6>
+                                    }
+                                    else
+                                    {
+                                        <h6>
+                                            <span class="label label-danger">0</span>
+                                        </h6>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
+            @if (ViewBag.InformesPendientes != null)
+            {
+
+                <div class="box-body" style="margin:10px">
+
+
+                    <table class="table table-bordered" style="font-size:smaller">
+                        <thead>
+                            <tr style="background-color:#eaeaea">
+
+                                <th style=" text-align: center; vertical-align: middle">Id</th>
+                                <th style=" vertical-align: middle">Informe</th>
+                                <th style=" text-align: center; vertical-align: middle">POI</th>
+
+                                <th style=" text-align: center; vertical-align: middle">Ejecución</th>
+                                <th style=" text-align: center; vertical-align: middle">Especialista</th>
+                                <th style=" text-align: center; vertical-align: middle">Informe</th>
+
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in ViewBag.InformesPendientes)
+                            {
+
+                                registroActividades = registroActividades + 1;
+                                <tr>
+
+                                    <td style="text-align: center; vertical-align: middle">
+                                        @item.MetaActividad_id
+                                    </td>
+                                    <td style="vertical-align: middle">
+                                        @item.MetaActividad_descripcion <br />
+                                        <span style="color: #046788"> Meta:  @item.Meta_descripcion</span>
+                                        <span style="color: #046788; font-size:10px;"> &nbsp; &nbsp; @Html.ActionLink(" ", "Index", "MetaActividad", new { id = item.Meta_id }, new { @class = "glyphicon glyphicon-folder-open", Style = "color:#BDBDBD" }) </span>
+
+
+                                    </td>
+
+
+                                    <td style="text-align: center; vertical-align: middle">
+                                        @if (item.POI == true)
+                                        {
+                                            <h6>Si</h6>
+                                        }
+                                        else
+                                        {
+                                            <h6> No</h6>
+                                        }
+
+                                    </td>
+
+
+                                    <td style="text-align: center; vertical-align: middle">@item.Fecha_ejecucion.Date.ToShortDateString()     </td>
+                                    <td style="text-align: center; vertical-align: middle">
+                                        @item.NombreCompleto
+                                    </td>
+                                    <td style="text-align:center;vertical-align:middle">
+
+                                        @if (item.ActividadDeInforme == true)
+                                        {
+                                            <h5><span class="fa fa-book"></span></h5>
+                                        }
+
+                                    </td>
+
+                                    <td style="text-align: center; vertical-align: middle">
+                                        @Html.ActionLink(" ", "VerEvento", "Control", new { id = item.MetaActividad_id }, new { @class = "fa fa-user", Style = "color:Black" })
+                                    </td>
+                                    <td style="text-align:center;vertical-align:middle">
+
+                                        @if (item.NumEventosUltimaSemana != null)
+                                        {
+                                            <h6><span class="label label-primary">@item.NumEventosUltimaSemana</span></h6>
+                                        }
+                                        else
+                                        {
+                                            <h6>
+                                                <span class="label label-danger">0</span>
+                                            </h6>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            }
+        </div>
+    }
+
+
+</div>
+
+
+
+
+<div class="row" style="margin:15px 5px 15px 5px;">
+
+    @if (ViewBag.ExpedientePendientes != null)
+    {
+
+
+        <div class="box box-info ">
+            <div class=" box-header with-border">
+                Expedientes Recepcionados Pendientes de Atención
+
+
+            </div>
+            <div class="box-body " style="margin:10px">
+
+                <table class="table table-bordered" style="font-size: smaller">
+                    <thead>
+                        <tr style="background-color:#eaeaea">
+
+                            <th style=" text-align: center; vertical-align: middle;">ID</th>
+                            <th style=" text-align: center; vertical-align: middle; width:100px;">Expediente</th>
+                            <th style=" text-align: center; vertical-align: middle">Asunto</th>
+                            <th style=" text-align: center; vertical-align: middle">Area</th>
+                            <th style=" text-align: center; vertical-align: middle">Fecha Recepción</th>
+                            <th style=" text-align: center; vertical-align: middle">Especialista</th>
+                            <th style=" text-align: center; vertical-align: middle">Días Trans.</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.ExpedientePendientes)
+                        {
+                            <tr>
+
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.Expediente_Id
+                                </td>
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.NroExpediente
+                                </td>
+
+                                <td style="text-align: left; vertical-align: middle ">
+
+                                    @item.Asunto
+                                </td>
+
+
+                                <td style="text-align: center; vertical-align: middle ">
+
+                                    @item.AreaInstitucionAbreviaturaRemitente
+                                </td>
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @if (item.FechaRecepcionOTI != null)
+                                    {
+                                        @item.FechaRecepcionOTI.Date.ToShortDateString()
+                                    }
+
+                                </td>
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.UsuarioTecnicoDesignado
+                                </td>
+
+                                <td style="text-align: center; vertical-align: middle">
+
+                                    @{
+
+                            if (item.FechaRecepcionOTI != null)
+                            {
+                                TimeSpan ts = DateTime.Now - item.FechaRecepcionOTI;
+                                int differenceInDays = ts.Days;
+
+                                if (differenceInDays < 15)
+                                {
+                                    <span class="label label-primary">@differenceInDays</span>
+
+                                }
+                                else
+                                {
+                                    <span class="label label-danger">@differenceInDays</span>
+                                }
+
+
+
+                            }
+
+
+
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    }
+
+
+
+</div>
+
+
+<div class="row" style="margin:15px 5px 15px 5px;">
+
+    @if (ViewBag.CSU != null)
+    {
+
+        <div class="box box-info ">
+            <div class=" box-header with-border">
+                Centro de Servicio al Usuario
+
+            </div>
+            <div class="box-body " style="margin:10px">
+
+                <table class="table table-bordered" style="font-size: smaller">
+                    <thead style="background-color:#eaeaea">
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle">
+
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                ID
+                            </th>
+                            <th style=" text-align: center; vertical-align: middle">
+                                Tipo Atención
+                            </th>
+                            <th style=" text-align: center; vertical-align: middle">
+                                Catálogo
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                Usuario
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                Area
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                Asunto
+                            </th>
+
+                            <th style="text-align: center; vertical-align: middle">
+                                Fecha Reg.
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                Hora
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                Especialista
+                            </th>
+                            <th style="text-align: center; vertical-align: middle">
+                                Fecha Inicio.
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.CSU)
+                        {
+
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle ">
+                                    @if (item.Coyuntural == true)
+                                    {
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="@item.CoyunturalObservacion"><span class="fa fa-exclamation"></span></a>
+                                    }
+                                </td>
+                                <td style="text-align: center; vertical-align: middle ">
+                                    @item.MovimientoCSU_Id
+                                </td>
+                                <td style="vertical-align: middle">@item.TipoDeAtencion_Descripcion</td>
+
+                                <td style="text-align: left; vertical-align: middle">
+                                    @item.CatalogoServicio_Descripcion
+
+                                </td>
+                                <td style="text-align: left; vertical-align: middle">
+                                    @item.UsuarioSolicitante
+
+                                </td>
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.AreaInstitucionAbreviaturaUsuario
+
+                                </td>
+
+                                <td style="text-align: left; vertical-align: middle">
+                                    @item.AsuntoDeLaAtencion_Usuario
+
+                                    <a href="#" data-toggle="tooltip" data-placement="right" data-html="false" title="@item.DescripcionDeLaAtencion_Usuario">&nbsp;<span class="fa fa-commenting-o"></span></a>
+
+                                </td>
+
+                                <td style="text-align: center; vertical-align: middle">
+                                    @if (item.FechaRegistro != null)
+                                    {
+
+
+                                        @item.FechaRegistro.Date.ToShortDateString()
+                                    }
+                                </td>
+                                <td style="text-align: center; vertical-align: middle" width="80">
+                                    @if (item.FechaRegistro != null)
+                                    {
+                                        @item.FechaRegistro.Date.ToShortTimeString()
+                                    }
+
+                                </td>
+                                <td style="text-align: center; vertical-align: middle">
+                                    @item.Especialista
+                                </td>
+                                <td style="text-align: center; vertical-align: middle">
+                                    @if (item.FechaInicioDeAtencion != null)
+                                    {
+                                        @item.FechaInicioDeAtencion.Date.ToShortDateString();
+                                    }
+
+                                </td>
+
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    }
+</div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    @section scripts{
+        @Scripts.Render("~/bundles/highcharts")
+        @Scripts.Render("~/Scripts/fnGenerales.js")
+        <script src="~/Scripts/fechaMascara.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#FecInicio").mask("9999-99");
+                $("#FecFin").mask("99/99/9999");
+
+
+            });
+
+        </script>
+    }

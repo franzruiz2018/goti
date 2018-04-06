@@ -1,0 +1,176 @@
+﻿@model GOTIV2.Models.STG_Documento
+@{
+    ViewBag.Title = "Registrar Documentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>&nbsp;</h4>
+<h4>Registrar Documentos</h4>
+<h4>&nbsp;</h4>
+@if (ViewBag.Exito == true)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+    <div class="form-group">
+        @Html.ActionLink("Listar", "ListarDocumentos", null, new { @class = "btn btn-primary" })
+
+        @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2)
+        {
+            @Html.ActionLink("Registrar Documento", "RegistrarDocumento", null, new { @class = "btn btn-primary" })
+
+        }
+
+
+    </div>
+}
+else
+{
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+
+    using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Registrar Documento</div>
+            <div class="panel-body">
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Tipo Documento</div>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(x => x.TipoDocumento_Id, (SelectList)ViewBag.TipoDocumento, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Documento</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.NroDocumento, new { @class = "form-control" })
+                    </div>
+                </div>
+               
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Asunto</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.Asunto, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Documento</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaDocumento, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Remitente</div>
+
+                    @Html.TextBoxFor(x => x.UsuarioIdRemitente, new { @class = "form-control hidden ", @Readonly = true, id = "UsuarioIdSolicitante" })
+                    <div class="col-md-3">
+                        <input id="txtPersona" type="text" style="width:400px" class=" form-control" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary" id="btnSelect">...</button>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Destinatario</div>
+                    @Html.TextBoxFor(x => x.UsuarioIdDestinatario, new { @class = "form-control hidden", @Readonly = true, id = "UsuarioIdAtencion" })
+                    <div class="col-md-3">
+                        <input id="txtPersonaDestinatario" type="text" style="width:400px" class=" form-control" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary" id="btnSelect2">...</button>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Recepción</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaRecepcion, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                
+               
+            </div>
+            <div class="panel-footer text-right">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+
+
+    }
+}
+
+<div class="modal fade" id="modal-app" role="dialog">
+    <div class="modal-dialog" id="ventana-modal">
+
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaDocumento").mask("99/99/9999");
+            $("#FechaRecepcion").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#btnSelect").click(function (e) {
+
+                $.ajax({
+                    url: '@Url.Action("Persona")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async:false,
+                    success: function (result) {
+
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+            $("#btnSelect2").click(function (e) {
+
+                $.ajax({
+                    url: '@Url.Action("PersonaDestinatario")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async: false,
+                    success: function (result) {
+
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+
+}

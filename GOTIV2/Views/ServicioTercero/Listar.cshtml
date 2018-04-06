@@ -1,0 +1,186 @@
+﻿@model IEnumerable<GOTIV2.Models.sp_SPE_ServicioTercero_Listar_Result>
+
+@{
+    ViewBag.Title = "Index";
+    var msj = TempData["Mensaje"];
+}
+
+<div class="row">
+    <p>&nbsp;</p>
+    <h4>Lista Ordenes de Servicio por Tercero</h4>
+    <p>&nbsp;</p>
+    @using (Html.BeginForm())
+    {
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Búsqueda</div>
+            <div class="panel-body">
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label" style="line-height:34px">Personal :</div>
+                    <div class="col-md-5">
+                        @Html.DropDownList("personaid", (SelectList)ViewBag.PersonaOTITercero, "Seleccionar", new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="panel-footer " style="text-align:right">
+                <input type="submit" value="Consultar" class="btn btn-primary" />
+                @Html.ActionLink("Crear Nuevo", "Registrar", "ServicioTercero", null, new { @class = "btn btn-warning" })
+            </div>
+        </div>
+
+
+        <div class="alert alert-info" role="alert" style="margin-bottom:20px">
+            Total de Ordernes de Servicio por Tercero encontrados: @Model.Count()
+        </div>
+
+        <div class="row" style="margin:0 1px 0 1px">
+            @if (msj != null)
+            {
+                <div class="alert alert-success" role="alert">  @msj</div>
+            }
+        </div>
+
+        <table class="table table-bordered" style="font-size: smaller">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle">
+                        ID
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Expediente Req.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Fecha Expediente Req.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha O.S.
+                    </th>
+                  
+                    <th style="text-align: center; vertical-align: middle">
+                       Persona
+                    </th>
+                 
+                    <th style="text-align: center; vertical-align: middle">
+                        Plazo
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Monto
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Días Restantes
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Conformidad Proyectada
+                    </th>
+                   
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Registro
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Anulado
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Detalle
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.ServicioTercero_Id)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.ExpedienteRequerimiento)
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                        
+                            @if (item.ExpedienteRequerimientoFecha != null)
+                            {
+                                @item.ExpedienteRequerimientoFecha.Value.ToShortDateString()
+                            }
+                        </td>
+
+                        <td style="text-align: center; vertical-align: middle">
+
+                            @if (item.FechaOrdenServicio != null)
+                            {
+                                @item.FechaOrdenServicio.Value.ToShortDateString()
+                            }
+                        </td>
+                       
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.NombreCompleto)
+                        </td>
+                        
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.PlazoEjecucion)
+                            
+                            @if(item.Observacion!=null){
+                              <a href="#" data-toggle="tooltip" data-placement="right" data-html="false" title="@item.Observacion">&nbsp;<span class="fa fa-commenting-o"></span></a>
+                            }                         
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.DisplayFor(modelItem => item.Monto)
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @{
+                                
+                         
+
+                            TimeSpan? ts = DateTime.Now - item.FechaOrdenServicio;
+                            int differenceInDays = ts.Value.Days;
+                            int? DiasRestantes = item.PlazoEjecucion - differenceInDays;
+                            }
+                            @if (DiasRestantes > 0) { 
+                           <span> @DiasRestantes</span>
+                            }
+                         
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @{                                
+                               DateTime d = item.FechaOrdenServicio.Value.AddDays((int)item.PlazoEjecucion);
+                            }
+
+    <span>@d.Date.ToShortDateString()</span>
+
+                        </td>
+                       
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaRegistro != null)
+                            {
+                                @item.FechaRegistro.Value.ToShortDateString()
+                            }
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+
+                            @if (item.Anulado == true)
+                            {
+                               <span class="fa fa-times-circle" style="font-size:16px;color:orange"></span>
+                            }
+                          
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            
+                                @Html.ActionLink(" ", "Detalle", "ServicioTercero", new { ordenId = item.ServicioTercero_Id }, new { @class = "glyphicon glyphicon-play" })
+                           
+
+                        </td>
+
+
+</tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

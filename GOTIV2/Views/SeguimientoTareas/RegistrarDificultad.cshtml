@@ -1,0 +1,35 @@
+﻿@model GOTIV2.Models.SPS_TareaAvance
+@{
+    ViewBag.Title = "RegistrarAvance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>&nbsp;</p>
+<h4>Registrar Dificultad</h4>
+
+<p>&nbsp;</p>
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Tarea : @ViewBag.Tarea.Tarea_Descripcion</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                @Html.TextBoxFor(x => x.Tarea_Id, new { @id = @ViewBag.Tarea.Tarea_Id, @type = "hidden", @class = "form-control" })
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2 control-label">Descripción</div>
+                <div class="col-md-6">
+                    @Html.TextAreaFor(x => x.TareaAvanceDescripcion, new { @class = "form-control" })
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="panel-footer text-right">
+            <input type="submit" value="Guardar" class="btn btn-primary" />
+        </div>
+
+
+    </div>
+}

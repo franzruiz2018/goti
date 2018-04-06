@@ -1,0 +1,136 @@
+﻿@model IEnumerable<GOTIV2.Models.sp_SGMetas_Listar_Avances_Result>
+@{
+    ViewBag.Title = "Evento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var t = TempData["Mensaje"];
+    int num = 0;
+    int Registros = 0;
+    
+}
+
+
+<div class="row">&nbsp;</div>
+
+<div class="row">
+
+
+    <h4>Meta: @ViewBag.Meta.Meta_descripcion</h4>
+    <h5>Actividad: @ViewBag.Actividad.MetaActividad_descripcion</h5>
+    <h5>Fecha Ejecución: @Convert.ToDateTime(ViewBag.Meta.Fecha_ejecucion).ToString("dd/MM/yyyy")</h5>
+
+    
+
+    <p>&nbsp;</p>
+    <div class="alert alert-info" role="alert" style="margin-bottom:20px">
+        @foreach (var item in Model)
+        {
+            num = num + 1;
+           
+        }
+        Total de Eventos encontradas: @num
+    </div>
+
+
+
+   
+
+        <div class="text-right">
+            @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 3)
+            {
+                @Html.ActionLink("Registrar un Evento", "RegistrarEvento", new { id = ViewBag.ID }, new { @class = "btn btn-warning" })
+
+            }
+
+        
+
+        <p>&nbsp;</p>
+
+    </div>
+
+    <div class="row" style="margin:0 0 10px 0">
+        @if (t != null)
+        {
+            <div class="alert alert-success" role="alert">  @t</div>
+
+        }
+    </div>
+
+        <table class="table table-bordered" style="font-size: smaller">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle">
+                        Nro.
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                        Descripción
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                        Fecha Registro
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                        Hora Registro
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                       Avance
+                    </th>
+                    
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    Registros = Registros + 1;
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle ">
+
+                            @Registros
+                        </td>
+                        <td style="vertical-align: middle">
+                            @item.Descripción
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                        @if (item.FechaCreacion != null)
+                        {
+                            <span>@item.FechaCreacion.Value.ToShortDateString()</span>                                
+                         }
+                            
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaCreacion != null)
+                            {
+                                <span>@item.FechaCreacion.Value.ToShortTimeString()</span>
+                            }
+
+                        </td>
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.Acción == true)
+{
+    <span class="fa fa-check-circle" style="font-size:16px;color:black"></span>
+
+}
+                            else
+                            {
+                                <span class="fa fa-times-circle" style="font-size:16px;color:orange" ></span>
+                            }
+
+                        </td>
+                                                
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+
+
+    
+</div>
+
+

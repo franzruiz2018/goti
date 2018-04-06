@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string f = "";
+    int reg = 0;
+    
+    string f2 = "";
+    int reg2 = 0;
+   
+}
+
+
+
+
+
+
+<div class="row form-group">
+
+    <div class="col-md-12 ">
+        <table class="table table-bordered" style="font-size:small">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">
+                        ID
+                    </th>
+                  
+                    <th style="text-align:center;vertical-align:middle">
+                        Iteración
+                    </th>
+
+                  
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item3 in ViewBag.Actividad)
+                {
+                   
+                    <tr >
+
+                        <td style="text-align:center;vertical-align:middle;width:80px;">
+                            ACT-@string.Format("{0:0000}", @item3.Actividad_Id)
+
+
+                        </td>
+                       
+                        @if (f2 != item3.IteracionDescripcion)
+                        {
+                            reg2 = ((IEnumerable<GOTIV2.Models.sp_SGPRY_listar_actividades_Result>)ViewBag.Actividad).Where(x => x.IteracionDescripcion == item3.IteracionDescripcion).Count();
+                            f2 = item3.IteracionDescripcion;
+                            <td rowspan="@reg2" style="text-align: center; vertical-align: middle">@f2</td>
+                        }
+                      
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="row form-group">
+    <div class="col-md-9 ">
+
+        <table class="table table-bordered" style="font-size:small">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align:center;vertical-align:middle">
+                        ID
+                    </th>
+                    <th style="text-align:center;vertical-align:middle">
+                        Requisito
+                    </th>
+
+                    <th style="text-align:center;vertical-align:middle">
+                        Iteración
+                    </th>
+                    <th style="text-align:center;vertical-align:middle">
+                        Area Usuaria
+                    </th>
+                    <th style="text-align:center;vertical-align:middle">
+                        Prioridad
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item2 in ViewBag.Requisitos)
+                {
+
+                    string style1 = "";
+
+
+                    if (item2.Activo == true)
+                    {
+                        style1 = "background-color: #F3FDFE";
+                    }
+
+                    <tr style="@style1">
+                        <td style="text-align:center;vertical-align:middle">
+                            RQ-@string.Format("{0:0000}", @item2.RequisitoId)
+
+                        </td>
+                        <td style="text-align:left;vertical-align:middle">
+                            @item2.RequisitoDescripcion
+                        </td>
+
+
+                        @if (f != item2.IteracionDescripcion)
+                        {
+                            reg = ((IEnumerable<GOTIV2.Models.sp_SGPRY_listar_requisitos_Result>)ViewBag.Requisitos).Where(x => x.IteracionDescripcion == item2.IteracionDescripcion).Count();
+                            f = item2.IteracionDescripcion;
+                            <td rowspan="@reg" style="text-align: center; vertical-align: middle">@f</td>
+                        }
+
+
+
+                        <td style="text-align:center;vertical-align:middle">
+                            @item2.AreaInstitucionAbreviatura
+                        </td>
+                        <td style="text-align:center;vertical-align:middle">
+                            Alta
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-md-3 ">
+
+    </div>
+</div>

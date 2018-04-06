@@ -1,0 +1,217 @@
+﻿@model List<GOTIV2.Models.vw_Actividades_lista>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>&nbsp;</h4>
+<h4>Actividades Programadas</h4>
+<h4>&nbsp;</h4>
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Buscar actividades por periodo</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-1 control-label">Mes-Año</div>
+                <div class="col-md-2">
+                    @Html.TextBox("FecInicio", null, new { @class = "form-control" })
+                </div>
+
+                <div class="col-md-3">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+<div class="alert alert-info" role="alert" style="margin-bottom:20px">Total de Actividades encontradas: @Model.Count</div>
+
+<table class="table table-bordered" style="font-size: smaller">
+    <thead>
+        <tr style="background-color:#eaeaea">
+            <th style="text-align: center; vertical-align: middle">Id</th>
+                       
+            <th style=" vertical-align: middle">Actividad / Meta</th>
+            <th style=" vertical-align: middle">POI</th>
+            <th style=" text-align: center; vertical-align: middle">Area</th>
+          
+            <th style="text-align: center; vertical-align: middle">Fecha Ejecución</th>
+            <th style=" text-align: center; vertical-align: middle">Responsable</th>
+            <th style="text-align: center; vertical-align: middle">Informe</th>
+            
+            <th style="text-align: center; vertical-align: middle">Observación</th>
+            <th style="text-align: center; vertical-align: middle">Documento</th>
+            <th style="text-align: center; vertical-align: middle">Estado</th>
+           
+            <th style="text-align: center; vertical-align: middle"></th>
+            <th style="text-align: center; vertical-align: middle"></th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="70" style="text-align: center; vertical-align: middle"> M-@string.Format("{0:0000}", item.MetaActividad_id)</td>
+
+
+               
+
+                <td style="vertical-align: middle">
+                    @item.MetaActividad_descripcion <br />
+                <span style="color: #046788"> Meta:  @item.Meta_descripcion</span>
+                    <span style="color: #046788; font-size:10px;"> &nbsp; &nbsp; @Html.ActionLink(" ", "Index", "MetaActividad", new { id = item.Meta_id }, new { @class = "glyphicon glyphicon-folder-open", Style = "color:#BDBDBD" }) </span>
+            </td>
+
+                <td style="text-align: center; vertical-align: middle">
+                    @if (item.POI == true)
+                    {
+                        <h6>Si</h6>
+                    }
+                    else
+                    {
+                        <h6> No</h6>
+                    }
+
+                </td>
+
+                <td style="vertical-align: middle">@item.Area_abreviatura </td>  
+                
+                           
+
+                <td style="text-align: center; vertical-align: middle">@item.Fecha_ejecucion.Value.ToShortDateString()      </td>
+                <td style="vertical-align: middle">@item.NombreCompleto</td>
+                <td style="text-align:center;vertical-align:middle">
+
+                    @if (item.ActividadDeInforme == true)
+                    {
+                        <h5><span class="fa fa-book"></span></h5>
+                    }
+
+                </td>
+                <td style="text-align:left;vertical-align:middle">
+
+                    @item.Observacion
+
+                </td>
+                <td style="text-align:left;vertical-align:middle">
+
+                    @item.DocumentoDeEntrega
+
+                </td>
+
+                <td style="text-align:center;vertical-align:middle">
+
+                    @if (item.Desestimado == true)
+                    { 
+                        <h6><span class="label label-default">Desestimado</span></h6>
+                    }
+                   
+                    else 
+                    {  
+                        
+                        if (item.Reprogramado == true)
+                        {
+                              <h6><span class="label label-default">Reprogramado</span></h6>
+                        }
+                        else
+                        {
+                        if (item.Finalizado == true)
+                        {
+                            <h6><span class="label label-success">Finalizado</span></h6>
+                        }
+                        else
+                        {
+                            if (item.Fecha_finalizacion != null)
+                            {
+                                <h6><span class="label label-warning">Cerrado Sin Exito</span></h6>
+                            }
+                            else
+                            {
+                                <h6><span class="label label-primary">Pendiente</span></h6>
+                            }
+                    }
+                        
+                        }
+
+                        
+
+                    }
+                </td>
+            
+              
+
+
+                
+               
+
+                <td style="text-align:center;vertical-align:middle">
+                    @if (item.Fecha_finalizacion == null && item.Fecha_ejecucion.Value.Year <= DateTime.Now.Year && item.Fecha_ejecucion.Value.Month <= DateTime.Now.Month && item.Desestimado == false)
+                    {
+                        if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2) && item.Finalizado != true)
+                        {
+
+                            @Html.ActionLink(" ", "FinalizarActividad", "MetaActividad", new { id = item.MetaActividad_id }, new { @class = "fa fa-thumbs-o-up", Style = "color:Black" })
+                        }
+                    }
+
+                </td>
+
+
+
+                <td style="text-align:center;vertical-align:middle">
+                    @if (item.Fecha_finalizacion == null && item.Fecha_ejecucion.Value.Year <= DateTime.Now.Year && item.Fecha_ejecucion.Value.Month <= DateTime.Now.Month && item.Desestimado == false)
+                    {
+
+                        if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2) && item.Finalizado != true)
+                        {
+
+                            @Html.ActionLink(" ", "CerrarActividad", "MetaActividad", new { id = item.MetaActividad_id }, new { @class = "fa fa-times-circle", Style = "color:Black" })
+
+
+                        }
+
+                    }
+
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#FecInicio").mask("9999-99");
+            $("#FecFin").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+
+
+
+
+}

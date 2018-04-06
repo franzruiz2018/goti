@@ -1,0 +1,288 @@
+﻿@model List<GOTIV2.Models.MetaActividad>
+@{
+    ViewBag.Title = "Actividades por Metas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var meses = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" };    
+}
+
+<p>
+
+</p>
+
+<div class="row">
+    <h3>Actividades por Meta</h3>
+    <p>&nbsp;</p>
+
+    <h4><span class="active">Meta:</span> @ViewBag.MetaDescripcion </h4>
+    
+</div>
+    <div class="row">
+
+    <div class="text-right">
+      @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2)
+        {
+              @Html.ActionLink("Registrar una Actividad", "Save", new { id = ViewBag.MetaId }, new { @class = "btn btn-warning" })
+
+        }      
+
+    </div>
+        <p>&nbsp;</p>
+
+</div>
+<p></p>
+
+
+@if (ViewBag.Exito == true)
+{
+     <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+}
+
+else
+{
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+}
+
+<div class="row">
+    <table class="table table-bordered" style="font-size:smaller" id="actividades">
+        <thead>
+            <tr style="background-color:#eaeaea">
+                <th style="text-align:center;vertical-align:middle">ID</th>
+               
+                <th style="text-align:center;vertical-align:middle">Actividad</th>               
+                <th style="text-align:center;vertical-align:middle">Fecha de Ejecución</th>               
+                <th style="text-align:center;vertical-align:middle">Fecha de Creación</th>
+                <th style="text-align:center;vertical-align:middle">Especialista Designado</th>
+               
+              
+                <th style="text-align:center;vertical-align:middle">Informe</th>
+                <th style="text-align:center;vertical-align:middle">Fecha de Cierre</th>
+                <th style="text-align:center;vertical-align:middle">Documento</th>
+                <th style="text-align:center;vertical-align:middle">Observación</th>
+              
+                <th style="text-align:center;vertical-align:middle">Estado</th>
+                <th style="text-align:center;vertical-align:middle"></th>
+                <th style="text-align:center;vertical-align:middle"></th>
+              
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                
+                //#E2F9FD
+                
+                 string style="";
+                     if (item.ActividadDeInforme == true)
+                       {
+                           style = "background-color: #E2F9FD";
+                       }                  
+                           
+                    <tr style="@style">  
+                
+                
+                    <td style="text-align:center;vertical-align:middle">@item.MetaActividad_id</td>
+                     
+                    <td style="text-align:left;vertical-align:middle">@item.MetaActividad_descripcion</td>
+                   
+                    <td style="text-align: center; vertical-align: middle">
+                        @meses[item.Fecha_ejecucion.Value.Month - 1]
+                    </td>
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.Fecha_creacion != null)
+                            {
+                                @item.Fecha_creacion.Value.ToShortDateString()
+                            }
+                        </td>
+                   
+                   
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.EspecialistaDesignado != null)
+                            {
+                                @item.SPE_Persona.NombreCorto
+                            }
+                        </td>
+                   
+                   
+                   
+                     
+                        <td style="text-align:center;vertical-align:middle">
+
+                            @if (item.ActividadDeInforme == true)
+                            {
+                                <h5><span class="fa fa-book"></span></h5>
+                            }
+
+                        </td>
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.Fecha_finalizacion != null)
+                            {
+                                @item.Fecha_finalizacion.Value.ToShortDateString()
+                            }
+                        </td>
+                        <td style="text-align:left;vertical-align:middle">
+
+                            @item.DocumentoDeEntrega
+
+                        </td>
+                    <td style="text-align:left;vertical-align:middle">
+                      
+                        @item.Observacion
+                       
+                    </td>
+                     
+
+                       
+                        <td style="text-align:center;vertical-align:middle">
+
+                            @if (item.Desestimado == true)
+                            {
+                                <h5><span class="label label-warning">Desestimado</span></h5>
+                            }
+                            else
+                            {
+
+                                if (item.Finalizado == true)
+                                {
+                                    <h5><span class="label label-primary">Finalizado</span></h5>
+                                }
+                                else
+                                {
+                                    if (item.Fecha_finalizacion != null)
+                                    {
+                                        <h5><span class="label label-warning">Cerrado Sin Exito</span></h5>
+                                    }
+                                    else
+                                    {
+                                        <h5><span class="label label-primary">Pendiente</span></h5>
+                                    }
+                                }
+                            }
+
+                        </td>
+
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.Fecha_finalizacion == null && item.Fecha_ejecucion.Value.Year <= DateTime.Now.Year && item.Fecha_ejecucion.Value.Month <= DateTime.Now.Month && item.Desestimado == false)
+                            {
+                                if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2) && item.Finalizado != true)
+                                {
+
+                                    @Html.ActionLink(" ", "FinalizarActividad", "MetaActividad", new { id = item.MetaActividad_id }, new { @class = "fa fa-thumbs-o-up", Style = "color:Black" })
+                                }
+                            }
+
+                        </td>
+
+
+
+                        <td style="text-align:center;vertical-align:middle">
+                            @if (item.Fecha_finalizacion == null && item.Fecha_ejecucion.Value.Year <= DateTime.Now.Year && item.Fecha_ejecucion.Value.Month <= DateTime.Now.Month && item.Desestimado == false)
+                            {
+
+                                if ((ViewBag.Perfil == 1 || ViewBag.Perfil == 2) && item.Finalizado != true)
+                                {
+
+                                    @Html.ActionLink(" ", "CerrarActividad", "MetaActividad", new { id = item.MetaActividad_id }, new { @class = "fa fa-times-circle", Style = "color:Black" })
+
+
+                                }
+
+                            }
+
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@*@section scripts{
+
+
+<script type="text/javascript">
+
+
+
+    $(function () {
+
+        $("#actividades tbody .glyphicon-screenshot").click(function () {
+
+
+            var objeto = new Object();
+            var fila = $(this).parent().parent();
+            var f = fila[0];
+            objeto.id = f.cells[0].innerText.trim();
+            //alert(objeto.id);
+
+       bootbox.prompt({
+
+                title: "Estimado usuario, escriba una descripción para anular la autorizacion por fallecimiento del paciente: ",
+                //value: "makeusabrew",
+                callback: function (result) {
+
+                    if (result != '') {
+                        //$("#DescripcionDocumentacion").val(result);
+
+
+                        if (result === null) {
+
+                        } else {
+                            objeto.DescripcionDocumentacion = result;
+
+
+
+                            $.ajax({
+                                url: '@Url.Action("CerrarActividad", "MetaActividad")',
+                                type: "POST",
+                                cache: false,
+                                async: true,
+                                //beforeSend: fnTerminarAsincrono(),
+                                dataType: "html",
+                                data: objeto,
+                                success: function (data) {
+                                    window.location.href = '@Url.Action("Index", "MetaActividad")'
+
+                                },
+                                //error: function (result) { alert(result.responseText); }
+                                error: function (result) {
+                                    d = 0;
+                                    if (d == 0) {
+                                        bootbox.alert("Su sesión ha terminado, debe volver a iniciar sesión",
+                                       function (c) {
+                                           if (c) { }
+                                           else {
+                                               d == 0; window.location.href = '@Url.Action("Login", "Cuenta")'
+                                           }
+                                       }
+                                      );
+                                        return false;
+                                    }
+                                }
+                            }).done(function (data) {
+                                bootbox.alert("Autorizacion Anulada por fallecimiento");
+                            });
+
+                        }
+
+                    }
+                    else {
+
+                        bootbox.alert("Ingresar el motivo del rechazo");
+
+                    }
+
+                }
+            });
+
+
+        return false;
+     });
+    });
+</script>
+
+}*@

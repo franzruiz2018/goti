@@ -1,0 +1,356 @@
+﻿@{
+    ViewBag.Title = "Resumen por Proyecto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string f = "";
+    int reg = 0;
+
+    string requisito = "";
+    string Area = "";
+
+    int num = 0;
+    int num2 = 0;
+    int num3 = 0;
+    int num4 = 0;
+
+   
+
+}
+
+<p>&nbsp;</p>
+
+
+
+
+
+<div class="row form-group">
+    <div class="col-md-9 ">
+        <div class="alert alert-info" role="alert" style="margin-bottom:20px ;height:100px;"><h4>Proyecto</h4> @ViewBag.Proyecto.ProyectoDescripcion</div>
+    </div>
+   
+    <div class="col-md-3 ">
+        <div class="alert alert-info" role="alert" style="margin-bottom: 20px; height: 100px;">
+            <h4>Avance</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-light-blue" role="progressbar" aria-valuenow=@ViewBag.avance aria-valuemin="0" aria-valuemax="100" style="width: @ViewBag.avance%">
+                    @ViewBag.avance %
+                </div>
+            </div>
+        </div>
+        </div>
+
+</div>
+
+<div class="row form-group">
+
+    
+        <div class="col-md-6 ">
+           
+            <table class="table table-bordered" style="font-size:smaller">
+                <thead style="background-color:#eaeaea">
+                    <tr>
+                        <th style="text-align:center;vertical-align:middle">
+                            Nro.
+                        </th>
+
+                        <th style="text-align:center;vertical-align:middle">
+                            Requisito
+                        </th>
+
+
+                        <th style="text-align:center;vertical-align:middle">
+                            Area Usuaria
+                        </th>
+                        <th style="text-align:center;vertical-align:middle">
+                            Prioridad
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item2 in ViewBag.Requisitos)
+                    {
+                        int reg_req = ((IEnumerable<GOTIV2.Models.sp_SGPRY_listar_requisitos_Result>)ViewBag.Requisitos).Where(x => x.AreaInstitucionAbreviatura == item2.AreaInstitucionAbreviatura).Count();
+                        string style1 = "";
+                        num2 = num2 + 1;
+
+                        if (item2.Activo == true)
+                        {
+                            style1 = "background-color: #F3FDFE";
+                        }
+
+                    <tr style="@style1">
+                        <td style="text-align:center;vertical-align:middle">
+                            @num2
+
+                        </td>
+
+
+                        <td style="text-align:left;vertical-align:middle">
+                            @item2.RequisitoDescripcion
+                        </td>
+
+
+
+                        @if (item2.AreaInstitucionAbreviatura != Area)
+                            {
+                                Area = item2.AreaInstitucionAbreviatura;
+                            <td rowspan="@reg_req" style="text-align: center; vertical-align: middle">@item2.AreaInstitucionAbreviatura</td>
+                            }
+
+
+
+
+                        <td style="text-align:center;vertical-align:middle">
+                            @item2.PrioridadDescripcion
+                        </td>
+
+
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    
+        <div class="col-md-6 ">
+            
+            <table class="table table-bordered" style="font-size:smaller">
+                <thead style="background-color:#eaeaea">
+                    <tr>
+                        <th style="text-align:center;vertical-align:middle">
+                            Nro.
+                        </th>
+
+                        <th style="text-align:center;vertical-align:middle">
+                            Requisito
+                        </th>
+
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item2 in ViewBag.RequisitosProyecto)
+                    {
+
+                        string style1 = "";
+                        num3 = num3 + 1;
+
+                        if (item2.Activo == true)
+                        {
+                            style1 = "background-color: #F3FDFE";
+                        }
+
+                    <tr style="@style1">
+                        <td style="text-align:center;vertical-align:middle">
+                            @num3
+
+                        </td>
+
+
+                        <td style="text-align:left;vertical-align:middle">
+                            @item2.RequisitoDescripcion
+                        </td>
+
+
+
+
+
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    
+
+
+
+
+
+</div>
+
+      
+
+        <div class="row form-group">
+            <div class="col-md-12 ">
+                <table class="table table-bordered" style="font-size: smaller">
+                    <thead style="background-color:#eaeaea">
+                        <tr>
+                            <th style="text-align:center;vertical-align:middle">
+                                Nro.
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Etapa
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Fecha Inicio
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Fecha Fin
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Num. Tareas
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                % Avance
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.Iteracion)
+                {
+                   
+                    num = num + 1;
+                <tr>
+
+                    <td style="text-align:center;vertical-align:middle">
+                        @num
+                    </td>
+
+                    <td style="text-align:left;vertical-align:middle">
+                        @item.IteracionDescripcion
+                    </td>
+                    <td style="text-align:center;vertical-align:middle">
+                        @Convert.ToDateTime(item.FechaInicio_SinHolgura).ToString("dd/MM/yyyy")
+
+                    </td>
+                    <td style="text-align:center;vertical-align:middle">
+                        @Convert.ToDateTime(item.FechaFin_SinHolgura).ToString("dd/MM/yyyy")
+
+                    </td>
+                    <td style="text-align:center;vertical-align:middle">
+                        @item.NumTareas
+                    </td>
+                    <td style="text-align:center;vertical-align:middle">
+                        @item.Avance
+                    </td>
+
+
+
+                </tr>
+
+                }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col-md-12 ">
+                <table class="table table-bordered" style="font-size:smaller">
+                    <thead style="background-color:#eaeaea">
+                        <tr>
+                            <th style="text-align:center;vertical-align:middle">
+                                Nro.
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Etapa
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Requisitos
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Tarea
+                            </th>
+
+                            <th style="text-align:center;vertical-align:middle">
+                                Fecha Inicio
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Fecha Fin
+                            </th>
+                            <th style="text-align:center;vertical-align:middle">
+                                Estado
+                            </th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.Actividad)
+                        {
+                            string style = "";
+                            int reg_req = ((IEnumerable<GOTIV2.Models.sp_SGPRY_listar_actividades_Result>)ViewBag.Actividad).Where(x => x.RequisitoDescripcion == item.RequisitoDescripcion).Count();
+
+                            if (item.Activo == true)
+                            {
+                                style = "background-color: #F3FDFE";
+
+                            }
+
+                            num4 = num4 + 1;
+
+                            <tr style="@style">
+
+                                <td style="text-align: center; vertical-align: middle"> @num4</td>
+
+                                @if (f != item.IteracionDescripcion)
+                                {
+                                    reg = ((IEnumerable<GOTIV2.Models.sp_SGPRY_listar_actividades_Result>)ViewBag.Actividad).Where(x => x.IteracionDescripcion == item.IteracionDescripcion).Count();
+                                    f = item.IteracionDescripcion;
+                                    <td rowspan="@reg" style="text-align: center; vertical-align: middle">@f</td>
+                                }
+
+                            
+
+                                @if (item.RequisitoDescripcion != requisito)
+                                {
+                                    requisito = item.RequisitoDescripcion;
+                                    <td rowspan="@reg_req" style="text-align: left; vertical-align: middle">@item.RequisitoDescripcion</td>
+                                }
+
+                              
+
+
+
+                                <td style="text-align:left;vertical-align:middle">
+                                    @item.ActividadDescripcion
+                                </td>
+
+
+                                <td style="text-align:center;vertical-align:middle">
+                                    @Convert.ToDateTime(item.FechaInicio_SinHolgura).ToString("dd/MM/yyyy")
+
+                                </td>
+                                <td style="text-align:center;vertical-align:middle">
+                                    @Convert.ToDateTime(item.FechaFin_SinHolgura).ToString("dd/MM/yyyy")
+
+                                </td>
+                                <td style="text-align:center;vertical-align:middle">
+                                    @if (item.EstadoScrumDescripcion == "To Do")
+                                    {
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    }
+
+                                    @if (item.EstadoScrumDescripcion == "Done")
+                                    {
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    }
+                                    @if (item.EstadoScrumDescripcion == "In Process" || item.EstadoScrumDescripcion == "To Verify")
+                                    {
+                                        <span class="glyphicon glyphicon-wrench"></span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+

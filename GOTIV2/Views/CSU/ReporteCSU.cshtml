@@ -1,0 +1,318 @@
+﻿
+@{
+    ViewBag.Title = "ReporteCSU";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int ACadillo = 0;
+    int AMendoza = 0;
+    int AReynalte = 0;
+    int EJara = 0;
+    int JMarcos = 0;
+    int RBravo = 0;
+    int VFlores = 0;
+   
+    
+}
+
+<div class="row">&nbsp;</div>
+<h4 style="text-align:center">Gestión del Centro de Servicio al Usuario</h4>
+<div class="row">&nbsp;</div>
+        <div class="row" style="margin:15px 5px 15px 5px;">
+         
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3> @ViewBag.Resumen.TotalAtenciones</h3>
+
+                        <p>Total de solicitudes atendidas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3> @ViewBag.Resumen.TotalAtencionesPendientes</h3>
+
+                        <p>Solicitudes pendientes de atención</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3> @ViewBag.Resumen.TotalAtencionesEjecutandose</h3>
+
+                        <p>Atenciones ejecutandose</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-light-blue">
+                    <div class="inner">
+                        <h3> @ViewBag.Resumen.EspecialistaAtendiendo</h3>
+
+                        <p>Especialistas atendiendo solicitudes</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row"></div>
+                <div class="col-md-6 ">
+
+                    <div class="box box-info ">
+                        <div class=" box-header with-border">
+                            Atenciones por Tipo de Atención
+                        </div>
+                        <div class="box-body">
+                            <table class="table table-striped " style="font-size:smaller">
+                                <tr>
+                                    <th style="text-align:center">Tipo de Atención</th>
+                                    <th style="text-align:center"> Nroº Atenciones</th>
+
+                                </tr>
+                                @foreach (var item in ViewBag.CSU_TotalAtenciones_por_TipoAtención)
+                                {
+                                    <tr>
+                                        <td style="text-align:left">@item.TipoDeAtencion_Descripcion</td>
+                                        <td style="text-align:center">@item.Atenciones</td>
+
+                                    </tr>
+                                }
+
+                            </table>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="box box-info ">
+
+                        <div class="panel-body chart-responsive">
+                            <div id="chart-AtencionTipoAtencion"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"></div>
+                <div class="col-md-6 ">
+
+                    <div class="box box-info ">
+                        <div class=" box-header with-border">
+                            Atenciones por especialista
+                        </div>
+                        <div class="box-body">
+                            <table class="table table-striped " style="font-size:smaller">
+                                <tr>
+                                    <th style="text-align:center">Fecha</th>
+                                    <th style="text-align:center"> ACadillo</th>
+                                    <th style="text-align:center"> AMendoza</th>
+                                    <th style="text-align:center">AReynalte</th>
+                                    <th style="text-align:center">EJara</th>
+                                    <th style="text-align:center">JMarcos</th>
+                                    <th style="text-align:center">RBravo</th>
+                                    <th style="text-align:center">VFlores</th>
+                                </tr>
+                                @foreach (var item in ViewBag.CSU_Atenciones_por_Especialista_MesActual)
+                                {
+                                    if (item.ACadillo != null) { ACadillo = ACadillo + item.ACadillo; }
+                                    if (item.AMendoza != null) { AMendoza = AMendoza + item.AMendoza; }
+                                    if (item.AReynalte != null) { AReynalte = AReynalte + item.AReynalte; }
+
+                                    if (item.EJara != null) { EJara = EJara + item.EJara; }
+                                    if (item.JMarcos != null) { JMarcos = JMarcos + item.JMarcos; }
+                                    if (item.RBravo != null) { RBravo = RBravo + item.RBravo; }
+                                    if (item.VFlores != null) { VFlores = VFlores + item.VFlores; }
+
+                                    <tr>
+                                        
+                                        <td style="text-align:center">@item.FechaAtencion</td>
+                                        
+                                        <td style="text-align:center">@item.ACadillo</td>
+                                        <td style="text-align:center">@item.AMendoza</td>
+                                        <td style="text-align:center">@item.AReynalte</td>
+                                        <td style="text-align:center">@item.EJara</td>
+                                        <td style="text-align:center">@item.JMarcos</td>
+                                        <td style="text-align:center">@item.RBravo</td>
+                                        <td style="text-align:center">@item.VFlores</td>
+                                    </tr>
+                                }
+                                <tfoot>
+                                    <tr>
+                                        <th style="text-align:center">Total</th>
+                                        <th style="text-align:center">@ACadillo</th>
+                                        <th style="text-align:center">@AMendoza</th>
+                                        <th style="text-align:center">@AReynalte</th>
+                                        <th style="text-align:center">@EJara</th>
+                                        <th style="text-align:center">@JMarcos</th>
+                                        <th style="text-align:center">@RBravo</th>
+                                        <th style="text-align:center">@VFlores</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="box box-info ">
+                        <div class="panel-body chart-responsive">
+                            <div id="chart-AtencionEspecilista"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+    <script type="text/javascript">
+            $(function () {
+
+                ////Atenciones por Especialista
+                ////////////////////////
+                var dsActividades =  @Html.Raw(Json.Encode(ViewBag.CSU_TotalAtenciones_por_Especialista))
+
+                $('#chart-AtencionEspecilista').highcharts({
+                    colors: ['#fbbc05', '#bcd949', '#00C0EF', '#FB8D44', '#D55704', '#0088AA', '#FDE8A8', '#79911E'],
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Nº de Atenciones por Especialista'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.percentage:.2f} %'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: '% del total',
+                        colorByPoint: true,
+                        data: dataFinanciamiento(dsActividades)
+                    }]
+                });
+
+                ////Fin Atenciones por Especialista
+                ////////////////////////////
+
+                ////Atenciones por Tipo de Atencion
+                ////////////////////////
+                var dsTipoAtencion =  @Html.Raw(Json.Encode(ViewBag.CSU_TotalAtenciones_por_TipoAtención))
+
+                $('#chart-AtencionTipoAtencion').highcharts({
+                    colors: ['#fbbc05', '#bcd949', '#00C0EF', '#FB8D44', '#D55704', '#0088AA', '#FDE8A8', '#79911E'],
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Nº de Atenciones por Tipo de Atención'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.percentage:.2f} %'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: '% del total',
+                        colorByPoint: true,
+                        data: dataTipoDeAtención(dsTipoAtencion)
+                    }]
+                });
+
+                ////Fin Atenciones por Tipo de Atencion
+                ////////////////////////////
+
+
+
+            });
+
+            function dataFinanciamiento(dataSource) {
+                var data = [];
+                var nodo;
+                for (var i = 0; i < dataSource.length; i++) {
+                    nodo = [];
+                    nodo.push(dataSource[i].NombreCorto);
+                    nodo.push(dataSource[i].Atenciones);
+                    data.push(nodo);
+                }
+
+                return (data);
+
+            }
+
+
+            function dataTipoDeAtención(dataSource) {
+                var data = [];
+                var nodo;
+                for (var i = 0; i < dataSource.length; i++) {
+                    nodo = [];
+                    nodo.push(dataSource[i].TipoDeAtencion_Descripcion);
+                    nodo.push(dataSource[i].Atenciones);
+                    data.push(nodo);
+                }
+
+                return (data);
+
+            }
+
+
+
+
+
+
+
+    </script>
+}

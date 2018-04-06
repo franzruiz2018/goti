@@ -1,0 +1,226 @@
+﻿@model GOTIV2.Models.STG_Expediente
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>&nbsp;</h4>
+<h4>Registrar Expediente</h4>
+<h4>&nbsp;</h4>
+@if (ViewBag.Exito == true)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+    <div class="form-group">
+        @Html.ActionLink("Listar", "Index", null, new { @class = "btn btn-primary" })
+
+        @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 3)
+        {
+            @Html.ActionLink("Registrar Expediente", "Registrar", null, new { @class = "btn btn-primary" })
+        }
+
+
+    </div>
+}
+else
+{
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+
+    using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Registrar Expediente</div>
+            <div class="panel-body">
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Origen OTI</div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(x => x.OrigenOTI, new SelectList(
+                             new[] {new SelectListItem { Text = "SI", Value= "true"   }
+                                    ,new SelectListItem { Text = "NO", Value= "false"   }
+                                     }, "Value", "Text"
+                                  ),
+                                  new
+                                 {
+                                     @class = "form-control"
+                                 })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Nro. Expediente</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.NroExpediente, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Tipo Documento</div>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(x => x.TipoDocumento, (SelectList)ViewBag.TipoDocumento, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Documento Adjunto</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.DocumentoAdjuntoExpediente, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Asunto</div>
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.Asunto, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Recepción</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaRecepcionOTI, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Remitente</div>
+                  
+                        @Html.TextBoxFor(x => x.UsuarioIdSolicitante, new { @class = "form-control hidden", @Readonly = true })
+                        <div class="col-md-3">
+                            <input id="txtPersona" type="text" style="width:400px" class=" form-control" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary" id="btnSelect">...</button>
+                        </div>
+
+
+                    
+
+                </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-2 control-label">Destinatario</div>
+                      @Html.TextBoxFor(x => x.UsuarioIdAtencion, new { @class = "form-control hidden", @Readonly = true })
+<div class="col-md-3">
+    <input id="txtPersonaDestinatario" type="text" style="width:400px" class=" form-control" readonly />
+</div>
+<div class="col-md-4">
+    <button type="button" class="btn btn-primary" id="btnSelect2">...</button>
+</div>
+                    </div>
+
+
+                <div class="row form-group">
+                    <div class="col-md-12 control-label alert-info">Continuar si es un expediente de origen de Otras Areas</div>
+                   
+                </div>
+
+                   
+                    <div class="row form-group">
+                        <div class="col-md-2 control-label">Requiere Respuesta</div>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(x => x.RequiereRespuesta, new SelectList(
+                             new[] {new SelectListItem { Text = "SI", Value= "true"   }
+                                    ,new SelectListItem { Text = "NO", Value= "false"   }
+                                     }, "Value", "Text"
+                                  ),"Seleccionar",
+                                  new
+                                 {
+                                     @class = "form-control"
+                                 })
+                        </div>
+                    </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha Limite</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.FechaLimite, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-2 control-label">Asignado a </div>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(x => x.UsuarioIdTecnicoDesignado, (SelectList)ViewBag.PersonaOTI,"Seleccionar", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            <div class="panel-footer text-right">
+                <input type="submit" value="Guardar" onclick="confirm('Esta seguro de Guardar?')" class="btn btn-primary"  />
+            </div>
+
+
+        </div>
+    
+   
+    }
+}
+
+<div class="modal fade" id="modal-app" role="dialog">
+    <div class="modal-dialog" id="ventana-modal">
+
+    </div>
+</div> 
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaRecepcionOTI").mask("99/99/9999");
+            $("#FechaLimite").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+<script type="text/javascript">
+        $(function () {
+
+            $("#btnSelect").click(function (e) {
+
+                $.ajax({
+                    url: '@Url.Action("Persona")',                    
+                    method: 'GET',
+                    dataType: 'html',
+                    async:false,
+                    success: function (result) {
+
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+            $("#btnSelect2").click(function (e) {
+
+                $.ajax({
+                    url: '@Url.Action("PersonaDestinatario")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async: false,
+                    success: function (result) {
+
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+        });
+</script>
+
+}

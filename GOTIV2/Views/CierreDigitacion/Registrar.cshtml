@@ -1,0 +1,62 @@
+﻿@model GOTIV2.Models.SGP_CierreDigitacion
+
+@{
+    ViewBag.Title = "Registrar Cierre de Digitación";
+}
+
+<p>&nbsp;</p>
+<h4>Registrar Cierre de Digitación</h4>
+<p>&nbsp;</p>
+
+@using (Html.BeginForm())
+{
+ 
+    <div class="form-horizontal">
+
+            <div class="form-group">
+            <div class="col-md-2">Establecimiento</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.EstablecimientoId, (SelectList)ViewBag.Establecimiento, "Seleccione", new { @class = "form-control", @id = "ddlEstablecimiento", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Personal</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.PersonalAsignado, (SelectList)ViewBag.PersonaOTI, "Seleccione", new { @class = "form-control", @id = "ddlEstablecimiento", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Fecha Cierre</div>
+            <div class="col-md-10">            
+                @Html.TextBoxFor(x => x.FechaCierre, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">Atenciones Cerradas</div>
+            <div class="col-md-10">             
+                @Html.TextBoxFor(x => x.CantidadAtenciones, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Atenciones Migradas</div>
+            <div class="col-md-10">             
+                @Html.TextBoxFor(x => x.CantidadAtencionesMigradas, new { @class = "form-control"})           
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" onsubmit="return confirm('¿Estas seguro de guardar el cierre?')" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a la Lista", "Listar", "CierreDigitacion", null, new { @class = "btn btn-warning" })
+</div>
+

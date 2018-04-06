@@ -1,0 +1,892 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var meses = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" };
+    var mesesRecortados = new[] { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" };
+    var mesesNum = new[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+    int Registros = 0;
+
+    int CSU_atendidos = 0;
+    int CSU_Pendientes = 0;
+    int CSU_Total = 0;
+    
+}
+<div class="row">&nbsp;</div>
+<h4 style="text-align:center">Gestión de la Oficina de Tecnología de Información</h4>
+<div class="row">&nbsp;</div>
+
+
+<div class="box box-default">
+
+    <div class="box-header with-border">
+
+        <h4 class="box-title">Gestión de Metas</h4>
+    </div>
+    <div class="box-body">
+        <div class="row" style="margin:15px 5px 15px 5px;">
+
+
+
+            <div class="col-md-4 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Avance General
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-striped " style="font-size:smaller">
+                            <tr>
+                                <th style="text-align:center">Nro. Metas</th>
+                                <th style="text-align:center">Nro. Act. Proy.</th>
+                                <th style="text-align:center">Nro. Act. Fina.</th>
+                                @*<th style="text-align:center">Nro. Act. Repro.</th>*@
+                                <th style="text-align:center">% Avance</th>
+                                @*<th style="text-align:center">% Repro.</th>*@
+                            </tr>
+                            @{
+                                int proyectados_1 = 0;
+                                int finalizados_1 = 0;
+                                int reprogramado_1 = 0;
+                                int metas = 0;
+                                decimal AvenceGlobal_1 = 0;
+                                decimal ReprogramacionGlobal_1 = 0;
+
+                                foreach (var item3 in ViewBag.vw_resumen_metas_1)
+                                {
+                                    proyectados_1 = proyectados_1 + item3.TotalActividadesProyectados;
+                                    finalizados_1 = finalizados_1 + item3.TotalActividadesFinalizados;
+                                    reprogramado_1 = reprogramado_1 + item3.TotalActividadesReprogramadas;
+                                    metas = metas + 1;
+
+                                }
+                                AvenceGlobal_1 = Decimal.Parse(finalizados_1.ToString()) * 100 / Decimal.Parse(proyectados_1.ToString());
+                                ReprogramacionGlobal_1 = Decimal.Parse(reprogramado_1.ToString()) * 100 / Decimal.Parse(proyectados_1.ToString());
+                            }
+                            <tr>
+                                <td style="text-align:center">@metas</td>
+                                <td style="text-align:center">@proyectados_1</td>
+                                <td style="text-align:center">@finalizados_1</td>
+                                @*<td style="text-align:center">@reprogramado_1</td>*@
+                                <td style="text-align:center">@AvenceGlobal_1.ToString("0.##")</td>
+                                @*<td style="text-align:center">@ReprogramacionGlobal_1.ToString("0.##")</td>*@
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="box box-info ">
+
+                    <div class=" box-header with-border">
+                        Avance al día de Hoy
+                    </div>
+                    <div class="box-body">
+
+
+                        <table class="table table-striped " style="font-size:smaller">
+                            <tr>
+                                <th style="text-align:center">Periodo</th>
+                                <th style="text-align:center">Metas</th>
+                                <th style="text-align:center">Act. Proy.</th>
+                                @*<th style="text-align:center">Act. Repro.</th>*@
+                                <th style="text-align:center">Act. Fina.</th>
+                                <th style="text-align:center">% Avance</th>
+                            </tr>
+                            @foreach (var item2 in ViewBag.AvanceActividades)
+                            {
+                                <tr>
+                                    <td style="text-align:center">@item2.Año - @mesesRecortados[item2.Mes - 1]</td>
+                                    <td style="text-align:center">@item2.Metas</td>
+                                    <td style="text-align:center">@item2.ActividadesProgramadas</td>
+                                    @*<td style="text-align:center">@item2.ActividadesReprogramadas</td>*@
+                                    <td style="text-align:center">@item2.ActividadesFinalizadas</td>
+                                    <td style="text-align:center">
+                                        @{
+
+                                decimal Avence = 0;
+
+                                Avence = Decimal.Parse(item2.ActividadesFinalizadas.ToString()) * 100 / Decimal.Parse(item2.ActividadesProgramadas.ToString());
+
+                                @Avence.ToString("0.##")
+
+                                        }
+                                    </td>
+                                </tr>
+
+                            }
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-4 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">Metas según programación POI</div>
+                    <div class="panel-body chart-responsive">
+                        <div id="chart-metas"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">Actividades por Area</div>
+                    <div class="panel-body chart-responsive">
+                        <div id="chart-esfuerzo"></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="box box-default">
+
+    <div class="box-header with-border">
+
+        <h4 class="box-title">Gestión de Proyectos</h4>
+    </div>
+    <div class="box-body">
+        <div class="row" style="margin:15px 5px 15px 5px;">
+
+
+
+            <div class="col-md-12 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Proyectos
+                    </div>
+                    <div class="box-body">
+
+                        <table class="table table-bordered" style="font-size: smaller">
+                            <thead style="background-color:#eaeaea">
+                                <tr>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Nro.
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Descripción
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Area
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Fecha Inicio
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Fecha Fin
+                                    </th>
+                                   
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Avance
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                      
+                                    </th>
+
+                                   
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in ViewBag.Proyecto)
+                                {
+                                    Registros = Registros + 1;
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle ">
+
+                                            @Registros
+                                        </td>
+                                        <td style="vertical-align: middle">
+                                            @item.ProyectoDescripcion
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">@item.AreaInstitucionAbreviatura</td>
+
+
+                                        <td style="text-align: center; vertical-align: middle">
+
+                                            @if (item.FechaInicio_SinHolgura != null)
+                                            {
+                                                @Convert.ToDateTime(item.FechaInicio_SinHolgura).ToString("dd/MM/yyyy")
+                                            }
+
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @if (item.FechaFin_SinHolgura != null)
+                                            {
+                                                @Convert.ToDateTime(item.FechaFin_SinHolgura).ToString("dd/MM/yyyy")
+                                            }
+                                        </td>
+
+                                       
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.Avance %
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">
+                                           @if (item.Avance == 100)
+{
+    <span class="fa fa-check-circle" style="font-size:16px;"></span>
+}
+else
+{
+                                            <span class="fa fa-clock-o" style="font-size:16px;"></span>
+                                           }
+                                        </td>
+
+                                        
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            @*<div class="col-md-6 ">
+
+                <div class="box box-info ">
+
+                    <div class=" box-header with-border">
+                        
+                    </div>
+                    <div class="box-body">
+
+
+
+                    </div>
+                </div>
+            </div>*@
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="box box-default">
+
+    <div class="box-header with-border">
+
+        <h4 class="box-title">Gestión de Expedientes</h4>
+    </div>
+    <div class="box-body">
+        <div class="row" style="margin:15px 5px 15px 5px;">
+
+
+
+            <div class="col-md-6 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                       Expedientes 
+                    </div>
+                    <div class="box-body">
+                       
+                                                        @{
+                                                            int TotalExpedientesAtendidos = 0;
+                                                            int TotalExpedientesArchivar = 0;
+                                                            int TotalExpedientesReqAccion = 0;
+                                                            int TotalExpedientesPendientes = 0;
+                                                            int OrigenOTI = 0;
+                                                            int OrigenOtrasAreas = 0;
+                                                            int Expedientes = 0;
+
+                                                            foreach (var expedientes in ViewBag.Expedientes)
+                                                            {
+          
+                                                                if (expedientes.RequiereRespuesta == true) { TotalExpedientesReqAccion = TotalExpedientesReqAccion + 1; }
+                                                                if (expedientes.RequiereRespuesta == false && expedientes.OrigenOTI == false) { TotalExpedientesArchivar = TotalExpedientesArchivar + 1; }
+                                                                if (expedientes.RequiereRespuesta == true && expedientes.Atendido == false) { TotalExpedientesPendientes = TotalExpedientesPendientes + 1; }
+                                                                if (expedientes.RequiereRespuesta == true && expedientes.Atendido == true) { TotalExpedientesAtendidos = TotalExpedientesAtendidos + 1; }
+                                                                if (expedientes.OrigenOTI == true) { OrigenOTI = OrigenOTI + 1; }
+                                                                if (expedientes.OrigenOTI == false) { OrigenOtrasAreas = OrigenOtrasAreas + 1; }
+                                                                Expedientes = Expedientes + 1; 
+                                                            }
+    }
+
+                        <table class="table table-striped " style="font-size:smaller">
+
+                            <tr>
+                                <th style="text-align: center ;vertical-align: middle" >Origen    OTI</th>
+                                <th style="text-align:center" colspan="3">Origen    Otras Areas</th>
+                                <th style="text-align:center" >Total    Expedientes</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle" rowspan="5" >@OrigenOTI</td>
+                                <td style="text-align:center" colspan="3">@OrigenOtrasAreas</td>
+                                <td style="text-align: center; vertical-align: middle" rowspan="5">@Expedientes</td>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center">Archivados</th>
+                                <th style="text-align:center" colspan="2">Requieren Acción</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; vertical-align: middle" rowspan="3">@TotalExpedientesArchivar</td>
+                                <td style="text-align:center" colspan="2">@TotalExpedientesReqAccion</td>
+                            </tr>
+                            <tr>
+                                <th style="text-align:center">Atendidos</th>
+                                <th style="text-align:center">Pendientes</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center">@TotalExpedientesAtendidos</td>
+                                <td style="text-align:center">@TotalExpedientesPendientes</td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </div>
+
+               
+
+
+            </div>
+
+                        <div class="col-md-6 ">
+
+            <div class="box box-info ">
+
+                <div class=" box-header with-border">
+                    Expediente por Especialista
+                </div>
+                <div class="box-body">
+
+
+                    @{
+                        int TotalExpAsignados = 0;
+                        int TotalExpPendientes = 0;
+                        
+
+
+                        foreach (var expedientes in ViewBag.ExpedientesPorEspecialista)
+                        {
+
+                            TotalExpAsignados = TotalExpAsignados + expedientes.Expedientes;
+                            TotalExpPendientes = TotalExpPendientes + expedientes.Pendientes;
+                            
+                        }
+                    }
+
+                    <table class="table table-striped " style="font-size:smaller">
+                        <tr>
+                            <th style="text-align:center">Especialista </th>
+                            <th style="text-align:center">Expe. Aten.</th>
+                            <th style="text-align:center">Expe. Pend.</th>
+                            <th style="text-align:center">Expe. Asig.</th>
+                      
+
+                        </tr>
+                        @foreach (var Exp in ViewBag.ExpedientesPorEspecialista)
+                        {
+                            <tr>
+                                <td style="text-align:center">@Exp.NombreCompleto</td>
+                                <td style="text-align:center">@(Exp.Expedientes-Exp.Pendientes)</td>
+                                <td style="text-align:center">@Exp.Pendientes</td>
+                                <td style="text-align:center">@Exp.Expedientes</td>
+
+                            </tr>
+
+                        }
+
+                        <tr>
+                            <th style="text-align: center">TOTAL</th>
+                            <th style="text-align:center">@(TotalExpAsignados-TotalExpPendientes)</th>
+                            <th style="text-align:center">@TotalExpPendientes</th>
+                            <th style="text-align:center"> @TotalExpAsignados</th>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>    
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="box box-default">
+
+    <div class="box-header with-border">
+
+        <h4 class="box-title">Gestión de Producción Reportadas</h4>
+    </div>
+
+
+    <div class="box-body">
+        
+
+        <div class="row" style="margin:15px 5px 15px 5px;">
+
+
+
+            <div class="col-md-6 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Trama Reportadas
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-striped " style="font-size:smaller">
+                            <tr>
+
+                                
+                                <th style="text-align:center">Renaes</th>
+                                <th style="text-align:center">Tipo</th>
+                                <th style="text-align:center">Nro. Tramas</th>
+                                @*<th style="text-align:center">Aten. Repor.</th>*@                              
+                                <th style="text-align:center">Aten. Migra.</th>
+                                <th style="text-align:center">Ult. Recep.</th>
+                                <th style="text-align:center">Ult. Proces.</th>
+                               
+                            </tr>
+                            
+                           
+                                @foreach (var trama in ViewBag.Trama)
+{
+    <tr>
+        
+        <td style="text-align:center">@trama.Renaes
+       
+        </td>
+        <td style="text-align:center">@trama.TipoTrama</td>
+        <td style="text-align:center">@trama.NroTramas</td>
+        @*<td style="text-align:center">@trama.AtencionesReportadas.ToString("N0")</td>*@
+        <td style="text-align:center">@trama.AtencionesMigradas.ToString("N0")</td>
+
+        <td style="text-align:center">
+            @if (trama.UltimaRecepcion != null)
+            {
+                @Convert.ToDateTime(trama.UltimaRecepcion).ToString("dd/MM/yyyy");
+            }
+        </td>
+        <td style="text-align:center">
+            @if (trama.UltimoProcesamiento != null)
+            {
+                @Convert.ToDateTime(trama.UltimoProcesamiento).ToString("dd/MM/yyyy");
+            }
+        </td>
+       
+    </tr>
+}
+                            
+
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+         
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="box box-default">
+
+    <div class="box-header with-border">
+
+        <h4 class="box-title">Gestión de Centro de Servicio al Usuario</h4>
+    </div>
+    <div class="box-body">
+        <div class="row" style="margin:15px 5px 15px 5px;">
+
+
+
+            <div class="col-md-8 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Atenciones por Tipo
+                    </div>
+                    <div class="box-body">
+
+                        <table class="table table-bordered" style="font-size: smaller">
+                            <thead style="background-color:#eaeaea">
+                                <tr>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Area
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                       Tipo Atención
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Atendido
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Pendiente
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Total Atenciones
+                                    </th>                         
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in ViewBag.CSU_AtencionesPorTipo)
+                                {
+                                    CSU_atendidos = CSU_atendidos + item.Atendidos;
+                                    CSU_Pendientes = CSU_Pendientes + item.Pendientes;
+                                    CSU_Total = CSU_Total + item.Atenciones;
+                                   
+                                    <tr>
+                                       
+                                        <td style="vertical-align: middle">
+                                            @item.Area_Descripción
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">@item.TipoDeAtencion_Descripcion</td>
+
+
+                                        <td style="text-align: center; vertical-align: middle">
+                                        @item.Atendidos
+
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">
+                                          @item.Pendientes
+                                        </td>
+
+
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.Atenciones
+                                        </td>
+                                    
+
+                                    </tr>
+                                }
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+
+                                    <td style="text-align: center; vertical-align: middle" colspan="2">Total</td>
+                                   
+
+
+                                    <td style="text-align: center; vertical-align: middle">
+                                    
+                                        @CSU_atendidos
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle">
+                                        @CSU_Pendientes
+                                    </td>
+
+
+                                    <td style="text-align: center; vertical-align: middle">
+                                        @CSU_Total
+                                    </td>
+
+                                 
+                                </tr>
+
+
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-md-4 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Rendimiento
+                    </div>
+                    <div class="box-body">
+
+                        <table class="table table-bordered" style="font-size: smaller">
+                            <thead style="background-color:#eaeaea">
+                                <tr>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Especialista
+                                    </th>
+                                  
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Atenciones Promedio por Día
+                                    </th>
+                                    
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in ViewBag.CSU_RendimientoEspecialista)
+                                {
+
+                                    <tr>
+
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.Especialista
+                                        </td>
+                                       
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.AtencionesPromedioPorDia
+                                        </td>
+
+
+                                      
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="row"></div>
+            @*<div class="col-md-12 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Rendimiento
+                    </div>
+                    <div class="box-body">
+
+                        <table class="table table-bordered" style="font-size: smaller">
+                            <thead style="background-color:#eaeaea">
+                                <tr>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Area
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Tipo de Atención
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                       Catálogo
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle">
+                                        Atenciones 
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in ViewBag.CSU_AtencionesPorCatalogo)
+                                {
+
+                                    <tr>
+
+                                        <td style="vertical-align: middle">
+                                            @item.Area_Descripción
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.TipoDeAtencion_Descripcion
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.CatalogoServicio_Descripcion
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle">
+                                            @item.Atenciones
+                                        </td>
+
+
+
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>*@
+
+        </div>
+    </div>
+</div>
+
+
+
+
+    @section scripts{
+        @Scripts.Render("~/bundles/highcharts")
+        @Scripts.Render("~/Scripts/fnGenerales.js")
+        <script src="~/Scripts/fechaMascara.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#FecInicio").mask("9999-99");
+                $("#FecFin").mask("99/99/9999");
+
+                ////Actividades por Area
+                ////////////////////////
+                var dsActividades =  @Html.Raw(Json.Encode(ViewBag.ActividadesPorArea))
+
+                $('#chart-esfuerzo').highcharts({
+                    colors: ['#fbbc05', '#bcd949', '#00C0EF', '#FB8D44'],
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Actividades por Area'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.percentage:.2f} %'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: '% del total',
+                        colorByPoint: true,
+                        data: dataFinanciamiento(dsActividades)
+                    }]
+                });
+
+                ////Fin Actividades por Area
+                ////////////////////////////
+
+                ////Actividades por POI
+                ////////////////////////
+                var dsActividadesPorPOI =  @Html.Raw(Json.Encode(ViewBag.MetasSegunPOI))
+
+                $('#chart-metas').highcharts({
+                    colors: ['#00C0EF', '#fbbc05', '#FB8D44'],
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Actividades por POI'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.percentage:.2f} %'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: '% del total',
+                        colorByPoint: true,
+                        data: dataActividadesPOI(dsActividadesPorPOI)
+                    }]
+                });
+
+                ////Fin Actividades por POI
+                ///////////////////////////
+
+
+
+
+
+
+
+
+            });
+
+            function dataFinanciamiento(dataSource) {
+                var data = [];
+                var nodo;
+                for (var i = 0; i < dataSource.length; i++) {
+                    nodo = [];
+                    nodo.push(dataSource[i].Area_Descripción);
+                    nodo.push(dataSource[i].Actividades);
+                    data.push(nodo);
+                }
+
+                return (data);
+
+            }
+
+            function dataActividadesPOI(dataSource) {
+                var data = [];
+                var nodo;
+                for (var i = 0; i < dataSource.length; i++) {
+                    nodo = [];
+                    nodo.push(dataSource[i].POI);
+                    nodo.push(dataSource[i].NumMetas);
+                    data.push(nodo);
+                }
+
+                return (data);
+
+            }
+
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+    }

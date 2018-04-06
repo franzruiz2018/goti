@@ -1,0 +1,132 @@
+﻿@model GOTIV2.Models.SPE_ServicioTercero
+
+@{
+    ViewBag.Title = "Registrar Orden de Servicio por Tercero";
+}
+
+<p>&nbsp;</p>
+<h4>Registrar Orden de Servicio por Tercero</h4>
+<p>&nbsp;</p>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+
+        <div class="row form-group">          
+
+            <div class="col-md-2 control-label">Nro. Expediente</div>
+
+            @Html.TextBoxFor(x => x.Expediente_Id, new { @class = "form-control hidden", @Readonly = true, @id = "ExpedienteId" })
+            <div class="col-md-3">
+                <input id="NumExpediente" type="text" style="width:400px" class=" form-control" readonly />
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary" id="btnSelect">...</button>
+            </div>
+
+        </div>      
+
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Orden de Servicio</div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(x => x.OrdenServicio, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Fecha Orden de Servicio</div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(x => x.FechaOrdenServicio, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2 control-label">Personal</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Persona_Id, (SelectList)ViewBag.PersonaOTITercero, "Seleccione", new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Servicio Prestado</div>
+            <div class="col-md-6">
+                @Html.TextAreaFor(x => x.Servicio, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Producto Requerido</div>
+            <div class="col-md-6">
+                @Html.TextAreaFor(x => x.ProductosRequeridos, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Plazo Ejecución (Días)</div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(x => x.PlazoEjecucion, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Monto</div>
+            <div class="col-md-1">
+                @Html.TextBoxFor(x => x.Monto, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" onsubmit="return confirm('¿Estas seguro de guardar el cierre?')" />
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="modal fade" id="modal-app" role="dialog">
+    <div class="modal-dialog" id="ventana-modal">
+
+    </div>
+</div>
+
+}
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaOrdenServicio").mask("99/99/9999");
+            $("#FechaLimite").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#btnSelect").click(function (e) {
+                $.ajax({
+                    url: '@Url.Action("ListaExpedientes")',
+                    method: 'GET',
+                    dataType: 'html',
+                    async:false,
+                    success: function (result) {
+                        $("#ventana-modal").html(result);
+                        $("#modal-app").modal({ backdrop: 'static', keyboard: false, show: true });
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+                return false;
+            });
+
+
+        });
+    </script>
+
+
+}

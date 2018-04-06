@@ -1,0 +1,89 @@
+﻿@model GOTIV2.Models.SPS_DocumentosNormativos
+@{
+    ViewBag.Title = "Registrar Documentos Normativos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var msj = TempData["Mensaje"];
+}
+
+<p>&nbsp;</p>
+<h4>Registrar Documentos Normativos</h4>
+<p>&nbsp;</p>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-2 control-label">Tipo Documento</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x=>x.TipoDocumento, new SelectList(
+           new[] {new SelectListItem { Text = "Directiva Administrativa", Value= "Directiva Administrativa"   }
+                                ,new SelectListItem { Text = "Guía Técnica ", Value= "Guía Técnica "   }
+                                ,new SelectListItem { Text = "Manual Técnico", Value= "Manual Técnico"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+                                 @class = "form-control"
+                             })
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Descripción del Documento</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Descripcion, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+           
+        <div class="form-group">
+            <div class="col-md-2 control-label">Responsable</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.PersonaId, (SelectList)ViewBag.PersonaOTI, "Seleccione", new { @class = "form-control", @required = true })
+            </div>
+        </div>
+   
+        
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Fecha Presentación</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.FechaPresentacion, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Num. Tramite</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.NumTramite, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-primary" onsubmit="return confirm('¿Estas seguro de guardar?')" />
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaPresentacion").mask("99/99/9999");
+        });
+
+    </script>
+
+
+
+}
+
+

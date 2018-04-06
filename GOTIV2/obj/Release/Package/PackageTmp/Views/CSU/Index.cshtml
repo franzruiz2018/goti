@@ -1,0 +1,321 @@
+﻿@model IEnumerable<GOTIV2.Models.sp_CSU_Listar_Movimientos_Result>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var meses = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" };
+    var mesesRecortados = new[] { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" };
+    var mesesNum = new[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+    int num = 0;
+  
+    var t = TempData["Mensaje"];
+
+  
+
+
+}
+
+
+<div class="row">&nbsp;</div>
+
+
+<div class="row">
+
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Lista de Atenciones</div>
+            <div class="panel-body">
+
+                <div class="row form-group">
+                   
+                   
+                    <div class="col-md-1 control-label">Estado</div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("cerrado", new SelectList(
+                         new[] {new SelectListItem { Text = "Todos", Value= null   }
+                                ,new SelectListItem { Text = "Finalizados", Value= "1"   }
+                                ,new SelectListItem { Text = "Pendientes", Value= "0"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+
+                                 @class = "form-control"
+                             })
+                    </div>
+
+
+                </div>
+                <div class="row form-group">
+
+
+                    <div class="col-md-1 control-label">En proceso</div>
+                    <div class="col-md-2">
+                       @Html.CheckBox("iniciado", new { disabled = "disabled"}) 
+                    </div>
+
+                  
+                </div>
+
+
+
+                <div class="row form-group">
+                    <div class="col-md-1 control-label">Especialista</div>
+                    <div class="col-md-5">
+                        @Html.DropDownList("especialista", (SelectList)ViewBag.Especialistas, "Seleccionar", new { @class = "form-control" })
+                    </div>
+                  
+                </div>
+
+
+            </div>
+            <div class="panel-footer " style="text-align:right">
+                <input type="submit" value="Consultar" class="btn btn-primary" />
+
+           
+
+             
+            </div>
+        </div>
+
+
+        <div class="alert alert-info" role="alert" style="margin-bottom:20px">
+            @foreach (var item in Model)
+            {
+                num = num + 1;
+            }
+            Total de Atenciones encontradas: @num
+        </div>
+        
+         <div class="row" style="margin:0 0 10px 0">
+        @if (t != null)
+        {
+            <div class="alert alert-success" role="alert">  @t</div>
+
+        }
+    </div>
+
+        <table class="table table-bordered" style="font-size: smaller">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle">
+                        
+                    </th>
+                    <th style="text-align: center; vertical-align: middle" >
+                        ID
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                        Tipo Atención                    
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                       Catálogo
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Usuario
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Area
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                      Asunto
+                    </th>
+                   
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Reg.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Hora
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Especialista
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Inicio.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Cierre.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                       Tiempo (min)
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Iniciar
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Cerrar
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Estado
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                   
+                    <tr>
+
+                        <td style="text-align: center; vertical-align: middle ">
+                           @if (item.Coyuntural == true)
+                            {                               
+                                 <a href="#" data-toggle="tooltip" data-placement="top" title="@item.CoyunturalObservacion"><span class="fa fa-exclamation"></span></a>
+                            }
+                        </td>
+                        <td style="text-align: center; vertical-align: middle ">
+                             @item.MovimientoCSU_Id
+                        </td>                                            
+                        <td style="vertical-align: middle">@item.TipoDeAtencion_Descripcion</td>
+
+                        <td style="text-align: left; vertical-align: middle">
+                           @item.CatalogoServicio_Descripcion
+
+                        </td>
+                        <td style="text-align: left; vertical-align: middle">
+                            @item.UsuarioSolicitante
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                           @item.AreaInstitucionAbreviaturaUsuario
+
+                        </td>
+
+                        <td style="text-align: left; vertical-align: middle">
+                           @item.AsuntoDeLaAtencion_Usuario
+                       
+                            <a href="#" data-toggle="tooltip" data-placement="right" data-html="false" title="@item.DescripcionDeLaAtencion_Usuario">&nbsp;<span class="fa fa-commenting-o"></span></a>
+
+                        </td>
+                      
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaRegistro != null) {
+
+                                @item.FechaRegistro.Value.ToShortDateString();
+                            }                          
+                        </td>
+                        <td style="text-align: center; vertical-align: middle" width="80">
+                            @if (item.FechaRegistro != null)
+                            {
+                                @item.FechaRegistro.Value.ToShortTimeString();
+                            }
+                            
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @item.Especialista
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaInicioDeAtencion != null)
+                            {
+                                @item.FechaInicioDeAtencion.Value.ToShortDateString();
+                            }
+                          
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                          
+                            @if (item.FechaCierreDeAtencion != null)
+                            {
+
+                                @item.FechaCierreDeAtencion.Value.ToShortDateString();
+                            }
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+
+                            @item.TiempoUtilizado
+                        </td>
+                        
+                        <td style="text-align: center; vertical-align: middle">
+                            @if(item.FechaInicioDeAtencion==null){
+                                @Html.ActionLink(" ", "IniciarAtencion", "CSU", new { Id = item.MovimientoCSU_Id }, new { @onclick = "return confirm ('Esta seguro de Iniciar la Atención') ;", @class = "glyphicon glyphicon-play" });
+                            }
+                           
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+@if (item.FechaCierreDeAtencion == null && item.FechaInicioDeAtencion != null)
+{
+                            @Html.ActionLink(" ", "CierreAtencion", "CSU", new { Id = item.MovimientoCSU_Id }, new { @class = "glyphicon glyphicon-check" });
+    }
+                        </td>
+                        
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.Cerrado == true)
+                            {
+                                <span class="glyphicon glyphicon-thumbs-up" style="font-size:16px;color:black"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-times-circle" style="font-size:16px;color:orange"></span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+
+       
+    }
+</div>
+
+
+
+@*@section scripts{
+
+   
+
+
+    <script type="text/javascript">
+       
+            $("[data-toggle=tooltip]").tooltip();
+    </script>
+}*@
+
+
+
+
+@section scripts{
+
+   
+
+
+    <script type="text/javascript">
+
+
+        $("#cerrado").change(function () {
+
+
+            var UdrId = $("#cerrado").val();
+
+            if (UdrId == 0) {
+                $('input:checkbox[name=iniciado]').prop("disabled", false);
+            }
+            else {
+
+                $('input:checkbox[name=iniciado]').prop("disabled", true);
+            }
+            if (UdrId == "") {
+                $('input:checkbox[name=iniciado]').prop("disabled", true);
+            }
+
+                  
+      });
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+}

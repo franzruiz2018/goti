@@ -1,0 +1,122 @@
+﻿@model List<GOTIV2.Models.sp_STG_Documentos_Listar_Result>
+@{
+    ViewBag.Title = "ListarDocumentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>&nbsp;</h4>
+<h4>Lista de Documentos</h4>
+<h4>&nbsp;</h4>
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Listar Documentos</div>
+        <div class="panel-body">
+            <div class="row form-group">
+
+              <div class="col-md-1 control-label">Tipo Documento</div>
+    <div class="col-md-2">
+      
+                </div>
+
+
+                <div class="col-md-3 ">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                    @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 3)
+                    {
+                        @Html.ActionLink("Registrar", "RegistrarDocumento", null, new { @class = "btn btn-warning" })
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+<div class="alert alert-info" role="alert" style="margin-bottom:20px">Total de Expedientes encontrados: @Model.Count</div>
+
+
+<table class="table table-bordered" style="font-size: smaller">
+    <thead style="background-color:#eaeaea">
+        <tr>
+            <th style="text-align: center; vertical-align: middle">
+                ID
+            </th>
+            <th style="text-align: center; vertical-align: middle">
+                Tipo
+            </th>
+            <th style="text-align: center; vertical-align: middle">
+                Nro. Doc.
+            </th>
+            <th style="text-align: center; vertical-align: middle">
+                Remitente
+            </th>
+            <th style="text-align: center; vertical-align: middle">
+               Destinatario
+            </th>
+
+            <th style="text-align: center; vertical-align: middle" >
+                Asunto
+            </th>
+            <th style="text-align: center; vertical-align: middle" >
+                Creación
+            </th>
+           
+       
+           
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center; vertical-align: middle">
+                   @string.Format("{0:0000}", item.Documento_Id)
+                </td>
+                <td style="text-align: center; vertical-align: middle ">
+       @item.TipoDocumentoDescripcion               
+                </td>
+                <td style="text-align: left; vertical-align: middle ">
+                 @item.NroDocumento
+
+                </td>
+               
+                <td style="vertical-align: middle">
+                    @item.UsuarioRemitente
+                   
+                </td>
+                <td style="vertical-align: middle">
+                   @item.UsuarioDestinatario
+                </td>
+                <td style="vertical-align: middle">
+                    @item.Asunto
+                </td>
+
+                <td style="text-align: center; vertical-align: middle">
+                    @if (item.FechaDocumento!=null){
+
+                    @item.FechaDocumento.Value.ToShortDateString()
+                    
+                    }
+                </td>
+           
+               
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

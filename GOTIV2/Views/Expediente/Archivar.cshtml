@@ -1,0 +1,92 @@
+﻿@model GOTIV2.Models.STG_Expediente
+@{
+    ViewBag.Title = "Cerrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>&nbsp;</h4>
+<h4>Archivar Expediente</h4>
+<h4>&nbsp;</h4>
+
+
+@if (ViewBag.Exito == true)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+    <div class="form-group">
+        @Html.ActionLink("Regresar", "Pendientes", null, new { @class = "btn btn-primary" })
+
+        @if (ViewBag.usuarioId == 1)
+        {
+            @Html.ActionLink("Registrar Expediente", "Save", null, new { @class = "btn btn-primary" })
+
+        }
+
+
+    </div>
+}
+else
+{
+
+
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+
+
+    <h5>ID:  EXP-@string.Format("{0:0000}", @Model.Expediente_Id) </h5>
+    <h5>Nro. Expediente:  @Model.NroExpediente</h5>
+    <h5>&nbsp;</h5>
+    using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Archivar Expediente</div>
+            <div class="panel-body">
+                <div class="row form-group">
+
+                    @Html.HiddenFor(x => x.Expediente_Id)
+
+                    
+
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Observación</div>
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(x => x.Observacion, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-right">
+                <input type="submit" value="Cerrar" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+    }
+}
+
+<div class="modal fade" id="modal-app" role="dialog">
+    <div class="modal-dialog" id="ventana-modal">
+
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaRecepcionSolicitante").mask("99/99/9999");
+            $("#FechaLimite").mask("99/99/9999");
+
+
+        });
+
+    </script>
+
+
+
+}

@@ -1,0 +1,242 @@
+﻿@model IEnumerable<GOTIV2.Models.sp_SGPRY_listar_proyectos_Result>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var meses = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" };
+    var mesesRecortados = new[] { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" };
+    var mesesNum = new[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+    int num = 0;
+
+    int Registros = 0;
+
+
+}
+
+
+<div class="row">&nbsp;</div>
+
+
+<div class="row">
+
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Lista de Proyectos</div>
+            <div class="panel-body">
+
+                <div class="row form-group">
+                   
+
+
+                    <div class="col-md-1 control-label">Estado  Proyecto</div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("FgEstado", new SelectList(
+                         new[] {new SelectListItem { Text = "Todos", Value= null   }
+                                ,new SelectListItem { Text = "Pendientes", Value= "0"   }
+                                ,new SelectListItem { Text = "Finalizados", Value= "1"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+
+                                 @class = "form-control"
+                             })
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+            <div class="panel-footer " style="text-align:right">
+                <input type="submit" value="Consultar" class="btn btn-primary" />
+                @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2)
+                {
+                    @Html.ActionLink("Registrar", "Save", "Meta", null, new { @class = "btn btn-warning" })
+                }
+            </div>
+        </div>
+
+
+        <div class="alert alert-info" role="alert" style="margin-bottom:20px">
+            @foreach (var item in Model)
+            {
+                num = num + 1;
+            }
+            Total de Proyectos encontradas: @num
+        </div>
+
+        <table class="table table-bordered" style="font-size: smaller">
+            <thead style="background-color:#eaeaea">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle" >
+                        Nro.
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle">
+                        Descripción
+                    </th>
+                    <th style=" text-align: center; vertical-align: middle" >
+                        Area
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Inicio
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Fecha Fin
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Nro. Req.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Tareas Prog.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Tareas Fina.
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Avance
+                    </th>
+                    <th style="text-align: center; vertical-align: middle">
+                        Estado
+                    </th>
+
+                    
+                        <th>
+
+                    </th>
+                   
+
+                    @if (ViewBag.Perfil != 4 )
+                    {
+                        <th>
+
+                        </th>
+                    }
+
+                    @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 5 || ViewBag.Perfil == 6 || ViewBag.Perfil == 7)
+                    {
+
+<th>
+
+                    </th>                       
+                        
+                        
+                    }
+                    
+                  
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    Registros = Registros + 1;
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle ">
+
+                           @Registros
+                        </td>
+                        <td style="vertical-align: middle">
+                            @item.ProyectoDescripcion
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">@item.AreaInstitucionAbreviatura</td>
+
+
+                        <td style="text-align: center; vertical-align: middle">
+                           
+                            @if (item.FechaInicio_SinHolgura != null)
+                            {
+                                @Convert.ToDateTime(item.FechaInicio_SinHolgura).ToString("dd/MM/yyyy")
+                            }
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @if (item.FechaFin_SinHolgura != null)
+                            {
+                                @Convert.ToDateTime(item.FechaFin_SinHolgura).ToString("dd/MM/yyyy")
+                            }
+                        </td>
+
+                        <td style="text-align: center; vertical-align: middle">
+                           @item.NumReqUsuario
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @item.NumTareas
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                            @item.NumTareasTerminados
+                        </td>
+                        <td style="text-align: center; vertical-align: middle">
+                          @item.Avance
+                        </td>
+
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @{
+                    if (item.Avance == 0)
+                    {
+                        <span class="glyphicon glyphicon-time"></span>
+                    }
+
+
+                    if (item.Avance > 0 && item.Avance < 100)
+                    {
+                        <span class="glyphicon glyphicon-wrench"></span>
+                    }
+                    if (item.Avance == 100)
+                    {
+                        <span class="glyphicon glyphicon-ok"></span>
+                    }
+
+                            }
+
+                        </td>
+
+
+                        
+
+                       
+                            <td style="text-align: center; vertical-align: middle">
+                            @Html.ActionLink(" ", "ResumenProyectoCliente", "Proyecto", new { Id = item.ProyectoId }, new { @class = "glyphicon glyphicon-user" })
+                            </td>
+                        
+                       @if (ViewBag.Perfil != 4 )
+                    {
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.ActionLink(" ", "ResumenProyecto", "Proyecto", new { Id = item.ProyectoId }, new { @class = "fa fa-gears" })
+                        </td>
+                    }
+                        @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 5 || ViewBag.Perfil == 6 || ViewBag.Perfil == 7)
+{
+    
+
+
+                        <td style="text-align: center; vertical-align: middle">
+                            @Html.ActionLink(" ", "ActualizarAvanceEquipo", "Proyecto", new { Id = item.ProyectoId }, new { @class = "glyphicon glyphicon-wrench" })
+
+                            
+                        </td>
+                            
+                      
+                            
+}
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+
+       
+    }
+</div>
+
+

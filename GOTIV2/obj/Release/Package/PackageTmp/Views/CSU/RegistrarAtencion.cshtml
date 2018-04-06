@@ -1,0 +1,167 @@
+﻿@model GOTIV2.Models.CSU_MovimientoCSU
+@{
+    ViewBag.Title = "Registrar Atención - CSU";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+
+<p>&nbsp;</p>
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Resgistrar Atención - CSU</div>
+        <div class="panel-body">
+
+            <div class="row form-group">
+
+                <div class="col-md-2 control-label">Tipo Servicio</div>
+                <div class="col-md-6">
+                    @Html.DropDownList( "Atencion",(SelectList)ViewBag.TipoAtencion,"Seleccione", new { @class = "form-control", @id = "ddlTipoAtencion" })
+                </div>
+
+            </div>
+
+
+            <div class="row form-group">
+
+                <div class="col-md-2 control-label">Catalogo Servicio</div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.CatalogoServicio_Id, new SelectList(string.Empty), new { @class = "form-control", @id = "ddlCatalogo" })
+                </div>
+
+            </div>
+
+            <div class="row form-group">
+
+                <div class="col-md-2 control-label">Personal Designado</div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Persona_Id_EspecialistaDesignado, new SelectList(string.Empty), new { @class = "form-control", @id = "ddlColaboradores" })
+                </div>
+
+            </div>
+            <div class="row form-group">
+
+                <div class="col-md-2 control-label">Solicitante</div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Persona_Id, (SelectList)ViewBag.PersonaFissal, new { @class = "form-control" })
+                </div>
+
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-2 control-label">Asunto</div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(x => x.AsuntoDeLaAtencion_Usuario, new { @class = "form-control" })
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-md-2 control-label">Descripción</div>
+                <div class="col-md-10">
+                    @*@Html.TextAreaFor(x => x.DescripcionDeLaAtencion_Usuario,new { @class = "form-control" })*@
+
+                 @Html.TextArea("__DescripcionDeLaAtencion_Usuario", new { @class = "form-control" })
+                </div>
+            </div>
+            @*<div class="row form-group">
+
+                <div class="col-md-2 control-label">Personal Designado</div>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(x => x.Persona_Id_EspecialistaDesignado, (SelectList)ViewBag.PersonaOTI, new { @class = "form-control" })
+                </div>
+
+            </div>*@
+        </div>
+
+
+        <div class="panel-footer text-right">
+            <input type="submit" value="Guardar" class="btn btn-primary" onsubmit="return confirm('¿Estas seguro de guardar la atención?')" />
+        </div>
+
+
+    </div>
+}
+
+@section scripts{
+    
+<script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+
+
+    <script type="text/javascript">
+
+       
+
+
+        $(function () {
+
+            //tinymce.init({
+            //    selector: 'textarea',
+            //    height: 300,
+            //    menubar: false,
+            //    plugins: [
+            //      'advlist autolink lists link image charmap print preview anchor',
+            //      'searchreplace visualblocks code fullscreen',
+            //      'insertdatetime media table contextmenu paste code'
+            //    ],
+            //    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            //    content_css: '//www.tinymce.com/css/codepen.min.css'
+            //});
+
+            $("#ddlTipoAtencion").change(function () {
+
+                
+                if ($(this).val() != "") { 
+
+                    $.getJSON("@Url.Action("CatalogoServicio")", { id: $(this).val() }, function (data) {
+
+                        var option = "";
+                        $.each(data, function (i,value) {
+
+                            option = option + "<option value=" + value.CatalogoServicio_Id + ">" + value.CatalogoServicio_Descripcion + " </option>";
+                        });
+                        $("#ddlCatalogo").html(option);
+
+                    });
+                }
+                else {                 
+                    $("#ddlCatalogo").html("");
+                }
+                    return false;
+                });   
+
+            $("#ddlTipoAtencion").change(function () {
+
+                
+                if ($(this).val() != "") { 
+
+                    $.getJSON("@Url.Action("TipoDeAtencion_Colaborador")", { id: $(this).val() }, function (data) {
+
+                        var option = "";
+                        $.each(data, function (i,value) {
+
+                            option = option + "<option value=" + value.PersonaColaborador_Id + ">" + value.NombreCompleto + " </option>";
+                        });
+                        $("#ddlColaboradores").html(option);
+
+                    });
+                }
+                else {                 
+                    $("#ddlColaboradores").html("");
+                }
+                return false;
+            });   
+
+
+
+        });
+
+
+    </script>
+    
+    
+    
+    
+    
+    }

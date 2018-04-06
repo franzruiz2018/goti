@@ -1,0 +1,168 @@
+﻿@model List<GOTIV2.Models.sp_STG_Expedientes_Listar_Result>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int registro = 0;
+}
+
+
+<h4>&nbsp;</h4>
+<h4>Lista de Expedientes</h4>
+<h4>&nbsp;</h4>
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Listar Expedientes</div>
+        <div class="panel-body">
+            <div class="row form-group">
+              
+                <div class="col-md-1 control-label">Listar</div>
+                <div class="col-md-2">
+                    @Html.DropDownList("FgAtendido", new SelectList(
+                         new[] {new SelectListItem { Text = "Todos", Value= null   }
+                                ,new SelectListItem { Text = "Finalizados", Value= "1"   }
+                                ,new SelectListItem { Text = "Pendientes", Value= "0"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+                                 @class = "form-control"
+                             })
+                </div>
+
+
+                <div class="col-md-3 ">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                    @if (ViewBag.Perfil == 1  || ViewBag.Perfil == 2)
+                    {
+                        @Html.ActionLink("Registrar", "Registrar", null, new { @class = "btn btn-warning" })
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+<div class="alert alert-info" role="alert" style="margin-bottom:20px">Total de Expedientes encontrados: @Model.Count</div>
+
+
+
+    <table class="table table-bordered" style="font-size: smaller">
+        <thead style="background-color:#eaeaea">
+            <tr>
+                <th style="text-align: center; vertical-align: middle" >
+                    ID
+                </th>
+                <th style="text-align: center; vertical-align: middle" width="100">
+                    Expediente
+                </th>
+                <th style="text-align: center; vertical-align: middle">
+                    Referencia
+                </th>  
+                <th style="text-align: center; vertical-align: middle" >
+                   Asunto
+                </th>
+                <th style="text-align: center; vertical-align: middle" width="70">
+                    Recepción OTI
+                </th>
+                
+                <th style="text-align: center; vertical-align: middle" width="70">
+                    Fecha Limite
+                </th>
+                <th style="text-align: center; vertical-align: middle">
+                    Designado
+                </th>
+                <th style="text-align: center; vertical-align: middle" width="40">
+                   Origen OTI
+                </th>
+                <th style="text-align: center; vertical-align: middle" width="40">
+                    Req. Atención
+                </th>
+                <th style="text-align: center; vertical-align: middle" width="40">
+                    Aten
+                </th>
+              
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+               
+                <tr>
+                    <td style="text-align: center; vertical-align: middle">
+                    @item.Expediente_Id
+                    </td> 
+                    <td style="text-align: center; vertical-align: middle ">
+                        @item.NroExpediente
+                    <td style="vertical-align: middle">
+                        @item.TipoDocumentoDescripcion - @item.DocumentoAdjuntoExpediente                      
+                    </td>
+                  
+                    <td style="vertical-align: middle">
+                        @item.Asunto
+                    </td>
+
+                    <td style="text-align: center; vertical-align: middle">
+                        @item.FechaRecepcionOTI.Value.ToShortDateString()
+                    </td>                  
+                   
+                    <td style="text-align: center; vertical-align: middle">
+                        @if (item.FechaLimite != null)
+                        {
+                        @item.FechaLimite.Value.ToShortDateString()
+                        }
+                    </td>
+                    <td style="vertical-align: middle">
+                        @if (item.UsuarioIdTecnicoDesignado != null) 
+                        { 
+                                     @item.UsuarioTecnicoDesignado                          
+                          }
+                    </td>
+                    <td style="text-align: center; vertical-align: middle">
+                        @if (item.OrigenOTI == true)
+                        {
+                            <span class="label label-info" >OTI</span>
+                        }
+                        else
+                        {
+                           
+                        }
+                    </td>
+                    <td style="text-align: center; vertical-align: middle">
+                        @if (item.RequiereRespuesta == true)
+                        {
+                             <span class="label label-default" >SI</span>
+                        }
+                        else
+                        {
+                            
+                        }
+                    </td>
+                    
+                    <td style="text-align: center; vertical-align: middle">
+                    @if (item.OrigenOTI != true)
+                                {
+
+                                                if (item.Atendido == true)
+                        {
+                            <span class="glyphicon glyphicon-ok"> </span>
+                        }
+                        else
+                        {
+                                                    <span class="glyphicon glyphicon-time"> </span>
+                                                }
+                        }
+                    </td>
+                   
+
+                </tr>
+            }
+        </tbody>
+    </table>
+

@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gotiModelStoreContainer" CdmEntityContainer="gotiEntities">
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="gotiModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="CentroServicioUsuario" ColumnName="CentroServicioUsuario" />
+          <ScalarProperty Name="Area_id" ColumnName="Area_id" />
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+          <ScalarProperty Name="Direccion_id" ColumnName="Direccion_id" />
+          <ScalarProperty Name="Area_abreviatura" ColumnName="Area_abreviatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Direccion">
+      <EntityTypeMapping TypeName="gotiModel.Direccion">
+        <MappingFragment StoreEntitySet="Direccion">
+          <ScalarProperty Name="Direccion_id" ColumnName="Direccion_id" />
+          <ScalarProperty Name="Direccion_descripción" ColumnName="Direccion_descripción" />
+          <ScalarProperty Name="Direccion_abreviatura" ColumnName="Direccion_abreviatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="gotiModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="Estado_id" ColumnName="Estado_id" />
+          <ScalarProperty Name="Estado_descripcion" ColumnName="Estado_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Meta">
+      <EntityTypeMapping TypeName="gotiModel.Meta">
+        <MappingFragment StoreEntitySet="Meta">
+          <ScalarProperty Name="CumplimientoCompromisoPOI" ColumnName="CumplimientoCompromisoPOI" />
+          <ScalarProperty Name="ActividadPOI_Id" ColumnName="ActividadPOI_Id" />
+          <ScalarProperty Name="Meta_id" ColumnName="Meta_id" />
+          <ScalarProperty Name="Meta_descripcion" ColumnName="Meta_descripcion" />
+          <ScalarProperty Name="SubArea_id" ColumnName="SubArea_id" />
+          <ScalarProperty Name="POI" ColumnName="POI" />
+          <ScalarProperty Name="Version_id" ColumnName="Version_id" />
+          <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaActividad">
+      <EntityTypeMapping TypeName="gotiModel.MetaActividad">
+        <MappingFragment StoreEntitySet="MetaActividad">
+          <ScalarProperty Name="ActividadReprogramada" ColumnName="ActividadReprogramada" />
+          <ScalarProperty Name="Reprogramado" ColumnName="Reprogramado" />
+          <ScalarProperty Name="ActividadDeInforme" ColumnName="ActividadDeInforme" />
+          <ScalarProperty Name="Desestimado" ColumnName="Desestimado" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="EspecialistaDesignado" ColumnName="EspecialistaDesignado" />
+          <ScalarProperty Name="DocumentoDeEntrega" ColumnName="DocumentoDeEntrega" />
+          <ScalarProperty Name="MetaActividad_id" ColumnName="MetaActividad_id" />
+          <ScalarProperty Name="MetaActividad_descripcion" ColumnName="MetaActividad_descripcion" />
+          <ScalarProperty Name="Fecha_ejecucion" ColumnName="Fecha_ejecucion" />
+          <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+          <ScalarProperty Name="Meta_id" ColumnName="Meta_id" />
+          <ScalarProperty Name="Finalizado" ColumnName="Finalizado" />
+          <ScalarProperty Name="Fecha_finalizacion" ColumnName="Fecha_finalizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaEstado">
+      <EntityTypeMapping TypeName="gotiModel.MetaEstado">
+        <MappingFragment StoreEntitySet="MetaEstado">
+          <ScalarProperty Name="MetaEstado_id" ColumnName="MetaEstado_id" />
+          <ScalarProperty Name="Meta_id" ColumnName="Meta_id" />
+          <ScalarProperty Name="Estado_id" ColumnName="Estado_id" />
+          <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubArea">
+      <EntityTypeMapping TypeName="gotiModel.SubArea">
+        <MappingFragment StoreEntitySet="SubArea">
+          <ScalarProperty Name="SubArea_id" ColumnName="SubArea_id" />
+          <ScalarProperty Name="SubArea_Descripción" ColumnName="SubArea_Descripción" />
+          <ScalarProperty Name="Area_id" ColumnName="Area_id" />
+          <ScalarProperty Name="SubArea_Abreviatura" ColumnName="SubArea_Abreviatura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="gotiModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Version">
+      <EntityTypeMapping TypeName="gotiModel.Version">
+        <MappingFragment StoreEntitySet="Version">
+          <ScalarProperty Name="Version_id" ColumnName="Version_id" />
+          <ScalarProperty Name="Version1" ColumnName="Version" />
+          <ScalarProperty Name="Fecha_actualizacion" ColumnName="Fecha_actualizacion" />
+          <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_resumen_metas">
+      <EntityTypeMapping TypeName="gotiModel.vw_resumen_metas">
+        <MappingFragment StoreEntitySet="vw_resumen_metas">
+          <ScalarProperty Name="Estado_id" ColumnName="Estado_id" />
+          <ScalarProperty Name="TotalActividadesReprogramadas" ColumnName="TotalActividadesReprogramadas" />
+          <ScalarProperty Name="Fecha_ejecucion" ColumnName="Fecha_ejecucion" />
+          <ScalarProperty Name="FechaInicioActividades" ColumnName="FechaInicioActividades" />
+          <ScalarProperty Name="POI" ColumnName="POI" />
+          <ScalarProperty Name="FechaFinActividades" ColumnName="FechaFinActividades" />
+          <ScalarProperty Name="PorcentajeAvance" ColumnName="PorcentajeAvance" />
+          <ScalarProperty Name="TotalActividadesFinalizados" ColumnName="TotalActividadesFinalizados" />
+          <ScalarProperty Name="TotalActividadesProyectados" ColumnName="TotalActividadesProyectados" />
+          <ScalarProperty Name="Estado_descripcion" ColumnName="Estado_descripcion" />
+          <ScalarProperty Name="Meta_descripcion" ColumnName="Meta_descripcion" />
+          <ScalarProperty Name="SubArea_Descripción" ColumnName="SubArea_Descripción" />
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+          <ScalarProperty Name="Meta_id" ColumnName="Meta_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_resumen_avance_actividad">
+      <EntityTypeMapping TypeName="gotiModel.vw_resumen_avance_actividad">
+        <MappingFragment StoreEntitySet="vw_resumen_avance_actividad">
+          <ScalarProperty Name="ActividadesReprogramadas" ColumnName="ActividadesReprogramadas" />
+          <ScalarProperty Name="Metas" ColumnName="Metas" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ActividadesFinalizadas" ColumnName="ActividadesFinalizadas" />
+          <ScalarProperty Name="ActividadesProgramadas" ColumnName="ActividadesProgramadas" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Actividades_por_area">
+      <EntityTypeMapping TypeName="gotiModel.vw_Actividades_por_area">
+        <MappingFragment StoreEntitySet="vw_Actividades_por_area">
+          <ScalarProperty Name="Actividades" ColumnName="Actividades" />
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Actividades_Segun_POI">
+      <EntityTypeMapping TypeName="gotiModel.vw_Actividades_Segun_POI">
+        <MappingFragment StoreEntitySet="vw_Actividades_Segun_POI">
+          <ScalarProperty Name="NumMetas" ColumnName="NumMetas" />
+          <ScalarProperty Name="POI" ColumnName="POI" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="gotiModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Dni" ColumnName="Dni" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_resumen_metas" FunctionName="gotiModel.Store.sp_resumen_metas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_resumen_metas_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Meta_id" ColumnName="Meta_id" />
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+          <ScalarProperty Name="SubArea_Descripción" ColumnName="SubArea_Descripción" />
+          <ScalarProperty Name="Meta_descripcion" ColumnName="Meta_descripcion" />
+          <ScalarProperty Name="Estado_descripcion" ColumnName="Estado_descripcion" />
+          <ScalarProperty Name="TotalActividadesProyectados" ColumnName="TotalActividadesProyectados" />
+          <ScalarProperty Name="TotalActividadesFinalizados" ColumnName="TotalActividadesFinalizados" />
+          <ScalarProperty Name="PorcentajeAvance" ColumnName="PorcentajeAvance" />
+          <ScalarProperty Name="FechaInicioActividades" ColumnName="FechaInicioActividades" />
+          <ScalarProperty Name="FechaFinActividades" ColumnName="FechaFinActividades" />
+          <ScalarProperty Name="POI" ColumnName="POI" />
+          <ScalarProperty Name="Fecha_ejecucion" ColumnName="Fecha_ejecucion" />
+          <ScalarProperty Name="SubArea_id" ColumnName="SubArea_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="vw_Actividades_lista">
+      <EntityTypeMapping TypeName="gotiModel.vw_Actividades_lista">
+        <MappingFragment StoreEntitySet="vw_Actividades_lista">
+          <ScalarProperty Name="NumEventosUltimaSemana" ColumnName="NumEventosUltimaSemana" />
+          <ScalarProperty Name="ActividadDeInforme" ColumnName="ActividadDeInforme" />
+          <ScalarProperty Name="Reprogramado" ColumnName="Reprogramado" />
+          <ScalarProperty Name="Desestimado" ColumnName="Desestimado" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocumentoDeEntrega" ColumnName="DocumentoDeEntrega" />
+          <ScalarProperty Name="Fecha_finalizacion" ColumnName="Fecha_finalizacion" />
+          <ScalarProperty Name="Finalizado" ColumnName="Finalizado" />
+          <ScalarProperty Name="Fecha_ejecucion" ColumnName="Fecha_ejecucion" />
+          <ScalarProperty Name="MetaActividad_descripcion" ColumnName="MetaActividad_descripcion" />
+          <ScalarProperty Name="MetaActividad_id" ColumnName="MetaActividad_id" />
+          <ScalarProperty Name="POI" ColumnName="POI" />
+          <ScalarProperty Name="Meta_descripcion" ColumnName="Meta_descripcion" />
+          <ScalarProperty Name="Meta_id" ColumnName="Meta_id" />
+          <ScalarProperty Name="SubArea_Descripción" ColumnName="SubArea_Descripción" />
+          <ScalarProperty Name="SubArea_Abreviatura" ColumnName="SubArea_Abreviatura" />
+          <ScalarProperty Name="Area_abreviatura" ColumnName="Area_abreviatura" />
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPE_AreaInstitucion">
+      <EntityTypeMapping TypeName="gotiModel.SPE_AreaInstitucion">
+        <MappingFragment StoreEntitySet="SPE_AreaInstitucion">
+          <ScalarProperty Name="Fissal" ColumnName="Fissal" />
+          <ScalarProperty Name="AreaInstitucionAbreviatura" ColumnName="AreaInstitucionAbreviatura" />
+          <ScalarProperty Name="AreaInstitucionDescripcion" ColumnName="AreaInstitucionDescripcion" />
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STG_Documento">
+      <EntityTypeMapping TypeName="gotiModel.STG_Documento">
+        <MappingFragment StoreEntitySet="STG_Documento">
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="UsuarioIdDestinatario" ColumnName="UsuarioIdDestinatario" />
+          <ScalarProperty Name="UsuarioIdRemitente" ColumnName="UsuarioIdRemitente" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="TipoDocumento_Id" ColumnName="TipoDocumento_Id" />
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STG_Expediente">
+      <EntityTypeMapping TypeName="gotiModel.STG_Expediente">
+        <MappingFragment StoreEntitySet="STG_Expediente">
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="OrigenOTI" ColumnName="OrigenOTI" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaRecepcionSolicitante" ColumnName="FechaRecepcionSolicitante" />
+          <ScalarProperty Name="DocumentoAtención" ColumnName="DocumentoAtención" />
+          <ScalarProperty Name="Atendido" ColumnName="Atendido" />
+          <ScalarProperty Name="UsuarioIdTecnicoDesignado" ColumnName="UsuarioIdTecnicoDesignado" />
+          <ScalarProperty Name="RequiereRespuesta" ColumnName="RequiereRespuesta" />
+          <ScalarProperty Name="FechaLimite" ColumnName="FechaLimite" />
+          <ScalarProperty Name="UsuarioIdAtencion" ColumnName="UsuarioIdAtencion" />
+          <ScalarProperty Name="UsuarioIdSolicitante" ColumnName="UsuarioIdSolicitante" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="FechaRecepcionOTI" ColumnName="FechaRecepcionOTI" />
+          <ScalarProperty Name="DocumentoAdjuntoExpediente" ColumnName="DocumentoAdjuntoExpediente" />
+          <ScalarProperty Name="NroExpediente" ColumnName="NroExpediente" />
+          <ScalarProperty Name="Expediente_Id" ColumnName="Expediente_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STG_TipoDocumento">
+      <EntityTypeMapping TypeName="gotiModel.STG_TipoDocumento">
+        <MappingFragment StoreEntitySet="STG_TipoDocumento">
+          <ScalarProperty Name="TipoDocumentoDescripcion" ColumnName="TipoDocumentoDescripcion" />
+          <ScalarProperty Name="TipoDocumento_Id" ColumnName="TipoDocumento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_STG_Documentos_Listar" FunctionName="gotiModel.Store.sp_STG_Documentos_Listar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_STG_Documentos_Listar_Result">
+          <ScalarProperty Name="Documento_Id" ColumnName="Documento_Id" />
+          <ScalarProperty Name="TipoDocumento_Id" ColumnName="TipoDocumento_Id" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="UsuarioIdRemitente" ColumnName="UsuarioIdRemitente" />
+          <ScalarProperty Name="UsuarioRemitente" ColumnName="UsuarioRemitente" />
+          <ScalarProperty Name="UsuarioIdDestinatario" ColumnName="UsuarioIdDestinatario" />
+          <ScalarProperty Name="UsuarioDestinatario" ColumnName="UsuarioDestinatario" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="AreaInstitucionRemitente" ColumnName="AreaInstitucionRemitente" />
+          <ScalarProperty Name="AreaInstitucionDestinatario" ColumnName="AreaInstitucionDestinatario" />
+          <ScalarProperty Name="TipoDocumentoDescripcion" ColumnName="TipoDocumentoDescripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_STG_Expedientes_Listar" FunctionName="gotiModel.Store.sp_STG_Expedientes_Listar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_STG_Expedientes_Listar_Result">
+          <ScalarProperty Name="Expediente_Id" ColumnName="Expediente_Id" />
+          <ScalarProperty Name="NroExpediente" ColumnName="NroExpediente" />
+          <ScalarProperty Name="DocumentoAdjuntoExpediente" ColumnName="DocumentoAdjuntoExpediente" />
+          <ScalarProperty Name="FechaRecepcionOTI" ColumnName="FechaRecepcionOTI" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="UsuarioIdSolicitante" ColumnName="UsuarioIdSolicitante" />
+          <ScalarProperty Name="UsuarioSolicitante" ColumnName="UsuarioSolicitante" />
+          <ScalarProperty Name="UsuarioIdAtencion" ColumnName="UsuarioIdAtencion" />
+          <ScalarProperty Name="UsuarioAtencion" ColumnName="UsuarioAtencion" />
+          <ScalarProperty Name="FechaLimite" ColumnName="FechaLimite" />
+          <ScalarProperty Name="RequiereRespuesta" ColumnName="RequiereRespuesta" />
+          <ScalarProperty Name="UsuarioIdTecnicoDesignado" ColumnName="UsuarioIdTecnicoDesignado" />
+          <ScalarProperty Name="UsuarioTecnicoDesignado" ColumnName="UsuarioTecnicoDesignado" />
+          <ScalarProperty Name="Atendido" ColumnName="Atendido" />
+          <ScalarProperty Name="DocumentoAtención" ColumnName="DocumentoAtención" />
+          <ScalarProperty Name="FechaRecepcionSolicitante" ColumnName="FechaRecepcionSolicitante" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="AreaInstitucionAbreviaturaRemitente" ColumnName="AreaInstitucionAbreviaturaRemitente" />
+          <ScalarProperty Name="AreaInstitucionAbreviaturaDestinatario" ColumnName="AreaInstitucionAbreviaturaDestinatario" />
+          <ScalarProperty Name="AreaInstitucionAbreviaturaDesignado" ColumnName="AreaInstitucionAbreviaturaDesignado" />
+          <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
+          <ScalarProperty Name="tipodocumento" ColumnName="tipodocumento" />
+          <ScalarProperty Name="TipoDocumentoDescripcion" ColumnName="TipoDocumentoDescripcion" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="OrigenOTI" ColumnName="OrigenOTI" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SGP_Trama">
+      <EntityTypeMapping TypeName="gotiModel.SGP_Trama">
+        <MappingFragment StoreEntitySet="SGP_Trama">
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Atenciones2019" ColumnName="Atenciones2019" />
+          <ScalarProperty Name="Atenciones2018" ColumnName="Atenciones2018" />
+          <ScalarProperty Name="Atenciones2017" ColumnName="Atenciones2017" />
+          <ScalarProperty Name="Atenciones2016" ColumnName="Atenciones2016" />
+          <ScalarProperty Name="Atenciones2015" ColumnName="Atenciones2015" />
+          <ScalarProperty Name="Atenciones2014" ColumnName="Atenciones2014" />
+          <ScalarProperty Name="Atenciones2013" ColumnName="Atenciones2013" />
+          <ScalarProperty Name="Atenciones2012" ColumnName="Atenciones2012" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Documentorespuesta" ColumnName="Documentorespuesta" />
+          <ScalarProperty Name="ProduccionFissal" ColumnName="ProduccionFissal" />
+          <ScalarProperty Name="NumeroAtencionesMigradas" ColumnName="NumeroAtencionesMigradas" />
+          <ScalarProperty Name="FechaProcesamiento" ColumnName="FechaProcesamiento" />
+          <ScalarProperty Name="NumeroAtenciones" ColumnName="NumeroAtenciones" />
+          <ScalarProperty Name="FechaRecepcion" ColumnName="FechaRecepcion" />
+          <ScalarProperty Name="DocumentoRecepcionado" ColumnName="DocumentoRecepcionado" />
+          <ScalarProperty Name="NroExpediente" ColumnName="NroExpediente" />
+          <ScalarProperty Name="TipoTrama" ColumnName="TipoTrama" />
+          <ScalarProperty Name="Renaes" ColumnName="Renaes" />
+          <ScalarProperty Name="TramaID" ColumnName="TramaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_STG_Expedientes_Por_Especialista" FunctionName="gotiModel.Store.sp_STG_Expedientes_Por_Especialista">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_STG_Expedientes_Por_Especialista_Result">
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Expedientes" ColumnName="Expedientes" />
+          <ScalarProperty Name="Pendientes" ColumnName="Pendientes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGP_ResumenTramas" FunctionName="gotiModel.Store.sp_SGP_ResumenTramas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGP_ResumenTramas_Result">
+          <ScalarProperty Name="Renaes" ColumnName="Renaes" />
+          <ScalarProperty Name="TipoTrama" ColumnName="TipoTrama" />
+          <ScalarProperty Name="NroTramas" ColumnName="NroTramas" />
+          <ScalarProperty Name="AtencionesReportadas" ColumnName="AtencionesReportadas" />
+          <ScalarProperty Name="AtencionesMigradas" ColumnName="AtencionesMigradas" />
+          <ScalarProperty Name="UltimaRecepcion" ColumnName="UltimaRecepcion" />
+          <ScalarProperty Name="UltimoProcesamiento" ColumnName="UltimoProcesamiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SGPRY_Actividad">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_Actividad">
+        <MappingFragment StoreEntitySet="SGPRY_Actividad">
+          <ScalarProperty Name="FechaCierreControlCalidad" ColumnName="FechaCierreControlCalidad" />
+          <ScalarProperty Name="ControlCalidad" ColumnName="ControlCalidad" />
+          <ScalarProperty Name="FechaCierreDesarrollo" ColumnName="FechaCierreDesarrollo" />
+          <ScalarProperty Name="Desarrollo" ColumnName="Desarrollo" />
+          <ScalarProperty Name="FechaCierreAnalisis" ColumnName="FechaCierreAnalisis" />
+          <ScalarProperty Name="Analisis" ColumnName="Analisis" />
+          <ScalarProperty Name="FechaFin_ConHolgura" ColumnName="FechaFin_ConHolgura" />
+          <ScalarProperty Name="FechaInicio_ConHolgura" ColumnName="FechaInicio_ConHolgura" />
+          <ScalarProperty Name="FechaFin_SinHolgura" ColumnName="FechaFin_SinHolgura" />
+          <ScalarProperty Name="FechaInicio_SinHolgura" ColumnName="FechaInicio_SinHolgura" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="RequisitoId" ColumnName="RequisitoId" />
+          <ScalarProperty Name="HorasRequeridasHolgura" ColumnName="HorasRequeridasHolgura" />
+          <ScalarProperty Name="HorasRequeridas" ColumnName="HorasRequeridas" />
+          <ScalarProperty Name="ActividadDescripcion" ColumnName="ActividadDescripcion" />
+          <ScalarProperty Name="Actividad_Id" ColumnName="Actividad_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGPRY_Actividad_EstadoScrum">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_Actividad_EstadoScrum">
+        <MappingFragment StoreEntitySet="SGPRY_Actividad_EstadoScrum">
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Actividad_Id" ColumnName="Actividad_Id" />
+          <ScalarProperty Name="EstadoScrumId" ColumnName="EstadoScrumId" />
+          <ScalarProperty Name="Actividad_EstadoScrum_Id" ColumnName="Actividad_EstadoScrum_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGPRY_EstadoScrum">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_EstadoScrum">
+        <MappingFragment StoreEntitySet="SGPRY_EstadoScrum">
+          <ScalarProperty Name="EstadoScrumDescripcion" ColumnName="EstadoScrumDescripcion" />
+          <ScalarProperty Name="EstadoScrumId" ColumnName="EstadoScrumId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGPRY_Iteracion">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_Iteracion">
+        <MappingFragment StoreEntitySet="SGPRY_Iteracion">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IteracionDescripcion" ColumnName="IteracionDescripcion" />
+          <ScalarProperty Name="IteracionId" ColumnName="IteracionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGPRY_Proyecto">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_Proyecto">
+        <MappingFragment StoreEntitySet="SGPRY_Proyecto">
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+          <ScalarProperty Name="ProyectoDescripcion" ColumnName="ProyectoDescripcion" />
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGPRY_Requisito">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_Requisito">
+        <MappingFragment StoreEntitySet="SGPRY_Requisito">
+          <ScalarProperty Name="PlanificacionFuncional" ColumnName="PlanificacionFuncional" />
+          <ScalarProperty Name="AseguramientoCalidad" ColumnName="AseguramientoCalidad" />
+          <ScalarProperty Name="RequisitoProyecto" ColumnName="RequisitoProyecto" />
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="IteracionId" ColumnName="IteracionId" />
+          <ScalarProperty Name="PrioridadId" ColumnName="PrioridadId" />
+          <ScalarProperty Name="RequisitoDescripcion" ColumnName="RequisitoDescripcion" />
+          <ScalarProperty Name="RequisitoId" ColumnName="RequisitoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGPRY_listar_actividades" FunctionName="gotiModel.Store.sp_SGPRY_listar_actividades">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGPRY_listar_actividades_Result">
+          <ScalarProperty Name="IteracionId" ColumnName="IteracionId" />
+          <ScalarProperty Name="IteracionDescripcion" ColumnName="IteracionDescripcion" />
+          <ScalarProperty Name="RequisitoId" ColumnName="RequisitoId" />
+          <ScalarProperty Name="RequisitoDescripcion" ColumnName="RequisitoDescripcion" />
+          <ScalarProperty Name="Actividad_Id" ColumnName="Actividad_Id" />
+          <ScalarProperty Name="ActividadDescripcion" ColumnName="ActividadDescripcion" />
+          <ScalarProperty Name="HorasRequeridas" ColumnName="HorasRequeridas" />
+          <ScalarProperty Name="FechaInicio_SinHolgura" ColumnName="FechaInicio_SinHolgura" />
+          <ScalarProperty Name="FechaFin_SinHolgura" ColumnName="FechaFin_SinHolgura" />
+          <ScalarProperty Name="FechaInicio_ConHolgura" ColumnName="FechaInicio_ConHolgura" />
+          <ScalarProperty Name="FechaFin_ConHolgura" ColumnName="FechaFin_ConHolgura" />
+          <ScalarProperty Name="Analisis" ColumnName="Analisis" />
+          <ScalarProperty Name="FechaCierreAnalisis" ColumnName="FechaCierreAnalisis" />
+          <ScalarProperty Name="Desarrollo" ColumnName="Desarrollo" />
+          <ScalarProperty Name="FechaCierreDesarrollo" ColumnName="FechaCierreDesarrollo" />
+          <ScalarProperty Name="ControlCalidad" ColumnName="ControlCalidad" />
+          <ScalarProperty Name="FechaCierreControlCalidad" ColumnName="FechaCierreControlCalidad" />
+          <ScalarProperty Name="EstadoScrumDescripcion" ColumnName="EstadoScrumDescripcion" />
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="EstadoScrumId" ColumnName="EstadoScrumId" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="RequisitoProyecto" ColumnName="RequisitoProyecto" />
+          <ScalarProperty Name="AseguramientoCalidad" ColumnName="AseguramientoCalidad" />
+          <ScalarProperty Name="PlanificacionFuncional" ColumnName="PlanificacionFuncional" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGPRY_listar_iteracion" FunctionName="gotiModel.Store.sp_SGPRY_listar_iteracion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGPRY_listar_iteracion_Result">
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="ProyectoDescripcion" ColumnName="ProyectoDescripcion" />
+          <ScalarProperty Name="IteracionId" ColumnName="IteracionId" />
+          <ScalarProperty Name="IteracionDescripcion" ColumnName="IteracionDescripcion" />
+          <ScalarProperty Name="NumRq" ColumnName="NumRq" />
+          <ScalarProperty Name="NumTareas" ColumnName="NumTareas" />
+          <ScalarProperty Name="NumTareasTerminados" ColumnName="NumTareasTerminados" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="ToDO" ColumnName="ToDO" />
+          <ScalarProperty Name="InProcess" ColumnName="InProcess" />
+          <ScalarProperty Name="ToVerify" ColumnName="ToVerify" />
+          <ScalarProperty Name="Done" ColumnName="Done" />
+          <ScalarProperty Name="FechaInicio_SinHolgura" ColumnName="FechaInicio_SinHolgura" />
+          <ScalarProperty Name="FechaFin_SinHolgura" ColumnName="FechaFin_SinHolgura" />
+          <ScalarProperty Name="FechaInicio_ConHolgura" ColumnName="FechaInicio_ConHolgura" />
+          <ScalarProperty Name="FechaFin_ConHolgura" ColumnName="FechaFin_ConHolgura" />
+          <ScalarProperty Name="HorasRequeridas" ColumnName="HorasRequeridas" />
+          <ScalarProperty Name="HorasEjecutadas" ColumnName="HorasEjecutadas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGPRY_listar_requisitos" FunctionName="gotiModel.Store.sp_SGPRY_listar_requisitos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGPRY_listar_requisitos_Result">
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="ProyectoDescripcion" ColumnName="ProyectoDescripcion" />
+          <ScalarProperty Name="RequisitoId" ColumnName="RequisitoId" />
+          <ScalarProperty Name="RequisitoDescripcion" ColumnName="RequisitoDescripcion" />
+          <ScalarProperty Name="AreaInstitucionAbreviatura" ColumnName="AreaInstitucionAbreviatura" />
+          <ScalarProperty Name="IteracionId" ColumnName="IteracionId" />
+          <ScalarProperty Name="IteracionDescripcion" ColumnName="IteracionDescripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="RequisitoProyecto" ColumnName="RequisitoProyecto" />
+          <ScalarProperty Name="Prioridad_Id" ColumnName="Prioridad_Id" />
+          <ScalarProperty Name="PrioridadDescripcion" ColumnName="PrioridadDescripcion" />
+          <ScalarProperty Name="AseguramientoCalidad" ColumnName="AseguramientoCalidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SGPRY_Prioridad">
+      <EntityTypeMapping TypeName="gotiModel.SGPRY_Prioridad">
+        <MappingFragment StoreEntitySet="SGPRY_Prioridad">
+          <ScalarProperty Name="PrioridadDescripcion" ColumnName="PrioridadDescripcion" />
+          <ScalarProperty Name="Prioridad_Id" ColumnName="Prioridad_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGPRY_listar_proyectos" FunctionName="gotiModel.Store.sp_SGPRY_listar_proyectos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGPRY_listar_proyectos_Result">
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="ProyectoDescripcion" ColumnName="ProyectoDescripcion" />
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+          <ScalarProperty Name="AreaInstitucionAbreviatura" ColumnName="AreaInstitucionAbreviatura" />
+          <ScalarProperty Name="FechaInicio_SinHolgura" ColumnName="FechaInicio_SinHolgura" />
+          <ScalarProperty Name="FechaFin_SinHolgura" ColumnName="FechaFin_SinHolgura" />
+          <ScalarProperty Name="FechaInicio_ConHolgura" ColumnName="FechaInicio_ConHolgura" />
+          <ScalarProperty Name="FechaFin_ConHolgura" ColumnName="FechaFin_ConHolgura" />
+          <ScalarProperty Name="NumReqUsuario" ColumnName="NumReqUsuario" />
+          <ScalarProperty Name="NumRqTotal" ColumnName="NumRqTotal" />
+          <ScalarProperty Name="NumTareas" ColumnName="NumTareas" />
+          <ScalarProperty Name="NumTareasTerminados" ColumnName="NumTareasTerminados" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="HorasRequeridas" ColumnName="HorasRequeridas" />
+          <ScalarProperty Name="HorasEjecutadas" ColumnName="HorasEjecutadas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="MetaActividadSeguimiento">
+      <EntityTypeMapping TypeName="gotiModel.MetaActividadSeguimiento">
+        <MappingFragment StoreEntitySet="MetaActividadSeguimiento">
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="Acción" ColumnName="Acción" />
+          <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
+          <ScalarProperty Name="ActividadSeguimiento_Id" ColumnName="ActividadSeguimiento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGMetas_Listar_Avances" FunctionName="gotiModel.Store.sp_SGMetas_Listar_Avances">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGMetas_Listar_Avances_Result">
+          <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
+          <ScalarProperty Name="Acción" ColumnName="Acción" />
+          <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="MetaActividad_descripcion" ColumnName="MetaActividad_descripcion" />
+          <ScalarProperty Name="Fecha_ejecucion" ColumnName="Fecha_ejecucion" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CSU_MedioDeSolicitud">
+      <EntityTypeMapping TypeName="gotiModel.CSU_MedioDeSolicitud">
+        <MappingFragment StoreEntitySet="CSU_MedioDeSolicitud">
+          <ScalarProperty Name="MedioDeSolicitud_Descripcion" ColumnName="MedioDeSolicitud_Descripcion" />
+          <ScalarProperty Name="MedioDeSolicitud_Id" ColumnName="MedioDeSolicitud_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CSU_TipoDeAtencion">
+      <EntityTypeMapping TypeName="gotiModel.CSU_TipoDeAtencion">
+        <MappingFragment StoreEntitySet="CSU_TipoDeAtencion">
+          <ScalarProperty Name="PersonalResponsable_Id" ColumnName="PersonalResponsable_Id" />
+          <ScalarProperty Name="Area_Id" ColumnName="Area_Id" />
+          <ScalarProperty Name="TipoDeAtencion_Padre_Id" ColumnName="TipoDeAtencion_Padre_Id" />
+          <ScalarProperty Name="TipoDeAtencion_Descripcion" ColumnName="TipoDeAtencion_Descripcion" />
+          <ScalarProperty Name="TipoDeAtencion_Id" ColumnName="TipoDeAtencion_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Listar_Movimientos" FunctionName="gotiModel.Store.sp_CSU_Listar_Movimientos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Listar_Movimientos_Result">
+          <ScalarProperty Name="MovimientoCSU_Id" ColumnName="MovimientoCSU_Id" />
+          <ScalarProperty Name="CatalogoServicio_Id" ColumnName="CatalogoServicio_Id" />
+          <ScalarProperty Name="CatalogoServicio_Descripcion" ColumnName="CatalogoServicio_Descripcion" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="AreaInstitucionAbreviaturaUsuario" ColumnName="AreaInstitucionAbreviaturaUsuario" />
+          <ScalarProperty Name="AsuntoDeLaAtencion_Usuario" ColumnName="AsuntoDeLaAtencion_Usuario" />
+          <ScalarProperty Name="AsuntoDeLaAtencion_Especilista" ColumnName="AsuntoDeLaAtencion_Especilista" />
+          <ScalarProperty Name="DescripcionDeLaAtencion_Usuario" ColumnName="DescripcionDeLaAtencion_Usuario" />
+          <ScalarProperty Name="DescripcionDeLaAtencion_Especialista" ColumnName="DescripcionDeLaAtencion_Especialista" />
+          <ScalarProperty Name="Persona_Id_EspecialistaDesignado" ColumnName="Persona_Id_EspecialistaDesignado" />
+          <ScalarProperty Name="AreaInstitucionAbreviaturaEspecialista" ColumnName="AreaInstitucionAbreviaturaEspecialista" />
+          <ScalarProperty Name="FechaInicioDeAtencion" ColumnName="FechaInicioDeAtencion" />
+          <ScalarProperty Name="FechaCierreDeAtencion" ColumnName="FechaCierreDeAtencion" />
+          <ScalarProperty Name="Cerrado" ColumnName="Cerrado" />
+          <ScalarProperty Name="DecripcionEnCierre" ColumnName="DecripcionEnCierre" />
+          <ScalarProperty Name="TiempoUtilizado" ColumnName="TiempoUtilizado" />
+          <ScalarProperty Name="Entregable" ColumnName="Entregable" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="TipoDeAtencion_Id_Padre" ColumnName="TipoDeAtencion_Id_Padre" />
+          <ScalarProperty Name="TipoDeAtencion_Descripcion_Padre" ColumnName="TipoDeAtencion_Descripcion_Padre" />
+          <ScalarProperty Name="TipoDeAtencion_Id" ColumnName="TipoDeAtencion_Id" />
+          <ScalarProperty Name="TipoDeAtencion_Descripcion" ColumnName="TipoDeAtencion_Descripcion" />
+          <ScalarProperty Name="UsuarioSolicitante" ColumnName="UsuarioSolicitante" />
+          <ScalarProperty Name="Especialista" ColumnName="Especialista" />
+          <ScalarProperty Name="AreaInstitucion_Id_Usuario" ColumnName="AreaInstitucion_Id_Usuario" />
+          <ScalarProperty Name="AreaInstitucion_Id_Especialista" ColumnName="AreaInstitucion_Id_Especialista" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Coyuntural" ColumnName="Coyuntural" />
+          <ScalarProperty Name="CoyunturalObservacion" ColumnName="CoyunturalObservacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CSU_MovimientoCSU">
+      <EntityTypeMapping TypeName="gotiModel.CSU_MovimientoCSU">
+        <MappingFragment StoreEntitySet="CSU_MovimientoCSU">
+          <ScalarProperty Name="CoyunturalObservacion" ColumnName="CoyunturalObservacion" />
+          <ScalarProperty Name="Coyuntural" ColumnName="Coyuntural" />
+          <ScalarProperty Name="SolucionAplicada" ColumnName="SolucionAplicada" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Entregable" ColumnName="Entregable" />
+          <ScalarProperty Name="TiempoUtilizado" ColumnName="TiempoUtilizado" />
+          <ScalarProperty Name="DecripcionEnCierre" ColumnName="DecripcionEnCierre" />
+          <ScalarProperty Name="Cerrado" ColumnName="Cerrado" />
+          <ScalarProperty Name="FechaCierreDeAtencion" ColumnName="FechaCierreDeAtencion" />
+          <ScalarProperty Name="FechaInicioDeAtencion" ColumnName="FechaInicioDeAtencion" />
+          <ScalarProperty Name="Persona_Id_EspecialistaDesignado" ColumnName="Persona_Id_EspecialistaDesignado" />
+          <ScalarProperty Name="DescripcionDeLaAtencion_Especialista" ColumnName="DescripcionDeLaAtencion_Especialista" />
+          <ScalarProperty Name="DescripcionDeLaAtencion_Usuario" ColumnName="DescripcionDeLaAtencion_Usuario" />
+          <ScalarProperty Name="AsuntoDeLaAtencion_Especilista" ColumnName="AsuntoDeLaAtencion_Especilista" />
+          <ScalarProperty Name="AsuntoDeLaAtencion_Usuario" ColumnName="AsuntoDeLaAtencion_Usuario" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="CatalogoServicio_Id" ColumnName="CatalogoServicio_Id" />
+          <ScalarProperty Name="MovimientoCSU_Id" ColumnName="MovimientoCSU_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Atenciones_por_Catalogo" FunctionName="gotiModel.Store.sp_CSU_Atenciones_por_Catalogo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Atenciones_por_Catalogo_Result">
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+          <ScalarProperty Name="TipoDeAtencion_Descripcion" ColumnName="TipoDeAtencion_Descripcion" />
+          <ScalarProperty Name="CatalogoServicio_Descripcion" ColumnName="CatalogoServicio_Descripcion" />
+          <ScalarProperty Name="Atenciones" ColumnName="Atenciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Atenciones_por_Tipo" FunctionName="gotiModel.Store.sp_CSU_Atenciones_por_Tipo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Atenciones_por_Tipo_Result">
+          <ScalarProperty Name="Area_Descripción" ColumnName="Area_Descripción" />
+          <ScalarProperty Name="TipoDeAtencion_Descripcion" ColumnName="TipoDeAtencion_Descripcion" />
+          <ScalarProperty Name="Atendidos" ColumnName="Atendidos" />
+          <ScalarProperty Name="Pendientes" ColumnName="Pendientes" />
+          <ScalarProperty Name="Atenciones" ColumnName="Atenciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Rendimiento_Especialista" FunctionName="gotiModel.Store.sp_CSU_Rendimiento_Especialista">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Rendimiento_Especialista_Result">
+          <ScalarProperty Name="Especialista" ColumnName="Especialista" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+          <ScalarProperty Name="Atenciones" ColumnName="Atenciones" />
+          <ScalarProperty Name="AtencionesPromedioPorDia" ColumnName="AtencionesPromedioPorDia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CSU_CatalogoDeServicio">
+      <EntityTypeMapping TypeName="gotiModel.CSU_CatalogoDeServicio">
+        <MappingFragment StoreEntitySet="CSU_CatalogoDeServicio">
+          <ScalarProperty Name="DescripcionDelServicio" ColumnName="DescripcionDelServicio" />
+          <ScalarProperty Name="TipoDeAtencion_Id" ColumnName="TipoDeAtencion_Id" />
+          <ScalarProperty Name="CatalogoServicio_Descripcion" ColumnName="CatalogoServicio_Descripcion" />
+          <ScalarProperty Name="CatalogoServicio_Id" ColumnName="CatalogoServicio_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CSU_TipoDeAtencion_Colaborador">
+      <EntityTypeMapping TypeName="gotiModel.CSU_TipoDeAtencion_Colaborador">
+        <MappingFragment StoreEntitySet="CSU_TipoDeAtencion_Colaborador">
+          <ScalarProperty Name="PersonaColaborador_Id" ColumnName="PersonaColaborador_Id" />
+          <ScalarProperty Name="TipoDeAtencion_Id" ColumnName="TipoDeAtencion_Id" />
+          <ScalarProperty Name="TipoDeAtencion_Colaborador_Id" ColumnName="TipoDeAtencion_Colaborador_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_TipoAtencion_Colaborador" FunctionName="gotiModel.Store.sp_CSU_TipoAtencion_Colaborador">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_TipoAtencion_Colaborador_Result">
+          <ScalarProperty Name="TipoDeAtencion_Colaborador_Id" ColumnName="TipoDeAtencion_Colaborador_Id" />
+          <ScalarProperty Name="TipoDeAtencion_Id" ColumnName="TipoDeAtencion_Id" />
+          <ScalarProperty Name="PersonaColaborador_Id" ColumnName="PersonaColaborador_Id" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Apellidomaterno" ColumnName="Apellidomaterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Atenciones_por_Especialista_MesActual" FunctionName="gotiModel.Store.sp_CSU_Atenciones_por_Especialista_MesActual">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Atenciones_por_Especialista_MesActual_Result">
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="ACadillo" ColumnName="ACadillo" />
+          <ScalarProperty Name="AMendoza" ColumnName="AMendoza" />
+          <ScalarProperty Name="AReynalte" ColumnName="AReynalte" />
+          <ScalarProperty Name="EJara" ColumnName="EJara" />
+          <ScalarProperty Name="JMarcos" ColumnName="JMarcos" />
+          <ScalarProperty Name="RBravo" ColumnName="RBravo" />
+          <ScalarProperty Name="VFlores" ColumnName="VFlores" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SGP_CierreDigitacion">
+      <EntityTypeMapping TypeName="gotiModel.SGP_CierreDigitacion">
+        <MappingFragment StoreEntitySet="SGP_CierreDigitacion">
+          <ScalarProperty Name="FechaMigracion" ColumnName="FechaMigracion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+          <ScalarProperty Name="CantidadAtencionesMigradas" ColumnName="CantidadAtencionesMigradas" />
+          <ScalarProperty Name="CantidadAtenciones" ColumnName="CantidadAtenciones" />
+          <ScalarProperty Name="PersonalAsignado" ColumnName="PersonalAsignado" />
+          <ScalarProperty Name="EstablecimientoId" ColumnName="EstablecimientoId" />
+          <ScalarProperty Name="CierreID" ColumnName="CierreID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Maestro_Establecimiento_Convenio" FunctionName="gotiModel.Store.sp_Maestro_Establecimiento_Convenio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_Maestro_Establecimiento_Convenio_Result">
+          <ScalarProperty Name="EstablecimientoId" ColumnName="EstablecimientoId" />
+          <ScalarProperty Name="UnidadEjecutoraId" ColumnName="UnidadEjecutoraId" />
+          <ScalarProperty Name="UbigeoId" ColumnName="UbigeoId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGP_Cierre_Digitacion_Lista" FunctionName="gotiModel.Store.sp_SGP_Cierre_Digitacion_Lista">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGP_Cierre_Digitacion_Lista_Result">
+          <ScalarProperty Name="EstablecimientoId" ColumnName="EstablecimientoId" />
+          <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+          <ScalarProperty Name="CantidadAtenciones" ColumnName="CantidadAtenciones" />
+          <ScalarProperty Name="CantidadAtencionesMigradas" ColumnName="CantidadAtencionesMigradas" />
+          <ScalarProperty Name="PersonalAsignado" ColumnName="PersonalAsignado" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="CierreID" ColumnName="CierreID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGP_AtencionesCerradas_por_Ipress_Establecimiento" FunctionName="gotiModel.Store.sp_SGP_AtencionesCerradas_por_Ipress_Establecimiento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGP_AtencionesCerradas_por_Ipress_Establecimiento_Result">
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+          <ScalarProperty Name="ADAMO" ColumnName="ADAMO" />
+          <ScalarProperty Name="HAMA" ColumnName="HAMA" />
+          <ScalarProperty Name="HNDAC" ColumnName="HNDAC" />
+          <ScalarProperty Name="HNHU" ColumnName="HNHU" />
+          <ScalarProperty Name="INSN___BREÑA" ColumnName="INSN - BREÑA" />
+          <ScalarProperty Name="HNAL" ColumnName="HNAL" />
+          <ScalarProperty Name="HNDM" ColumnName="HNDM" />
+          <ScalarProperty Name="HSR" ColumnName="HSR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGR_Actividades_por_Especialista" FunctionName="gotiModel.Store.sp_SGR_Actividades_por_Especialista" />
+    <FunctionImportMapping FunctionImportName="sp_SGP_Total_AtencionesCerradas_por_Ipress_Establecimiento" FunctionName="gotiModel.Store.sp_SGP_Total_AtencionesCerradas_por_Ipress_Establecimiento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGP_Total_AtencionesCerradas_por_Ipress_Establecimiento_Result">
+          <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="Atenciones" ColumnName="Atenciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Total_Atenciones_por_Especialista_MesActual" FunctionName="gotiModel.Store.sp_CSU_Total_Atenciones_por_Especialista_MesActual">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Total_Atenciones_por_Especialista_MesActual_Result">
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="Atenciones" ColumnName="Atenciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Total_Atenciones_por_TipoDeAtencion" FunctionName="gotiModel.Store.sp_CSU_Total_Atenciones_por_TipoDeAtencion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Total_Atenciones_por_TipoDeAtencion_Result">
+          <ScalarProperty Name="TipoDeAtencion_Descripcion" ColumnName="TipoDeAtencion_Descripcion" />
+          <ScalarProperty Name="Atenciones" ColumnName="Atenciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CSU_Resumen" FunctionName="gotiModel.Store.sp_CSU_Resumen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_CSU_Resumen_Result">
+          <ScalarProperty Name="TotalAtenciones" ColumnName="TotalAtenciones" />
+          <ScalarProperty Name="TotalAtencionesPendientes" ColumnName="TotalAtencionesPendientes" />
+          <ScalarProperty Name="TotalAtencionesEjecutandose" ColumnName="TotalAtencionesEjecutandose" />
+          <ScalarProperty Name="EspecialistaAtendiendo" ColumnName="EspecialistaAtendiendo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SPE_ServicioTercero">
+      <EntityTypeMapping TypeName="gotiModel.SPE_ServicioTercero">
+        <MappingFragment StoreEntitySet="SPE_ServicioTercero">
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="ProductosEntregados" ColumnName="ProductosEntregados" />
+          <ScalarProperty Name="Documento_Id_Conformidad" ColumnName="Documento_Id_Conformidad" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="PlazoEjecucion" ColumnName="PlazoEjecucion" />
+          <ScalarProperty Name="ProductosRequeridos" ColumnName="ProductosRequeridos" />
+          <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="FechaOrdenServicio" ColumnName="FechaOrdenServicio" />
+          <ScalarProperty Name="OrdenServicio" ColumnName="OrdenServicio" />
+          <ScalarProperty Name="Expediente_Id" ColumnName="Expediente_Id" />
+          <ScalarProperty Name="ServicioTercero_Id" ColumnName="ServicioTercero_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPE_ServicioTercero_Listar" FunctionName="gotiModel.Store.sp_SPE_ServicioTercero_Listar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPE_ServicioTercero_Listar_Result">
+          <ScalarProperty Name="ServicioTercero_Id" ColumnName="ServicioTercero_Id" />
+          <ScalarProperty Name="Expediente_Id" ColumnName="Expediente_Id" />
+          <ScalarProperty Name="OrdenServicio" ColumnName="OrdenServicio" />
+          <ScalarProperty Name="FechaOrdenServicio" ColumnName="FechaOrdenServicio" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+          <ScalarProperty Name="ProductosRequeridos" ColumnName="ProductosRequeridos" />
+          <ScalarProperty Name="PlazoEjecucion" ColumnName="PlazoEjecucion" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Documento_Id_Conformidad" ColumnName="Documento_Id_Conformidad" />
+          <ScalarProperty Name="ProductosEntregados" ColumnName="ProductosEntregados" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="ExpedienteRequerimiento" ColumnName="ExpedienteRequerimiento" />
+          <ScalarProperty Name="ExpedienteRequerimientoFecha" ColumnName="ExpedienteRequerimientoFecha" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="ExpedienteConformidad" ColumnName="ExpedienteConformidad" />
+          <ScalarProperty Name="ExpedienteConformidadFecha" ColumnName="ExpedienteConformidadFecha" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SGRQ_Sistema">
+      <EntityTypeMapping TypeName="gotiModel.SGRQ_Sistema">
+        <MappingFragment StoreEntitySet="SGRQ_Sistema">
+          <ScalarProperty Name="Sistema_Descripcion" ColumnName="Sistema_Descripcion" />
+          <ScalarProperty Name="Sistema_Id" ColumnName="Sistema_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGRQ_TipoRequerimiento">
+      <EntityTypeMapping TypeName="gotiModel.SGRQ_TipoRequerimiento">
+        <MappingFragment StoreEntitySet="SGRQ_TipoRequerimiento">
+          <ScalarProperty Name="TipoRequerimiento_Descripcion" ColumnName="TipoRequerimiento_Descripcion" />
+          <ScalarProperty Name="TipoRequerimiento_Id" ColumnName="TipoRequerimiento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SGRQ_TipoSistema">
+      <EntityTypeMapping TypeName="gotiModel.SGRQ_TipoSistema">
+        <MappingFragment StoreEntitySet="SGRQ_TipoSistema">
+          <ScalarProperty Name="TipoSistema_Descripcion" ColumnName="TipoSistema_Descripcion" />
+          <ScalarProperty Name="TipoSistema_Id" ColumnName="TipoSistema_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SGRQ_Requerimiento_Lista" FunctionName="gotiModel.Store.sp_SGRQ_Requerimiento_Lista">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SGRQ_Requerimiento_Lista_Result">
+          <ScalarProperty Name="Requerimiento_Id" ColumnName="Requerimiento_Id" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="PersonaSolicitante" ColumnName="PersonaSolicitante" />
+          <ScalarProperty Name="Tipo_Requerimiento" ColumnName="Tipo_Requerimiento" />
+          <ScalarProperty Name="TipoRequerimiento_Descripcion" ColumnName="TipoRequerimiento_Descripcion" />
+          <ScalarProperty Name="Tipo_Sistema" ColumnName="Tipo_Sistema" />
+          <ScalarProperty Name="TipoSistema_Descripcion" ColumnName="TipoSistema_Descripcion" />
+          <ScalarProperty Name="Sistema_Id" ColumnName="Sistema_Id" />
+          <ScalarProperty Name="Sistema_Descripcion" ColumnName="Sistema_Descripcion" />
+          <ScalarProperty Name="Prioridad_Id" ColumnName="Prioridad_Id" />
+          <ScalarProperty Name="PrioridadDescripcion" ColumnName="PrioridadDescripcion" />
+          <ScalarProperty Name="Persona_Id_Referente_Funcional" ColumnName="Persona_Id_Referente_Funcional" />
+          <ScalarProperty Name="PersonaReferenteFuncional" ColumnName="PersonaReferenteFuncional" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Objetivo_alcanzar" ColumnName="Objetivo_alcanzar" />
+          <ScalarProperty Name="Definicion_Requerimiento" ColumnName="Definicion_Requerimiento" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Expediente_Id" ColumnName="Expediente_Id" />
+          <ScalarProperty Name="Proyecto_Id" ColumnName="Proyecto_Id" />
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+          <ScalarProperty Name="AreaInstitucionAbreviatura" ColumnName="AreaInstitucionAbreviatura" />
+          <ScalarProperty Name="FechaReunion" ColumnName="FechaReunion" />
+          <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
+          <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="VBTecnico" ColumnName="VBTecnico" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SGRQ_Requerimiento">
+      <EntityTypeMapping TypeName="gotiModel.SGRQ_Requerimiento">
+        <MappingFragment StoreEntitySet="SGRQ_Requerimiento">
+          <ScalarProperty Name="VBTecnico" ColumnName="VBTecnico" />
+          <ScalarProperty Name="Proyecto_Id" ColumnName="Proyecto_Id" />
+          <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+          <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
+          <ScalarProperty Name="FechaReunion" ColumnName="FechaReunion" />
+          <ScalarProperty Name="Expediente_Id" ColumnName="Expediente_Id" />
+          <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+          <ScalarProperty Name="Definicion_Requerimiento" ColumnName="Definicion_Requerimiento" />
+          <ScalarProperty Name="Objetivo_alcanzar" ColumnName="Objetivo_alcanzar" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Persona_Id_Referente_Funcional" ColumnName="Persona_Id_Referente_Funcional" />
+          <ScalarProperty Name="Prioridad_Id" ColumnName="Prioridad_Id" />
+          <ScalarProperty Name="Sistema_Id" ColumnName="Sistema_Id" />
+          <ScalarProperty Name="Tipo_Sistema" ColumnName="Tipo_Sistema" />
+          <ScalarProperty Name="Tipo_Requerimiento" ColumnName="Tipo_Requerimiento" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Requerimiento_Id" ColumnName="Requerimiento_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPS_ObjetivosOTI">
+      <EntityTypeMapping TypeName="gotiModel.SPS_ObjetivosOTI">
+        <MappingFragment StoreEntitySet="SPS_ObjetivosOTI">
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="ObjetivosOTI_Descripcion" ColumnName="ObjetivosOTI_Descripcion" />
+          <ScalarProperty Name="ObejtivosOTI_Id" ColumnName="ObejtivosOTI_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPS_Tarea">
+      <EntityTypeMapping TypeName="gotiModel.SPS_Tarea">
+        <MappingFragment StoreEntitySet="SPS_Tarea">
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="RelevanciaJefatural" ColumnName="RelevanciaJefatural" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+          <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+          <ScalarProperty Name="ObjetivoOTI_Id" ColumnName="ObjetivoOTI_Id" />
+          <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+          <ScalarProperty Name="Finalizado" ColumnName="Finalizado" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Tarea_Descripcion" ColumnName="Tarea_Descripcion" />
+          <ScalarProperty Name="Tarea_Id" ColumnName="Tarea_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPS_TareaAvance">
+      <EntityTypeMapping TypeName="gotiModel.SPS_TareaAvance">
+        <MappingFragment StoreEntitySet="SPS_TareaAvance">
+          <ScalarProperty Name="Tarea_Id" ColumnName="Tarea_Id" />
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+          <ScalarProperty Name="Dificultad" ColumnName="Dificultad" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="TareaAvanceDescripcion" ColumnName="TareaAvanceDescripcion" />
+          <ScalarProperty Name="TareaAvance_Id" ColumnName="TareaAvance_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPS_Listar_Tareas" FunctionName="gotiModel.Store.sp_SPS_Listar_Tareas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPS_Listar_Tareas_Result">
+          <ScalarProperty Name="Tarea_Id" ColumnName="Tarea_Id" />
+          <ScalarProperty Name="Tarea_Descripcion" ColumnName="Tarea_Descripcion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Finalizado" ColumnName="Finalizado" />
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+          <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+          <ScalarProperty Name="ObjetivoOTI_Id" ColumnName="ObjetivoOTI_Id" />
+          <ScalarProperty Name="ObjetivosOTI_Descripcion" ColumnName="ObjetivosOTI_Descripcion" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+          <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPS_Listar_Tareas_Eventos" FunctionName="gotiModel.Store.sp_SPS_Listar_Tareas_Eventos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPS_Listar_Tareas_Eventos_Result2">
+          <ScalarProperty Name="Tarea_Id" ColumnName="Tarea_Id" />
+          <ScalarProperty Name="Tarea_Descripcion" ColumnName="Tarea_Descripcion" />
+          <ScalarProperty Name="Finalizado" ColumnName="Finalizado" />
+          <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+          <ScalarProperty Name="ObjetivoOTI_Id" ColumnName="ObjetivoOTI_Id" />
+          <ScalarProperty Name="ObjetivosOTI_Descripcion" ColumnName="ObjetivosOTI_Descripcion" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="TareaAvance_Id" ColumnName="TareaAvance_Id" />
+          <ScalarProperty Name="TareaAvanceDescripcion" ColumnName="TareaAvanceDescripcion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Dificultad" ColumnName="Dificultad" />
+          <ScalarProperty Name="Anulado" ColumnName="Anulado" />
+          <ScalarProperty Name="Aprobado" ColumnName="Aprobado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SPS_Automatizacion">
+      <EntityTypeMapping TypeName="gotiModel.SPS_Automatizacion">
+        <MappingFragment StoreEntitySet="SPS_Automatizacion">
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="SistemaId" ColumnName="SistemaId" />
+          <ScalarProperty Name="FechaAvance" ColumnName="FechaAvance" />
+          <ScalarProperty Name="AutomatizacionId" ColumnName="AutomatizacionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPS_DocumentosNormativos">
+      <EntityTypeMapping TypeName="gotiModel.SPS_DocumentosNormativos">
+        <MappingFragment StoreEntitySet="SPS_DocumentosNormativos">
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+          <ScalarProperty Name="FechaFormalizacion" ColumnName="FechaFormalizacion" />
+          <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+          <ScalarProperty Name="NumTramite" ColumnName="NumTramite" />
+          <ScalarProperty Name="FechaPresentacion" ColumnName="FechaPresentacion" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Normatividad_Id" ColumnName="Normatividad_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPS_AvanceProyecto">
+      <EntityTypeMapping TypeName="gotiModel.SPS_AvanceProyecto">
+        <MappingFragment StoreEntitySet="SPS_AvanceProyecto">
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="FechaAvance" ColumnName="FechaAvance" />
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="AvanceId" ColumnName="AvanceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SPS_Reunion">
+      <EntityTypeMapping TypeName="gotiModel.SPS_Reunion">
+        <MappingFragment StoreEntitySet="SPS_Reunion">
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="TipoCoordinacion" ColumnName="TipoCoordinacion" />
+          <ScalarProperty Name="Agenda" ColumnName="Agenda" />
+          <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
+          <ScalarProperty Name="FechaReunion" ColumnName="FechaReunion" />
+          <ScalarProperty Name="ReunionId" ColumnName="ReunionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPS_Listar_Automatizacion" FunctionName="gotiModel.Store.sp_SPS_Listar_Automatizacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPS_Listar_Automatizacion_Result">
+          <ScalarProperty Name="AutomatizacionId" ColumnName="AutomatizacionId" />
+          <ScalarProperty Name="FechaAvance" ColumnName="FechaAvance" />
+          <ScalarProperty Name="SistemaId" ColumnName="SistemaId" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="MesAvance" ColumnName="MesAvance" />
+          <ScalarProperty Name="Sistema_Descripcion" ColumnName="Sistema_Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPS_Listar_Avance_Proyectos" FunctionName="gotiModel.Store.sp_SPS_Listar_Avance_Proyectos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPS_Listar_Avance_Proyectos_Result">
+          <ScalarProperty Name="AvanceId" ColumnName="AvanceId" />
+          <ScalarProperty Name="ProyectoId" ColumnName="ProyectoId" />
+          <ScalarProperty Name="FechaAvance" ColumnName="FechaAvance" />
+          <ScalarProperty Name="Avance" ColumnName="Avance" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="MesAvance" ColumnName="MesAvance" />
+          <ScalarProperty Name="ProyectoDescripcion" ColumnName="ProyectoDescripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPS_Listar_DocumentosNormativos" FunctionName="gotiModel.Store.sp_SPS_Listar_DocumentosNormativos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPS_Listar_DocumentosNormativos_Result">
+          <ScalarProperty Name="Normatividad_Id" ColumnName="Normatividad_Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="FechaPresentacion" ColumnName="FechaPresentacion" />
+          <ScalarProperty Name="MesPresentacion" ColumnName="MesPresentacion" />
+          <ScalarProperty Name="NumTramite" ColumnName="NumTramite" />
+          <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+          <ScalarProperty Name="FechaFormalizacion" ColumnName="FechaFormalizacion" />
+          <ScalarProperty Name="Formalizado" ColumnName="Formalizado" />
+          <ScalarProperty Name="MesFormalizacion" ColumnName="MesFormalizacion" />
+          <ScalarProperty Name="NumDocumento" ColumnName="NumDocumento" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SPS_Listar_Reuniones" FunctionName="gotiModel.Store.sp_SPS_Listar_Reuniones">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="gotiModel.sp_SPS_Listar_Reuniones_Result">
+          <ScalarProperty Name="ReunionId" ColumnName="ReunionId" />
+          <ScalarProperty Name="FechaReunion" ColumnName="FechaReunion" />
+          <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
+          <ScalarProperty Name="Agenda" ColumnName="Agenda" />
+          <ScalarProperty Name="TipoCoordinacion" ColumnName="TipoCoordinacion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="MesReunion" ColumnName="MesReunion" />
+          <ScalarProperty Name="AñoReunion" ColumnName="AñoReunion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SPE_Persona">
+      <EntityTypeMapping TypeName="gotiModel.SPE_Persona">
+        <MappingFragment StoreEntitySet="SPE_Persona">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+          <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="AreaInstitucion_Id" ColumnName="AreaInstitucion_Id" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidomaterno" ColumnName="Apellidomaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Persona_Id" ColumnName="Persona_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

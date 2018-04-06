@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Cierre de Digitación";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int adamo = 0;
+    int hama = 0;
+    int hndac = 0;
+    int hnhu = 0;
+    int insn_breña = 0;
+    int hnal = 0;
+    int hndm = 0;
+    int hsr = 0;
+    decimal p_adamo = 0;
+    decimal p_hama = 0;
+    decimal p_hndac = 0;
+    decimal p_hnhu = 0;
+    decimal p_insn_breña = 0;
+    decimal p_hnal = 0;
+    decimal p_hndm = 0;
+    decimal p_hsr = 0;
+    int total = 0;
+    
+}
+
+<div class="row">&nbsp;</div>
+<h4 style="text-align:center">Gestión del Cierre de Digitación</h4>
+<div class="row">&nbsp;</div>
+
+
+            <div class="col-md-6 ">
+
+                <div class="box box-info ">
+                    <div class=" box-header with-border">
+                        Atenciones cerradas por Ipress 
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-striped " style="font-size:smaller">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">Periodo</th>
+                                    <th style="text-align:center"> ADAMO</th>
+                                    <th style="text-align:center">HAMA</th>
+                                    <th style="text-align:center">HNDAC</th>
+                                    <th style="text-align:center">HNHU</th>
+                                    <th style="text-align:center">INSN - BREÑA</th>
+                                    <th style="text-align:center">HNAL</th>
+                                    <th style="text-align:center">HNDM</th>
+                                    <th style="text-align:center">HSR</th>
+                                    <th style="text-align:center">Total</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @foreach (var item in ViewBag.ResumenCierre)
+                                {
+                                    int totalCierre = 0;
+                                    totalCierre=item.ADAMO+item.HAMA+item.HNDAC+item.HNHU+item.INSN___BREÑA+item.HNAL+item.HNDM+item.HSR;
+                                    <tr>
+                                        <td style="text-align:center">@item.Periodo</td>
+                                        <td style="text-align:center">@item.ADAMO</td>
+                                        <td style="text-align:center">@item.HAMA</td>
+                                        <td style="text-align:center">@item.HNDAC</td>
+                                        <td style="text-align:center">@item.HNHU</td>
+                                        <td style="text-align:center">@item.INSN___BREÑA</td>
+                                        <td style="text-align:center">@item.HNAL</td>
+                                        <td style="text-align:center">@item.HNDM</td>
+                                        <td style="text-align:center">@item.HSR</td>
+                                      
+                                        <td style="text-align:center">@totalCierre</td>
+                                    </tr>
+                                }
+
+                                @foreach (var item in ViewBag.ResumenCierre)
+                                {
+                                    adamo = adamo + item.ADAMO;
+                                    hama = hama + item.HAMA;
+                                    hndac = hndac + item.HNDAC;
+                                    hnhu = hnhu + item.HNHU;
+                                    insn_breña = insn_breña + item.INSN___BREÑA;
+                                    hnal = hnal + item.HNAL;
+                                    hndm = hndm + item.HNDM;
+                                    hsr = hsr + item.HSR;
+
+                                }
+
+                                @{
+                                    total = adamo + hama + hndac + hnhu + insn_breña + hnal + hndm + hsr;
+
+                                    p_adamo = Decimal.Parse(adamo.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_hama = Decimal.Parse(hama.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_hndac = Decimal.Parse(hndac.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_hnhu = Decimal.Parse(hnhu.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_insn_breña = Decimal.Parse(insn_breña.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_hnal = Decimal.Parse(hnal.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_hndm = Decimal.Parse(hndm.ToString()) * 100 / Decimal.Parse(total.ToString());
+                                    p_hsr = Decimal.Parse(hsr.ToString()) * 100 / Decimal.Parse(total.ToString());
+
+                                }
+
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th style="text-align:center">TOTAL</th>
+                                    <th style="text-align:center">@adamo</th>
+                                    <th style="text-align:center">@hama</th>
+                                    <th style="text-align:center">@hndac</th>
+                                    <th style="text-align:center">@hnhu</th>
+                                    <th style="text-align:center">@insn_breña</th>
+                                    <th style="text-align:center">@hnal</th>
+                                    <th style="text-align:center">@hndm</th>
+                                    <th style="text-align:center">@hsr</th>
+                                    <th style="text-align:center">@total</th>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="9"></td>
+                                  
+
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align:center">(%)</td>
+                                    <td style="text-align:center">@p_adamo.ToString("0.##")</td>
+                                <td style="text-align:center">@p_hama.ToString("0.##")</td>
+                                <td style="text-align:center">@p_hndac.ToString("0.##")</td>
+                                <td style="text-align:center">@p_hnhu.ToString("0.##")</td>
+                                <td style="text-align:center">@p_insn_breña.ToString("0.##")</td>
+                                <td style="text-align:center">@p_hnal.ToString("0.##")</td>
+                                <td style="text-align:center">@p_hndm.ToString("0.##")</td>
+                                <td style="text-align:center">@p_hsr.ToString("0.##")</td>
+                                    <td style="text-align:center">100</td>
+
+                            </tr>
+                        </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-6 ">
+
+                <div class="box box-info ">
+                   
+                    <div class="box-body">
+                        <div id="chart-esfuerzo"></div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+    <script type="text/javascript">
+            $(function () {          
+
+                ////Actividades por Area
+                ////////////////////////
+                var dsActividades =  @Html.Raw(Json.Encode(ViewBag.ResumenCierreTotal))
+
+                $('#chart-esfuerzo').highcharts({
+                    colors: ['#fbbc05', '#bcd949', '#00C0EF', '#FB8D44', '#D55704', '#0088AA', '#FDE8A8', '#79911E'],
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Atenciones Cerradas por IPRESS'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.percentage:.2f} %'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: '% del total',
+                        colorByPoint: true,
+                        data: dataFinanciamiento(dsActividades)
+                    }]
+                });
+
+                ////Fin Actividades por Area
+                ////////////////////////////
+
+               
+
+
+
+
+
+
+            });
+
+            function dataFinanciamiento(dataSource) {
+                var data = [];
+                var nodo;
+                for (var i = 0; i < dataSource.length; i++) {
+                    nodo = [];
+                    nodo.push(dataSource[i].Abreviatura);
+                    nodo.push(dataSource[i].Atenciones);
+                    data.push(nodo);
+                }
+
+                return (data);
+
+            }
+
+     
+    </script>
+
+}

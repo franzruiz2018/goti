@@ -1,0 +1,97 @@
+﻿@model GOTIV2.Models.MetaActividad
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Registrar Actividades</h4>
+
+
+
+@if (ViewBag.Exito == true)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Mensaje</div>
+    <div class="form-group">
+        @Html.ActionLink("Ir a listado", "Index", new { id = ViewBag.MetaId }, new { @class = "btn btn-primary" })
+       @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2)
+        {
+            @Html.ActionLink("Ir a Registro", "Save", new { id = ViewBag.MetaId }, new { @class = "btn btn-primary" })
+
+        }
+       
+    </div>
+}
+else
+{
+    
+    
+    if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Mensaje</div>
+    }
+
+    using (Html.BeginForm())
+    {
+        <div class="panel panel-primary">
+            <div class="panel-heading">Meta : @ViewBag.Meta.Meta_descripcion</div>
+            <div class="panel-body">
+                <div class="row form-group">
+                  
+                        @Html.TextBoxFor(x => x.Meta_id, new { @Value = ViewBag.Meta.Meta_id, @type = "hidden", @class = "form-control" })
+                      
+                    
+
+                    <div class="col-md-2 control-label">Descripción</div>
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(x => x.MetaActividad_descripcion, new { @class = "form-control" })
+                    </div>
+                    
+
+                </div>  
+
+                <div class="row form-group">
+                    <div class="col-md-2 control-label">Fecha de Ejecución</div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.Fecha_ejecucion, new { @class = "form-control" })
+                    </div>
+                </div> 
+
+                    <div class="row form-group">
+                        <div class="col-md-2 control-label">Especialista</div>
+                        <div class="col-md-5">
+                            @Html.DropDownListFor(x=>x.EspecialistaDesignado, (SelectList)ViewBag.Especialistas, "Seleccionar", new { @class = "form-control" })
+                        </div>
+                      
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-2 control-label">Actividad de Informe</div>
+                        <div class="col-md-2">
+                            @Html.DropDownListFor(x=>x.ActividadDeInforme, new SelectList(
+                         new[] {new SelectListItem { Text = "SI", Value= "true"   }
+                                ,new SelectListItem { Text = "NO", Value= "false"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+
+                                 @class = "form-control"
+                             })
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <div class="panel-footer text-right">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+
+
+        </div>
+    }
+}
+
+

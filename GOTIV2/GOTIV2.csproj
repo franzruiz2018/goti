@@ -1,0 +1,823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{23B69FB4-EC46-423B-9CA5-1B91F3A19B2A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GOTIV2</RootNamespace>
+    <AssemblyName>GOTIV2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Autorizado.cs" />
+    <Compile Include="Controllers\CierreDigitacionController.cs" />
+    <Compile Include="Controllers\ControlController.cs" />
+    <Compile Include="Controllers\CSUController.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
+    <Compile Include="Controllers\DataSISController.cs" />
+    <Compile Include="Controllers\ExpedienteController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MetaActividadController.cs" />
+    <Compile Include="Controllers\MetaController.cs" />
+    <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\ProduccionController.cs" />
+    <Compile Include="Controllers\ProyectoController.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\RequerimientoController.cs" />
+    <Compile Include="Controllers\ResumenController.cs" />
+    <Compile Include="Controllers\SeguimientoTareasController.cs" />
+    <Compile Include="Controllers\ServicioTerceroController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Area.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSU_CatalogoDeServicio.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSU_MedioDeSolicitud.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSU_MovimientoCSU.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSU_TipoDeAtencion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSU_TipoDeAtencion_Colaborador.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Direccion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Meta.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaActividad.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaActividadSeguimiento.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaEstado.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelGOTI.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGOTI.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelGOTI.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelGOTI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGOTI.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_Actividad.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_Actividad_EstadoScrum.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_EstadoScrum.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_Iteracion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_listar_proyectos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_Prioridad.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_Proyecto.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGPRY_Requisito.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGP_CierreDigitacion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGP_Trama.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGRQ_Requerimiento.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGRQ_Sistema.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGRQ_TipoRequerimiento.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SGRQ_TipoSistema.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPE_AreaInstitucion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPE_Persona.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPE_ServicioTercero.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_Automatizacion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_AvanceProyecto.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_DocumentosNormativos.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_ObjetivosOTI.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_Reunion.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_Tarea.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPS_TareaAvance.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Atenciones_por_Catalogo_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Atenciones_por_Especialista_MesActual_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Atenciones_por_Tipo_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Listar_Movimientos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Rendimiento_Especialista_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Resumen_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_TipoAtencion_Colaborador_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Total_Atenciones_por_Especialista_MesActual_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_CSU_Total_Atenciones_por_TipoDeAtencion_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Maestro_Establecimiento_Convenio_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_resumen_metas_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGMetas_Listar_Avances_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGPRY_listar_actividades_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGPRY_listar_iteracion_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGPRY_listar_proyectos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGPRY_listar_requisitos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGP_AtencionesCerradas_por_Ipress_Establecimiento_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGP_Cierre_Digitacion_Lista_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGP_ResumenTramas_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGP_Total_AtencionesCerradas_por_Ipress_Establecimiento_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SGRQ_Requerimiento_Lista_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPE_ServicioTercero_Listar_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Automatizacion_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Avance_Proyectos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_DocumentosNormativos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Reuniones_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Tareas_Eventos_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Tareas_Eventos_Result1.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Tareas_Eventos_Result2.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_SPS_Listar_Tareas_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_STG_Documentos_Listar_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_STG_Expedientes_Listar_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_STG_Expedientes_Por_Especialista_Result.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STG_Documento.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STG_Expediente.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STG_TipoDocumento.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubArea.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Version.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_Actividades_lista.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_Actividades_por_area.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_Actividades_Segun_POI.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_resumen_avance_actividad.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_resumen_metas.cs">
+      <DependentUpon>ModelGOTI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AdminLTE.css" />
+    <Content Include="Content\AdminLTE.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\6.jpg" />
+    <Content Include="Content\img\favicon.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\pagos.png" />
+    <Content Include="Content\simple-line-icons.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ModelGOTI.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelGOTI.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelGOTI.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelGOTI.edmx</DependentUpon>
+      <LastGenOutput>ModelGOTI.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelGOTI.edmx.diagram">
+      <DependentUpon>ModelGOTI.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\ModelGOTI.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelGOTI.edmx</DependentUpon>
+      <LastGenOutput>ModelGOTI.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\Adm.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\fechaMascara.js" />
+    <Content Include="Scripts\fnGenerales.js" />
+    <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tinymce\jquery.tinymce.js" />
+    <Content Include="Scripts\tinymce\langs\en.js" />
+    <Content Include="Scripts\tinymce\license.txt" />
+    <Content Include="Scripts\tinymce\plugins\advhr\css\advhr.css" />
+    <Content Include="Scripts\tinymce\plugins\advhr\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\advhr\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\advhr\js\rule.js" />
+    <Content Include="Scripts\tinymce\plugins\advhr\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\advhr\rule.htm" />
+    <Content Include="Scripts\tinymce\plugins\advimage\css\advimage.css" />
+    <Content Include="Scripts\tinymce\plugins\advimage\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\advimage\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\advimage\image.htm" />
+    <Content Include="Scripts\tinymce\plugins\advimage\img\sample.gif" />
+    <Content Include="Scripts\tinymce\plugins\advimage\js\image.js" />
+    <Content Include="Scripts\tinymce\plugins\advimage\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\advlink\css\advlink.css" />
+    <Content Include="Scripts\tinymce\plugins\advlink\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\advlink\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\advlink\js\advlink.js" />
+    <Content Include="Scripts\tinymce\plugins\advlink\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\advlink\link.htm" />
+    <Content Include="Scripts\tinymce\plugins\advlist\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\advlist\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\autolink\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\autolink\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\autoresize\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\autoresize\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\autosave\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\autosave\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\autosave\langs\en.js" />
+    <Content Include="Scripts\tinymce\plugins\bbcode\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\bbcode\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\contextmenu\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\contextmenu\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\directionality\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\directionality\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\emotions\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\emotions\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\emotions\emotions.htm" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-cool.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-cry.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-frown.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-innocent.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-kiss.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-laughing.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-sealed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-smile.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-surprised.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-undecided.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-wink.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\img\smiley-yell.gif" />
+    <Content Include="Scripts\tinymce\plugins\emotions\js\emotions.js" />
+    <Content Include="Scripts\tinymce\plugins\emotions\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\example\dialog.htm" />
+    <Content Include="Scripts\tinymce\plugins\example\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\example\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\example\img\example.gif" />
+    <Content Include="Scripts\tinymce\plugins\example\js\dialog.js" />
+    <Content Include="Scripts\tinymce\plugins\example\langs\en.js" />
+    <Content Include="Scripts\tinymce\plugins\example\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\example_dependency\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\example_dependency\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\css\fullpage.css" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\fullpage.htm" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\js\fullpage.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\fullscreen\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\fullscreen\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\fullscreen\fullscreen.htm" />
+    <Content Include="Scripts\tinymce\plugins\iespell\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\iespell\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\button.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\skins\clearlooks2\window.css" />
+    <Content Include="Scripts\tinymce\plugins\inlinepopups\template.htm" />
+    <Content Include="Scripts\tinymce\plugins\insertdatetime\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\insertdatetime\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\layer\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\layer\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\legacyoutput\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\legacyoutput\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\lists\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\lists\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\media\css\media.css" />
+    <Content Include="Scripts\tinymce\plugins\media\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\media\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\media\js\embed.js" />
+    <Content Include="Scripts\tinymce\plugins\media\js\media.js" />
+    <Content Include="Scripts\tinymce\plugins\media\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\media\media.htm" />
+    <Content Include="Scripts\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Scripts\tinymce\plugins\nonbreaking\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\nonbreaking\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\noneditable\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\noneditable\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\pagebreak\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\pagebreak\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\js\pastetext.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\js\pasteword.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\pastetext.htm" />
+    <Content Include="Scripts\tinymce\plugins\paste\pasteword.htm" />
+    <Content Include="Scripts\tinymce\plugins\preview\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\preview\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\preview\example.html" />
+    <Content Include="Scripts\tinymce\plugins\preview\jscripts\embed.js" />
+    <Content Include="Scripts\tinymce\plugins\preview\preview.html" />
+    <Content Include="Scripts\tinymce\plugins\print\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\print\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\save\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\save\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\css\searchreplace.css" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\js\searchreplace.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\searchreplace.htm" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\css\content.css" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\img\wline.gif" />
+    <Content Include="Scripts\tinymce\plugins\style\css\props.css" />
+    <Content Include="Scripts\tinymce\plugins\style\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\style\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\style\js\props.js" />
+    <Content Include="Scripts\tinymce\plugins\style\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\style\props.htm" />
+    <Content Include="Scripts\tinymce\plugins\tabfocus\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\tabfocus\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\table\cell.htm" />
+    <Content Include="Scripts\tinymce\plugins\table\css\cell.css" />
+    <Content Include="Scripts\tinymce\plugins\table\css\row.css" />
+    <Content Include="Scripts\tinymce\plugins\table\css\table.css" />
+    <Content Include="Scripts\tinymce\plugins\table\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\table\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\table\js\cell.js" />
+    <Content Include="Scripts\tinymce\plugins\table\js\merge_cells.js" />
+    <Content Include="Scripts\tinymce\plugins\table\js\row.js" />
+    <Content Include="Scripts\tinymce\plugins\table\js\table.js" />
+    <Content Include="Scripts\tinymce\plugins\table\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\table\merge_cells.htm" />
+    <Content Include="Scripts\tinymce\plugins\table\row.htm" />
+    <Content Include="Scripts\tinymce\plugins\table\table.htm" />
+    <Content Include="Scripts\tinymce\plugins\template\blank.htm" />
+    <Content Include="Scripts\tinymce\plugins\template\css\template.css" />
+    <Content Include="Scripts\tinymce\plugins\template\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\template\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\template\js\template.js" />
+    <Content Include="Scripts\tinymce\plugins\template\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\plugins\template\template.htm" />
+    <Content Include="Scripts\tinymce\plugins\visualchars\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\visualchars\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\wordcount\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\wordcount\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\abbr.htm" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\acronym.htm" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\attributes.htm" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\cite.htm" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\css\attributes.css" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\css\popup.css" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\del.htm" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\editor_plugin_src.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\ins.htm" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\abbr.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\acronym.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\attributes.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\cite.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\del.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\element_common.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\js\ins.js" />
+    <Content Include="Scripts\tinymce\plugins\xhtmlxtras\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\about.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\anchor.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\charmap.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\color_picker.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\editor_template.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\editor_template_src.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\image.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\flash.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\icons.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\iframe.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\pagebreak.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\quicktime.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\realmedia.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\shockwave.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\trans.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\video.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\img\windowsmedia.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\about.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\anchor.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\charmap.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\color_picker.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\image.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\link.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\js\source_editor.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\langs\en.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\themes\advanced\link.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\shortcuts.htm" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\content.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\dialog.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\default\ui.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\highcontrast\content.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\highcontrast\dialog.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\highcontrast\ui.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\content.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\dialog.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\ui_black.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\skins\o2k7\ui_silver.css" />
+    <Content Include="Scripts\tinymce\themes\advanced\source_editor.htm" />
+    <Content Include="Scripts\tinymce\themes\simple\editor_template.js" />
+    <Content Include="Scripts\tinymce\themes\simple\editor_template_src.js" />
+    <Content Include="Scripts\tinymce\themes\simple\img\icons.gif" />
+    <Content Include="Scripts\tinymce\themes\simple\langs\en.js" />
+    <Content Include="Scripts\tinymce\themes\simple\skins\default\content.css" />
+    <Content Include="Scripts\tinymce\themes\simple\skins\default\ui.css" />
+    <Content Include="Scripts\tinymce\themes\simple\skins\o2k7\content.css" />
+    <Content Include="Scripts\tinymce\themes\simple\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tinymce\themes\simple\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tinymce\tiny_mce.js" />
+    <Content Include="Scripts\tinymce\tiny_mce_popup.js" />
+    <Content Include="Scripts\tinymce\tiny_mce_src.js" />
+    <Content Include="Scripts\tinymce\utils\editable_selects.js" />
+    <Content Include="Scripts\tinymce\utils\form_utils.js" />
+    <Content Include="Scripts\tinymce\utils\mctabs.js" />
+    <Content Include="Scripts\tinymce\utils\validate.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Meta\Index.cshtml" />
+    <Content Include="Views\Meta\Save.cshtml" />
+    <Content Include="Views\MetaActividad\Index.cshtml" />
+    <Content Include="Views\MetaActividad\FinalizarActividad.cshtml" />
+    <Content Include="Views\MetaActividad\Save.cshtml" />
+    <Content Include="Views\Resumen\ListaMetas.cshtml" />
+    <Content Include="Views\Cuenta\Login.cshtml" />
+    <Content Include="Views\MetaActividad\Resumen.cshtml" />
+    <Content Include="Views\Expediente\Index.cshtml" />
+    <Content Include="Views\Expediente\Registrar.cshtml" />
+    <Content Include="Views\Expediente\Cerrar.cshtml" />
+    <Content Include="Views\Persona\_Persona.cshtml" />
+    <Content Include="Views\Expediente\_Persona.cshtml" />
+    <Content Include="Views\Expediente\_PersonaDestinatario.cshtml" />
+    <Content Include="Views\Expediente\Pendientes.cshtml" />
+    <Content Include="Views\Expediente\_ListaDocumentos.cshtml" />
+    <Content Include="Views\Expediente\ListarDocumentos.cshtml" />
+    <Content Include="Views\Expediente\RegistrarDocumento.cshtml" />
+    <Content Include="Views\Expediente\Archivar.cshtml" />
+    <Content Include="Views\Produccion\ListarTrama.cshtml" />
+    <Content Include="Views\Produccion\RegistrarTrama.cshtml" />
+    <Content Include="Views\Proyecto\ResumenProyecto.cshtml" />
+    <Content Include="Views\Control\ActividadesEspecialistas.cshtml" />
+    <Content Include="Views\Proyecto\ActualizarAvanceEquipo.cshtml" />
+    <Content Include="Views\Prueba\Index.cshtml" />
+    <Content Include="Views\Proyecto\ResumenProyectoCliente.cshtml" />
+    <Content Include="Views\Proyecto\ListarProyectos.cshtml" />
+    <Content Include="Views\Control\VerEvento.cshtml" />
+    <Content Include="Views\Control\RegistrarEvento.cshtml" />
+    <Content Include="Views\CSU\Index.cshtml" />
+    <Content Include="Views\CSU\CierreAtencion.cshtml" />
+    <Content Include="Views\CSU\RegistrarAtencion.cshtml" />
+    <Content Include="Views\MetaActividad\CerrarActividad.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
+    <Content Include="Views\CSU\ReporteCSU.cshtml" />
+    <Content Include="Views\CierreDigitacion\Listar.cshtml" />
+    <Content Include="Views\CierreDigitacion\Registrar.cshtml" />
+    <Content Include="Views\CierreDigitacion\Index.cshtml" />
+    <Content Include="Views\ServicioTercero\Registrar.cshtml" />
+    <Content Include="Views\ServicioTercero\_ListaExpedientes.cshtml" />
+    <Content Include="Views\ServicioTercero\Listar.cshtml" />
+    <Content Include="Views\ServicioTercero\Detalle.cshtml" />
+    <Content Include="Views\Requerimiento\Registrar.cshtml" />
+    <Content Include="Views\Requerimiento\Index.cshtml" />
+    <Content Include="Views\Requerimiento\Listar.cshtml" />
+    <Content Include="Views\DataSIS\Listar.cshtml" />
+    <Content Include="Views\SeguimientoTareas\Listar.cshtml" />
+    <Content Include="Views\SeguimientoTareas\Registrar.cshtml" />
+    <Content Include="Views\SeguimientoTareas\ListarAvance.cshtml" />
+    <Content Include="Views\SeguimientoTareas\RegistrarAvance.cshtml" />
+    <Content Include="Views\SeguimientoTareas\RegistrarDificultad.cshtml" />
+    <Content Include="Views\Requerimiento\ListarSolicitud.cshtml" />
+    <Content Include="Views\SeguimientoTareas\ListarAutomatizacion.cshtml" />
+    <Content Include="Views\SeguimientoTareas\RegistrarAutomatizacion.cshtml" />
+    <Content Include="Views\SeguimientoTareas\RegistrarAvanceProyectos.cshtml" />
+    <Content Include="Views\SeguimientoTareas\RegistrarDocumentosNormativos.cshtml" />
+    <Content Include="Views\SeguimientoTareas\ListarAvanceProyectos.cshtml" />
+    <Content Include="Views\SeguimientoTareas\ListarDocumentosNormativos.cshtml" />
+    <Content Include="Views\SeguimientoTareas\ListarReuniones.cshtml" />
+    <Content Include="Views\SeguimientoTareas\RegistrarReuniones.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>34663</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:34663/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

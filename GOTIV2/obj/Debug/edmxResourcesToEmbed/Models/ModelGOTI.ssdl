@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gotiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="Area_id" />
+    </Key>
+    <Property Name="Area_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="Direccion_id" Type="int" />
+    <Property Name="Area_abreviatura" Type="nchar" MaxLength="10" />
+    <Property Name="CentroServicioUsuario" Type="bit" />
+  </EntityType>
+  <EntityType Name="CSU_CatalogoDeServicio">
+    <Key>
+      <PropertyRef Name="CatalogoServicio_Id" />
+    </Key>
+    <Property Name="CatalogoServicio_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CatalogoServicio_Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="TipoDeAtencion_Id" Type="int" />
+    <Property Name="DescripcionDelServicio" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CSU_MedioDeSolicitud">
+    <Key>
+      <PropertyRef Name="MedioDeSolicitud_Id" />
+    </Key>
+    <Property Name="MedioDeSolicitud_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MedioDeSolicitud_Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CSU_MovimientoCSU">
+    <Key>
+      <PropertyRef Name="MovimientoCSU_Id" />
+    </Key>
+    <Property Name="MovimientoCSU_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CatalogoServicio_Id" Type="int" />
+    <Property Name="Persona_Id" Type="int" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="AsuntoDeLaAtencion_Usuario" Type="varchar" MaxLength="2000" />
+    <Property Name="AsuntoDeLaAtencion_Especilista" Type="varchar" MaxLength="2000" />
+    <Property Name="DescripcionDeLaAtencion_Usuario" Type="varchar" MaxLength="2000" />
+    <Property Name="DescripcionDeLaAtencion_Especialista" Type="varchar" MaxLength="2000" />
+    <Property Name="Persona_Id_EspecialistaDesignado" Type="int" />
+    <Property Name="FechaInicioDeAtencion" Type="datetime" />
+    <Property Name="FechaCierreDeAtencion" Type="datetime" />
+    <Property Name="Cerrado" Type="bit" />
+    <Property Name="DecripcionEnCierre" Type="varchar" MaxLength="2000" />
+    <Property Name="TiempoUtilizado" Type="int" />
+    <Property Name="Entregable" Type="varchar" MaxLength="2000" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="SolucionAplicada" Type="varchar(max)" />
+    <Property Name="Coyuntural" Type="bit" />
+    <Property Name="CoyunturalObservacion" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="CSU_TipoDeAtencion">
+    <Key>
+      <PropertyRef Name="TipoDeAtencion_Id" />
+    </Key>
+    <Property Name="TipoDeAtencion_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoDeAtencion_Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="TipoDeAtencion_Padre_Id" Type="int" />
+    <Property Name="Area_Id" Type="int" />
+    <Property Name="PersonalResponsable_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="CSU_TipoDeAtencion_Colaborador">
+    <Key>
+      <PropertyRef Name="TipoDeAtencion_Colaborador_Id" />
+    </Key>
+    <Property Name="TipoDeAtencion_Colaborador_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoDeAtencion_Id" Type="int" />
+    <Property Name="PersonaColaborador_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="Direccion_id" />
+    </Key>
+    <Property Name="Direccion_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Direccion_descripción" Type="varchar" MaxLength="250" />
+    <Property Name="Direccion_abreviatura" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="Estado_id" />
+    </Key>
+    <Property Name="Estado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estado_descripcion" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Meta">
+    <Key>
+      <PropertyRef Name="Meta_id" />
+    </Key>
+    <Property Name="Meta_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Meta_descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="SubArea_id" Type="int" />
+    <Property Name="POI" Type="bit" />
+    <Property Name="Version_id" Type="int" />
+    <Property Name="Fecha_creacion" Type="datetime" />
+    <Property Name="ActividadPOI_Id" Type="int" />
+    <Property Name="CumplimientoCompromisoPOI" Type="bit" />
+  </EntityType>
+  <EntityType Name="MetaActividad">
+    <Key>
+      <PropertyRef Name="MetaActividad_id" />
+    </Key>
+    <Property Name="MetaActividad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MetaActividad_descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Fecha_ejecucion" Type="date" />
+    <Property Name="Fecha_creacion" Type="datetime" />
+    <Property Name="Meta_id" Type="int" />
+    <Property Name="Finalizado" Type="bit" />
+    <Property Name="Fecha_finalizacion" Type="datetime" />
+    <Property Name="DocumentoDeEntrega" Type="varchar" MaxLength="200" />
+    <Property Name="EspecialistaDesignado" Type="int" />
+    <Property Name="Observacion" Type="varchar(max)" />
+    <Property Name="Desestimado" Type="bit" />
+    <Property Name="ActividadDeInforme" Type="bit" />
+    <Property Name="Reprogramado" Type="bit" />
+    <Property Name="ActividadReprogramada" Type="int" />
+  </EntityType>
+  <EntityType Name="MetaActividadSeguimiento">
+    <Key>
+      <PropertyRef Name="ActividadSeguimiento_Id" />
+    </Key>
+    <Property Name="ActividadSeguimiento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActividadId" Type="int" />
+    <Property Name="Acción" Type="bit" />
+    <Property Name="Descripción" Type="varchar(max)" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MetaEstado">
+    <Key>
+      <PropertyRef Name="MetaEstado_id" />
+    </Key>
+    <Property Name="MetaEstado_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Meta_id" Type="int" />
+    <Property Name="Estado_id" Type="int" />
+    <Property Name="Fecha_creacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SGP_CierreDigitacion">
+    <Key>
+      <PropertyRef Name="CierreID" />
+    </Key>
+    <Property Name="CierreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstablecimientoId" Type="int" />
+    <Property Name="PersonalAsignado" Type="int" />
+    <Property Name="CantidadAtenciones" Type="int" />
+    <Property Name="CantidadAtencionesMigradas" Type="int" />
+    <Property Name="FechaCierre" Type="date" />
+    <Property Name="FechaMigracion" Type="date" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SGP_Trama">
+    <Key>
+      <PropertyRef Name="TramaID" />
+    </Key>
+    <Property Name="TramaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Renaes" Type="int" />
+    <Property Name="TipoTrama" Type="varchar" MaxLength="50" />
+    <Property Name="NroExpediente" Type="varchar" MaxLength="250" />
+    <Property Name="DocumentoRecepcionado" Type="varchar" MaxLength="50" />
+    <Property Name="FechaRecepcion" Type="date" />
+    <Property Name="NumeroAtenciones" Type="int" />
+    <Property Name="FechaProcesamiento" Type="date" />
+    <Property Name="NumeroAtencionesMigradas" Type="int" />
+    <Property Name="ProduccionFissal" Type="date" />
+    <Property Name="Documentorespuesta" Type="varchar" MaxLength="50" />
+    <Property Name="Observacion" Type="varchar" MaxLength="250" />
+    <Property Name="Atenciones2012" Type="int" />
+    <Property Name="Atenciones2013" Type="int" />
+    <Property Name="Atenciones2014" Type="int" />
+    <Property Name="Atenciones2015" Type="int" />
+    <Property Name="Atenciones2016" Type="int" />
+    <Property Name="Atenciones2017" Type="int" />
+    <Property Name="Atenciones2018" Type="int" />
+    <Property Name="Atenciones2019" Type="int" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SGPRY_Actividad">
+    <Key>
+      <PropertyRef Name="Actividad_Id" />
+    </Key>
+    <Property Name="Actividad_Id" Type="int" Nullable="false" />
+    <Property Name="ActividadDescripcion" Type="varchar" MaxLength="250" />
+    <Property Name="HorasRequeridas" Type="int" />
+    <Property Name="HorasRequeridasHolgura" Type="int" />
+    <Property Name="RequisitoId" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaInicio_SinHolgura" Type="date" />
+    <Property Name="FechaFin_SinHolgura" Type="date" />
+    <Property Name="FechaInicio_ConHolgura" Type="date" />
+    <Property Name="FechaFin_ConHolgura" Type="date" />
+    <Property Name="Analisis" Type="bit" />
+    <Property Name="FechaCierreAnalisis" Type="datetime" />
+    <Property Name="Desarrollo" Type="bit" />
+    <Property Name="FechaCierreDesarrollo" Type="datetime" />
+    <Property Name="ControlCalidad" Type="bit" />
+    <Property Name="FechaCierreControlCalidad" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SGPRY_Actividad_EstadoScrum">
+    <Key>
+      <PropertyRef Name="Actividad_EstadoScrum_Id" />
+    </Key>
+    <Property Name="Actividad_EstadoScrum_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstadoScrumId" Type="int" />
+    <Property Name="Actividad_Id" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SGPRY_EstadoScrum">
+    <Key>
+      <PropertyRef Name="EstadoScrumId" />
+    </Key>
+    <Property Name="EstadoScrumId" Type="int" Nullable="false" />
+    <Property Name="EstadoScrumDescripcion" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="SGPRY_Iteracion">
+    <Key>
+      <PropertyRef Name="IteracionId" />
+    </Key>
+    <Property Name="IteracionId" Type="int" Nullable="false" />
+    <Property Name="IteracionDescripcion" Type="varchar" MaxLength="250" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="SGPRY_Prioridad">
+    <Key>
+      <PropertyRef Name="Prioridad_Id" />
+    </Key>
+    <Property Name="Prioridad_Id" Type="int" Nullable="false" />
+    <Property Name="PrioridadDescripcion" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SGPRY_Proyecto">
+    <Key>
+      <PropertyRef Name="ProyectoId" />
+    </Key>
+    <Property Name="ProyectoId" Type="int" Nullable="false" />
+    <Property Name="ProyectoDescripcion" Type="varchar" MaxLength="250" />
+    <Property Name="AreaInstitucion_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="SGPRY_Requisito">
+    <Key>
+      <PropertyRef Name="RequisitoId" />
+    </Key>
+    <Property Name="RequisitoId" Type="int" Nullable="false" />
+    <Property Name="RequisitoDescripcion" Type="text" />
+    <Property Name="PrioridadId" Type="int" />
+    <Property Name="IteracionId" Type="int" />
+    <Property Name="ProyectoId" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="AreaInstitucion_Id" Type="int" />
+    <Property Name="RequisitoProyecto" Type="bit" />
+    <Property Name="AseguramientoCalidad" Type="bit" />
+    <Property Name="PlanificacionFuncional" Type="bit" />
+  </EntityType>
+  <EntityType Name="SGRQ_Requerimiento">
+    <Key>
+      <PropertyRef Name="Requerimiento_Id" />
+    </Key>
+    <Property Name="Requerimiento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Asunto" Type="varchar" MaxLength="2000" />
+    <Property Name="Persona_Id" Type="int" />
+    <Property Name="Tipo_Requerimiento" Type="int" />
+    <Property Name="Tipo_Sistema" Type="int" />
+    <Property Name="Sistema_Id" Type="int" />
+    <Property Name="Prioridad_Id" Type="int" />
+    <Property Name="Persona_Id_Referente_Funcional" Type="int" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" />
+    <Property Name="Objetivo_alcanzar" Type="varchar" MaxLength="2000" />
+    <Property Name="Definicion_Requerimiento" Type="varchar(max)" />
+    <Property Name="Fecha_Registro" Type="datetime" />
+    <Property Name="Expediente_Id" Type="int" />
+    <Property Name="FechaReunion" Type="date" />
+    <Property Name="Puntaje" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprobado" Type="bit" />
+    <Property Name="Proyecto_Id" Type="int" />
+    <Property Name="VBTecnico" Type="bit" />
+  </EntityType>
+  <EntityType Name="SGRQ_Sistema">
+    <Key>
+      <PropertyRef Name="Sistema_Id" />
+    </Key>
+    <Property Name="Sistema_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sistema_Descripcion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="SGRQ_TipoRequerimiento">
+    <Key>
+      <PropertyRef Name="TipoRequerimiento_Id" />
+    </Key>
+    <Property Name="TipoRequerimiento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoRequerimiento_Descripcion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="SGRQ_TipoSistema">
+    <Key>
+      <PropertyRef Name="TipoSistema_Id" />
+    </Key>
+    <Property Name="TipoSistema_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoSistema_Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SPE_AreaInstitucion">
+    <Key>
+      <PropertyRef Name="AreaInstitucion_Id" />
+    </Key>
+    <Property Name="AreaInstitucion_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AreaInstitucionDescripcion" Type="varchar" MaxLength="150" />
+    <Property Name="AreaInstitucionAbreviatura" Type="nchar" MaxLength="10" />
+    <Property Name="Fissal" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SPE_Persona">
+    <Key>
+      <PropertyRef Name="Persona_Id" />
+    </Key>
+    <Property Name="Persona_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Apellidomaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="TipoDocumento" Type="int" />
+    <Property Name="NumeroDocumento" Type="int" />
+    <Property Name="Cargo" Type="varchar" MaxLength="250" />
+    <Property Name="AreaInstitucion_Id" Type="int" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="250" />
+    <Property Name="Jefe" Type="bit" />
+    <Property Name="NombreCorto" Type="varchar" MaxLength="50" />
+    <Property Name="TipoContrato" Type="int" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="SPE_ServicioTercero">
+    <Key>
+      <PropertyRef Name="ServicioTercero_Id" />
+    </Key>
+    <Property Name="ServicioTercero_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Expediente_Id" Type="varchar" MaxLength="50" />
+    <Property Name="OrdenServicio" Type="int" />
+    <Property Name="FechaOrdenServicio" Type="date" />
+    <Property Name="Persona_Id" Type="int" />
+    <Property Name="Servicio" Type="varchar" MaxLength="500" />
+    <Property Name="ProductosRequeridos" Type="varchar(max)" />
+    <Property Name="PlazoEjecucion" Type="int" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Documento_Id_Conformidad" Type="int" />
+    <Property Name="ProductosEntregados" Type="varchar(max)" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Observacion" Type="varchar(max)" />
+    <Property Name="Anulado" Type="bit" />
+  </EntityType>
+  <EntityType Name="SPS_Automatizacion">
+    <Key>
+      <PropertyRef Name="AutomatizacionId" />
+    </Key>
+    <Property Name="AutomatizacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaAvance" Type="date" />
+    <Property Name="SistemaId" Type="int" />
+    <Property Name="Avance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SPS_AvanceProyecto">
+    <Key>
+      <PropertyRef Name="AvanceId" />
+    </Key>
+    <Property Name="AvanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProyectoId" Type="int" />
+    <Property Name="FechaAvance" Type="date" />
+    <Property Name="Avance" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SPS_DocumentosNormativos">
+    <Key>
+      <PropertyRef Name="Normatividad_Id" />
+    </Key>
+    <Property Name="Normatividad_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="TipoDocumento" Type="varchar" MaxLength="100" />
+    <Property Name="FechaPresentacion" Type="date" />
+    <Property Name="NumTramite" Type="varchar" MaxLength="500" />
+    <Property Name="PersonaId" Type="int" />
+    <Property Name="FechaFormalizacion" Type="date" />
+    <Property Name="NumDocumento" Type="varchar" MaxLength="500" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SPS_ObjetivosOTI">
+    <Key>
+      <PropertyRef Name="ObejtivosOTI_Id" />
+    </Key>
+    <Property Name="ObejtivosOTI_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ObjetivosOTI_Descripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SPS_Reunion">
+    <Key>
+      <PropertyRef Name="ReunionId" />
+    </Key>
+    <Property Name="ReunionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaReunion" Type="date" />
+    <Property Name="ResponsableId" Type="int" />
+    <Property Name="Agenda" Type="varchar" MaxLength="1000" />
+    <Property Name="TipoCoordinacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SPS_Tarea">
+    <Key>
+      <PropertyRef Name="Tarea_Id" />
+    </Key>
+    <Property Name="Tarea_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tarea_Descripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Finalizado" Type="bit" />
+    <Property Name="Anulado" Type="bit" />
+    <Property Name="PersonaId" Type="int" />
+    <Property Name="ObjetivoOTI_Id" Type="int" />
+    <Property Name="Aprobado" Type="bit" Nullable="false" />
+    <Property Name="FechaAprobacion" Type="datetime" />
+    <Property Name="RelevanciaJefatural" Type="bit" />
+    <Property Name="Observacion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="SPS_TareaAvance">
+    <Key>
+      <PropertyRef Name="TareaAvance_Id" />
+    </Key>
+    <Property Name="TareaAvance_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TareaAvanceDescripcion" Type="varchar" MaxLength="1000" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Dificultad" Type="bit" />
+    <Property Name="Anulado" Type="bit" />
+    <Property Name="Tarea_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="STG_Documento">
+    <Key>
+      <PropertyRef Name="Documento_Id" />
+    </Key>
+    <Property Name="Documento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoDocumento_Id" Type="int" />
+    <Property Name="NroDocumento" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioIdRemitente" Type="int" />
+    <Property Name="UsuarioIdDestinatario" Type="int" />
+    <Property Name="FechaDocumento" Type="date" />
+    <Property Name="Asunto" Type="varchar" MaxLength="250" />
+    <Property Name="FechaRecepcion" Type="date" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="STG_Expediente">
+    <Key>
+      <PropertyRef Name="Expediente_Id" />
+    </Key>
+    <Property Name="Expediente_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NroExpediente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DocumentoAdjuntoExpediente" Type="varchar" MaxLength="50" />
+    <Property Name="FechaRecepcionOTI" Type="date" />
+    <Property Name="Asunto" Type="varchar" MaxLength="250" />
+    <Property Name="UsuarioIdSolicitante" Type="int" />
+    <Property Name="UsuarioIdAtencion" Type="int" />
+    <Property Name="FechaLimite" Type="date" />
+    <Property Name="RequiereRespuesta" Type="bit" />
+    <Property Name="UsuarioIdTecnicoDesignado" Type="int" />
+    <Property Name="Atendido" Type="bit" />
+    <Property Name="DocumentoAtención" Type="int" />
+    <Property Name="FechaRecepcionSolicitante" Type="date" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="Observacion" Type="text" />
+    <Property Name="FechaCierre" Type="datetime" />
+    <Property Name="OrigenOTI" Type="bit" />
+    <Property Name="TipoDocumento" Type="int" />
+  </EntityType>
+  <EntityType Name="STG_TipoDocumento">
+    <Key>
+      <PropertyRef Name="TipoDocumento_Id" />
+    </Key>
+    <Property Name="TipoDocumento_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoDocumentoDescripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SubArea">
+    <Key>
+      <PropertyRef Name="SubArea_id" />
+    </Key>
+    <Property Name="SubArea_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubArea_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="Area_id" Type="int" />
+    <Property Name="SubArea_Abreviatura" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="Dni" Type="varchar" MaxLength="8" />
+    <Property Name="LoginName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Perfil" Type="int" />
+  </EntityType>
+  <EntityType Name="Version">
+    <Key>
+      <PropertyRef Name="Version_id" />
+    </Key>
+    <Property Name="Version_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Version" Type="char" MaxLength="10" />
+    <Property Name="Fecha_actualizacion" Type="date" />
+    <Property Name="Fecha_creacion" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GOTI.dbo.vw_Actividades_lista' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Actividades_lista">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Reprogramado" />
+      <PropertyRef Name="ActividadDeInforme" />
+    </Key>
+    <Property Name="Area_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="Area_abreviatura" Type="nchar" MaxLength="10" />
+    <Property Name="SubArea_Abreviatura" Type="nchar" MaxLength="10" />
+    <Property Name="SubArea_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="Meta_id" Type="int" Nullable="false" />
+    <Property Name="Meta_descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="POI" Type="bit" />
+    <Property Name="MetaActividad_id" Type="int" Nullable="false" />
+    <Property Name="MetaActividad_descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Fecha_ejecucion" Type="date" />
+    <Property Name="Finalizado" Type="bit" />
+    <Property Name="Fecha_finalizacion" Type="datetime" />
+    <Property Name="DocumentoDeEntrega" Type="varchar" MaxLength="50" />
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="50" />
+    <Property Name="Persona_Id" Type="int" />
+    <Property Name="Observacion" Type="varchar(max)" />
+    <Property Name="Desestimado" Type="bit" Nullable="false" />
+    <Property Name="Reprogramado" Type="bit" Nullable="false" />
+    <Property Name="ActividadDeInforme" Type="bit" Nullable="false" />
+    <Property Name="NumEventosUltimaSemana" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GOTI.dbo.vw_Actividades_por_area' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Actividades_por_area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Area_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="Actividades" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GOTI.dbo.vw_Actividades_Segun_POI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Actividades_Segun_POI">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="POI" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="POI" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="NumMetas" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GOTI.dbo.vw_resumen_avance_actividad' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_resumen_avance_actividad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Año" Type="int" />
+    <Property Name="Mes" Type="int" />
+    <Property Name="ActividadesProgramadas" Type="int" />
+    <Property Name="ActividadesReprogramadas" Type="int" />
+    <Property Name="ActividadesFinalizadas" Type="int" />
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Metas" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'GOTI.dbo.vw_resumen_metas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_resumen_metas">
+    <Key>
+      <PropertyRef Name="Estado_id" />
+      <PropertyRef Name="TotalActividadesReprogramadas" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Meta_id" Type="int" Nullable="false" />
+    <Property Name="Area_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubArea_Descripción" Type="nvarchar" MaxLength="50" />
+    <Property Name="Meta_descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="Estado_id" Type="int" Nullable="false" />
+    <Property Name="Estado_descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="TotalActividadesProyectados" Type="int" Nullable="false" />
+    <Property Name="TotalActividadesFinalizados" Type="int" Nullable="false" />
+    <Property Name="PorcentajeAvance" Type="int" />
+    <Property Name="FechaInicioActividades" Type="date" />
+    <Property Name="FechaFinActividades" Type="date" />
+    <Property Name="POI" Type="bit" />
+    <Property Name="Fecha_ejecucion" Type="date" />
+    <Property Name="TotalActividadesReprogramadas" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Area_Direccion">
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
+    <End Role="Area" Type="Self.Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direccion">
+        <PropertyRef Name="Direccion_id" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="Direccion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meta_SubArea">
+    <End Role="SubArea" Type="Self.SubArea" Multiplicity="0..1" />
+    <End Role="Meta" Type="Self.Meta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubArea">
+        <PropertyRef Name="SubArea_id" />
+      </Principal>
+      <Dependent Role="Meta">
+        <PropertyRef Name="SubArea_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Meta_Version">
+    <End Role="Version" Type="Self.Version" Multiplicity="0..1" />
+    <End Role="Meta" Type="Self.Meta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Version">
+        <PropertyRef Name="Version_id" />
+      </Principal>
+      <Dependent Role="Meta">
+        <PropertyRef Name="Version_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MetaActividad_Meta">
+    <End Role="Meta" Type="Self.Meta" Multiplicity="0..1" />
+    <End Role="MetaActividad" Type="Self.MetaActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meta">
+        <PropertyRef Name="Meta_id" />
+      </Principal>
+      <Dependent Role="MetaActividad">
+        <PropertyRef Name="Meta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MetaActividad_SPE_Persona">
+    <End Role="SPE_Persona" Type="Self.SPE_Persona" Multiplicity="0..1" />
+    <End Role="MetaActividad" Type="Self.MetaActividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SPE_Persona">
+        <PropertyRef Name="Persona_Id" />
+      </Principal>
+      <Dependent Role="MetaActividad">
+        <PropertyRef Name="EspecialistaDesignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MetaEstado_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+    <End Role="MetaEstado" Type="Self.MetaEstado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Estado_id" />
+      </Principal>
+      <Dependent Role="MetaEstado">
+        <PropertyRef Name="Estado_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MetaEstado_Meta">
+    <End Role="Meta" Type="Self.Meta" Multiplicity="0..1" />
+    <End Role="MetaEstado" Type="Self.MetaEstado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meta">
+        <PropertyRef Name="Meta_id" />
+      </Principal>
+      <Dependent Role="MetaEstado">
+        <PropertyRef Name="Meta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPE_Persona_SPE_AreaInstitucion">
+    <End Role="SPE_AreaInstitucion" Type="Self.SPE_AreaInstitucion" Multiplicity="0..1" />
+    <End Role="SPE_Persona" Type="Self.SPE_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SPE_AreaInstitucion">
+        <PropertyRef Name="AreaInstitucion_Id" />
+      </Principal>
+      <Dependent Role="SPE_Persona">
+        <PropertyRef Name="AreaInstitucion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STG_Documento_STG_TipoDocumento">
+    <End Role="STG_TipoDocumento" Type="Self.STG_TipoDocumento" Multiplicity="0..1" />
+    <End Role="STG_Documento" Type="Self.STG_Documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STG_TipoDocumento">
+        <PropertyRef Name="TipoDocumento_Id" />
+      </Principal>
+      <Dependent Role="STG_Documento">
+        <PropertyRef Name="TipoDocumento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubArea_Area">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="SubArea" Type="Self.SubArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="Area_id" />
+      </Principal>
+      <Dependent Role="SubArea">
+        <PropertyRef Name="Area_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SGPRY_listar_proyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CSU_Atenciones_por_Catalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CSU_Atenciones_por_Especialista_MesActual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CSU_Atenciones_por_Tipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CSU_Listar_Movimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CSU_Rendimiento_Especialista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="anio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CSU_Resumen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CSU_TipoAtencion_Colaborador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CSU_Total_Atenciones_por_Especialista_MesActual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CSU_Total_Atenciones_por_TipoDeAtencion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Maestro_Establecimiento_Convenio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_resumen_metas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaEjecucion" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_SGMetas_Listar_Avances" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="actividad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SGP_AtencionesCerradas_por_Ipress_Establecimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SGP_Cierre_Digitacion_Lista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SGP_ResumenTramas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SGP_Total_AtencionesCerradas_por_Ipress_Establecimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SGPRY_listar_actividades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SGPRY_listar_iteracion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SGPRY_listar_proyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SGPRY_listar_requisitos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proyecto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_SGR_Actividades_por_Especialista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="año" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SGRQ_Requerimiento_Lista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPE_ServicioTercero_Listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPS_Listar_Automatizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPS_Listar_Avance_Proyectos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPS_Listar_DocumentosNormativos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPS_Listar_Reuniones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPS_Listar_Tareas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SPS_Listar_Tareas_Eventos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_STG_Documentos_Listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_STG_Expedientes_Listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_STG_Expedientes_Por_Especialista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="gotiModelStoreContainer">
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CSU_CatalogoDeServicio" EntityType="Self.CSU_CatalogoDeServicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CSU_MedioDeSolicitud" EntityType="Self.CSU_MedioDeSolicitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CSU_MovimientoCSU" EntityType="Self.CSU_MovimientoCSU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CSU_TipoDeAtencion" EntityType="Self.CSU_TipoDeAtencion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CSU_TipoDeAtencion_Colaborador" EntityType="Self.CSU_TipoDeAtencion_Colaborador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Meta" EntityType="Self.Meta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MetaActividad" EntityType="Self.MetaActividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MetaActividadSeguimiento" EntityType="Self.MetaActividadSeguimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MetaEstado" EntityType="Self.MetaEstado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGP_CierreDigitacion" EntityType="Self.SGP_CierreDigitacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGP_Trama" EntityType="Self.SGP_Trama" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_Actividad" EntityType="Self.SGPRY_Actividad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_Actividad_EstadoScrum" EntityType="Self.SGPRY_Actividad_EstadoScrum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_EstadoScrum" EntityType="Self.SGPRY_EstadoScrum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_Iteracion" EntityType="Self.SGPRY_Iteracion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_Prioridad" EntityType="Self.SGPRY_Prioridad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_Proyecto" EntityType="Self.SGPRY_Proyecto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGPRY_Requisito" EntityType="Self.SGPRY_Requisito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGRQ_Requerimiento" EntityType="Self.SGRQ_Requerimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGRQ_Sistema" EntityType="Self.SGRQ_Sistema" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGRQ_TipoRequerimiento" EntityType="Self.SGRQ_TipoRequerimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SGRQ_TipoSistema" EntityType="Self.SGRQ_TipoSistema" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPE_AreaInstitucion" EntityType="Self.SPE_AreaInstitucion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPE_Persona" EntityType="Self.SPE_Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPE_ServicioTercero" EntityType="Self.SPE_ServicioTercero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_Automatizacion" EntityType="Self.SPS_Automatizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_AvanceProyecto" EntityType="Self.SPS_AvanceProyecto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_DocumentosNormativos" EntityType="Self.SPS_DocumentosNormativos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_ObjetivosOTI" EntityType="Self.SPS_ObjetivosOTI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_Reunion" EntityType="Self.SPS_Reunion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_Tarea" EntityType="Self.SPS_Tarea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPS_TareaAvance" EntityType="Self.SPS_TareaAvance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_Documento" EntityType="Self.STG_Documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_Expediente" EntityType="Self.STG_Expediente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_TipoDocumento" EntityType="Self.STG_TipoDocumento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubArea" EntityType="Self.SubArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Version" EntityType="Self.Version" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Actividades_lista" EntityType="Self.vw_Actividades_lista" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_Actividades_lista].[Area_Descripción] AS [Area_Descripción], 
+[vw_Actividades_lista].[Area_abreviatura] AS [Area_abreviatura], 
+[vw_Actividades_lista].[SubArea_Abreviatura] AS [SubArea_Abreviatura], 
+[vw_Actividades_lista].[SubArea_Descripción] AS [SubArea_Descripción], 
+[vw_Actividades_lista].[Meta_id] AS [Meta_id], 
+[vw_Actividades_lista].[Meta_descripcion] AS [Meta_descripcion], 
+[vw_Actividades_lista].[POI] AS [POI], 
+[vw_Actividades_lista].[MetaActividad_id] AS [MetaActividad_id], 
+[vw_Actividades_lista].[MetaActividad_descripcion] AS [MetaActividad_descripcion], 
+[vw_Actividades_lista].[Fecha_ejecucion] AS [Fecha_ejecucion], 
+[vw_Actividades_lista].[Finalizado] AS [Finalizado], 
+[vw_Actividades_lista].[Fecha_finalizacion] AS [Fecha_finalizacion], 
+[vw_Actividades_lista].[DocumentoDeEntrega] AS [DocumentoDeEntrega], 
+[vw_Actividades_lista].[Id] AS [Id], 
+[vw_Actividades_lista].[NombreCompleto] AS [NombreCompleto], 
+[vw_Actividades_lista].[Persona_Id] AS [Persona_Id], 
+[vw_Actividades_lista].[Observacion] AS [Observacion], 
+[vw_Actividades_lista].[Desestimado] AS [Desestimado], 
+[vw_Actividades_lista].[Reprogramado] AS [Reprogramado], 
+[vw_Actividades_lista].[ActividadDeInforme] AS [ActividadDeInforme], 
+[vw_Actividades_lista].[NumEventosUltimaSemana] AS [NumEventosUltimaSemana]
+FROM [dbo].[vw_Actividades_lista] AS [vw_Actividades_lista]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Actividades_por_area" EntityType="Self.vw_Actividades_por_area" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_Actividades_por_area].[Id] AS [Id], 
+[vw_Actividades_por_area].[Area_Descripción] AS [Area_Descripción], 
+[vw_Actividades_por_area].[Actividades] AS [Actividades]
+FROM [dbo].[vw_Actividades_por_area] AS [vw_Actividades_por_area]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Actividades_Segun_POI" EntityType="Self.vw_Actividades_Segun_POI" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_Actividades_Segun_POI].[Id] AS [Id], 
+[vw_Actividades_Segun_POI].[POI] AS [POI], 
+[vw_Actividades_Segun_POI].[NumMetas] AS [NumMetas]
+FROM [dbo].[vw_Actividades_Segun_POI] AS [vw_Actividades_Segun_POI]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_resumen_avance_actividad" EntityType="Self.vw_resumen_avance_actividad" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_resumen_avance_actividad].[Año] AS [Año], 
+[vw_resumen_avance_actividad].[Mes] AS [Mes], 
+[vw_resumen_avance_actividad].[ActividadesProgramadas] AS [ActividadesProgramadas], 
+[vw_resumen_avance_actividad].[ActividadesReprogramadas] AS [ActividadesReprogramadas], 
+[vw_resumen_avance_actividad].[ActividadesFinalizadas] AS [ActividadesFinalizadas], 
+[vw_resumen_avance_actividad].[Id] AS [Id], 
+[vw_resumen_avance_actividad].[Metas] AS [Metas]
+FROM [dbo].[vw_resumen_avance_actividad] AS [vw_resumen_avance_actividad]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_resumen_metas" EntityType="Self.vw_resumen_metas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_resumen_metas].[Id] AS [Id], 
+[vw_resumen_metas].[Meta_id] AS [Meta_id], 
+[vw_resumen_metas].[Area_Descripción] AS [Area_Descripción], 
+[vw_resumen_metas].[SubArea_Descripción] AS [SubArea_Descripción], 
+[vw_resumen_metas].[Meta_descripcion] AS [Meta_descripcion], 
+[vw_resumen_metas].[Estado_id] AS [Estado_id], 
+[vw_resumen_metas].[Estado_descripcion] AS [Estado_descripcion], 
+[vw_resumen_metas].[TotalActividadesProyectados] AS [TotalActividadesProyectados], 
+[vw_resumen_metas].[TotalActividadesFinalizados] AS [TotalActividadesFinalizados], 
+[vw_resumen_metas].[PorcentajeAvance] AS [PorcentajeAvance], 
+[vw_resumen_metas].[FechaInicioActividades] AS [FechaInicioActividades], 
+[vw_resumen_metas].[FechaFinActividades] AS [FechaFinActividades], 
+[vw_resumen_metas].[POI] AS [POI], 
+[vw_resumen_metas].[Fecha_ejecucion] AS [Fecha_ejecucion], 
+[vw_resumen_metas].[TotalActividadesReprogramadas] AS [TotalActividadesReprogramadas]
+FROM [dbo].[vw_resumen_metas] AS [vw_resumen_metas]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Area_Direccion" Association="Self.FK_Area_Direccion">
+      <End Role="Direccion" EntitySet="Direccion" />
+      <End Role="Area" EntitySet="Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meta_SubArea" Association="Self.FK_Meta_SubArea">
+      <End Role="SubArea" EntitySet="SubArea" />
+      <End Role="Meta" EntitySet="Meta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Meta_Version" Association="Self.FK_Meta_Version">
+      <End Role="Version" EntitySet="Version" />
+      <End Role="Meta" EntitySet="Meta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MetaActividad_Meta" Association="Self.FK_MetaActividad_Meta">
+      <End Role="Meta" EntitySet="Meta" />
+      <End Role="MetaActividad" EntitySet="MetaActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MetaActividad_SPE_Persona" Association="Self.FK_MetaActividad_SPE_Persona">
+      <End Role="SPE_Persona" EntitySet="SPE_Persona" />
+      <End Role="MetaActividad" EntitySet="MetaActividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MetaEstado_Estado" Association="Self.FK_MetaEstado_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="MetaEstado" EntitySet="MetaEstado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MetaEstado_Meta" Association="Self.FK_MetaEstado_Meta">
+      <End Role="Meta" EntitySet="Meta" />
+      <End Role="MetaEstado" EntitySet="MetaEstado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPE_Persona_SPE_AreaInstitucion" Association="Self.FK_SPE_Persona_SPE_AreaInstitucion">
+      <End Role="SPE_AreaInstitucion" EntitySet="SPE_AreaInstitucion" />
+      <End Role="SPE_Persona" EntitySet="SPE_Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STG_Documento_STG_TipoDocumento" Association="Self.FK_STG_Documento_STG_TipoDocumento">
+      <End Role="STG_TipoDocumento" EntitySet="STG_TipoDocumento" />
+      <End Role="STG_Documento" EntitySet="STG_Documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubArea_Area" Association="Self.FK_SubArea_Area">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="SubArea" EntitySet="SubArea" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

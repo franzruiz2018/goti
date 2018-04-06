@@ -1,0 +1,81 @@
+﻿@model GOTIV2.Models.SPS_Reunion
+@{
+    ViewBag.Title = "Registrar Reuniones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var msj = TempData["Mensaje"];
+}
+
+<p>&nbsp;</p>
+<h4>Registrar Reuniones</h4>
+<p>&nbsp;</p>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+       
+
+            <div class="row form-group">
+                <div class="col-md-2 control-label">Agenda</div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Agenda, new { @class = "form-control", @required = true })
+                </div>
+            </div>
+      
+
+
+            <div class="row form-group">
+                <div class="col-md-2 control-label">Tipo Documento</div>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(x => x.TipoCoordinacion, new SelectList(
+                                 new[] {new SelectListItem { Text = "COORDINACIÓN INTERNA ", Value= "COORDINACIÓN INTERNA "   }
+                                ,new SelectListItem { Text = "COORDINACIÓN EXTERNA", Value= "COORDINACIÓN EXTERNA "   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+                                 @class = "form-control"
+                             })
+                </div>
+            </div>
+              
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Responsable</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.ResponsableId, (SelectList)ViewBag.PersonaOTI, "Seleccione", new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        
+        <div class="row form-group">
+            <div class="col-md-2 control-label">Fecha Reunión</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.FechaReunion, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+
+               <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-primary" onsubmit="return confirm('¿Estas seguro de guardar?')" />
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/Scripts/fnGenerales.js")
+    <script src="~/Scripts/fechaMascara.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#FechaReunion").mask("99/99/9999");
+        });
+
+    </script>
+
+
+
+}

@@ -1,0 +1,158 @@
+﻿@model List<GOTIV2.Models.SGP_Trama>
+@{
+    ViewBag.Title = "Trama";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var meses = new[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" };
+    var mesesRecortados = new[] { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic" };
+    var mesesNum = new[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+}
+
+
+<h4>&nbsp;</h4>
+<h4>Lista de Trama</h4>
+<h4>&nbsp;</h4>
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Listar Tramas</div>
+        <div class="panel-body">
+            <div class="row form-group">
+
+                <div class="col-md-1 control-label">Listar</div>
+                <div class="col-md-2">
+                    @Html.DropDownList("FgAtendido", new SelectList(
+                         new[] {new SelectListItem { Text = "Todos", Value= null   }
+                                ,new SelectListItem { Text = "Finalizados", Value= "1"   }
+                                ,new SelectListItem { Text = "Pendientes", Value= "0"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+                                 @class = "form-control"
+                             })
+                </div>
+
+
+                <div class="col-md-3 ">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                    @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2 || ViewBag.Perfil == 3)
+                    {
+                        @Html.ActionLink("Registrar", "RegistrarTrama", null, new { @class = "btn btn-warning" })
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+<div class="alert alert-info" role="alert" style="margin-bottom:20px">Total de envios de tramas encontrados: @Model.Count</div>
+
+
+
+<table class="table table-bordered" style="font-size: smaller">
+    <thead style="background-color:#eaeaea">
+        <tr>
+            <th style="text-align: center; vertical-align: middle" width="50">
+                ID
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="70">
+                Tipo
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="100">
+                Nro. Exp.
+            </th>
+
+            <th style="text-align: center; vertical-align: middle" width="200">
+                Doc. Adjunto
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="60">
+                F. Rec.
+            </th>
+
+            <th style="text-align: center; vertical-align: middle" width="70">
+                Nro. Aten.
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="60">
+                F. Proc.
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="40">
+                Aten. Migradas
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="60">
+                Producción Fissal
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="70">
+                Doc. Respuesta
+            </th>
+            <th style="text-align: center; vertical-align: middle" width="70">
+                Observación
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center; vertical-align: middle">
+                    T-@string.Format("{0:000}", item.TramaID)
+                </td>
+                <td style="text-align: center; vertical-align: middle;">                  
+                    @item.TipoTrama
+                </td>
+                <td style="text-align: left; vertical-align: middle ">
+                   @item.NroExpediente
+                </td>
+
+                <td style="vertical-align: middle">
+                    @item.DocumentoRecepcionado
+                </td>
+                 
+                <td style="text-align: center; vertical-align: middle">
+                @if (item.FechaRecepcion != null)
+                        {
+                    @item.FechaRecepcion.Value.ToShortDateString()
+                }
+                </td>
+
+                <td style="text-align: center; vertical-align: middle">
+                    
+                        @item.NumeroAtenciones
+                    
+                </td>
+                <td style="text-align: center;  vertical-align: middle">
+                    @if (item.FechaProcesamiento != null)
+                    {
+                        @item.FechaProcesamiento.Value.ToShortDateString()
+                    }
+                </td>
+                
+                <td style="text-align: center; vertical-align: middle">
+                   @item.NumeroAtencionesMigradas
+                </td>
+                <td style="text-align: center; vertical-align: middle">
+@if (item.ProduccionFissal != null)
+                    {
+                         
+                        @mesesRecortados[item.ProduccionFissal.Value.Date.Month - 1];
+     <span>-</span> 
+                   @item.ProduccionFissal.Value.Date.Year
+}
+                </td>
+                <td style="vertical-align: middle">
+                    @item.Documentorespuesta
+                </td>
+             <td style="vertical-align: middle">
+                    @item.Observacion
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

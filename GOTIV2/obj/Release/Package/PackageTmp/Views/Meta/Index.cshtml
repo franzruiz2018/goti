@@ -1,0 +1,102 @@
+﻿@model List<GOTIV2.Models.Meta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>&nbsp;</h4>
+<h4>Metas Programadas</h4>
+<h4>&nbsp;</h4>
+
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Registrar actividad</div>
+        <div class="panel-body">
+            <div class="row form-group">
+                <div class="col-md-1 control-label">Area</div>
+                <div class="col-md-4">
+                    @Html.DropDownList("SubArea_id", (SelectList)ViewBag.SubArea, "TODOS", new { @class = "form-control" })
+                </div>
+                <div class="col-md-1 control-label">POI</div>
+                <div class="col-md-2">
+                    @Html.DropDownList("FgPOI", new SelectList(
+                         new[] {new SelectListItem { Text = "Todos", Value= null   }
+                                ,new SelectListItem { Text = "SI", Value= "1"   }
+                                ,new SelectListItem { Text = "NO", Value= "0"   }
+                                 }, "Value", "Text"
+                              ),
+                              new
+                             {
+
+                                 @class = "form-control"
+                             })
+                </div>
+
+
+                <div class="col-md-3 ">
+                    <input type="submit" value="Consultar" class="btn btn-primary" />
+                    @if (ViewBag.Perfil == 1 || ViewBag.Perfil == 2)
+                    {
+                        @Html.ActionLink("Registrar", "Save", null, new { @class = "btn btn-warning" })
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+
+<div class="alert alert-info" role="alert" style="margin-bottom:20px">Total de Metas encontradas: @Model.Count</div>
+
+<table class="table table-bordered" style="font-size:small">
+    <thead>
+        <tr style="background-color:#eaeaea">
+            <th>ID</th>
+            
+
+            <th>Meta</th>           
+            <th>Area</th>
+            <th>POI</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center; vertical-align: middle"> M-@string.Format("{0:000}", item.Meta_id)</td>
+
+               
+               
+
+                <td style=" vertical-align: middle">@item.Meta_descripcion</td>
+                <td style="vertical-align: middle">@item.SubArea.Area.Area_Descripción <br /><span> @item.SubArea.SubArea_Descripción</span></td>  
+                <td style ="text-align: center; vertical-align: middle">
+                    @if (item.POI == true)
+                    {
+                        <h6><span class="label label-primary">SI</span></h6>
+                    }
+                    else
+                    {
+                        <h6><span class="label label-default">NO</span></h6>
+                    }
+
+                </td>
+              
+
+            <td style="text-align: center; vertical-align: middle">
+                @Html.ActionLink(" ", "Index", "MetaActividad", new { Id = item.Meta_id }, new { @class = "glyphicon glyphicon-log-in" })
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>

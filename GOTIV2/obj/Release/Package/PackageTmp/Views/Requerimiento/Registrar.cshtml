@@ -1,0 +1,112 @@
+﻿@model GOTIV2.Models.SGRQ_Requerimiento
+
+@{
+    ViewBag.Title = "Registrar Requerimiento";
+}
+
+<p>&nbsp;</p>
+<h4>Registrar Requerimientos</h4>
+<p>&nbsp;</p>
+
+@using (Html.BeginForm())
+{
+
+    //[Requerimiento_Id]
+    //  ,[Asunto]
+    //  ,[Persona_Id]
+    //  ,[Tipo_Requerimiento]
+    //  ,[Tipo_Sistema]
+    //  ,[Sistema_Id]
+    //  ,[Prioridad_Id]
+    //  ,[Persona_Id_Referente_Funcional]
+    //  ,[Correo]
+    //  ,[Objetivo_alcanzar]
+    //  ,[Definicion_Requerimiento]
+    //  ,[Fecha_Registro]
+    //  ,[Expediente_Id]
+    //  ,[Programacion]
+    //  ,[DocumentoProgramacion]
+    //  ,[OrdenAtencion]
+    //  ,[Proyecto]
+    //  ,[Proyecto_Id]
+    
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-2">Asunto</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Asunto, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+         <div class="form-group">
+            <div class="col-md-2">Solicitante</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Persona_Id, (SelectList)ViewBag.PersonaJefes, "Seleccione", new { @class = "form-control", @id = "ddlPersonaJefes", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Tipo Requerimiento</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Tipo_Requerimiento, (SelectList)ViewBag.TipoRequerimiento, "Seleccione", new { @class = "form-control", @id = "ddlRequerimiento", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Tipo Sistema</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Tipo_Sistema, (SelectList)ViewBag.TipoSistema, "Seleccione", new { @class = "form-control", @id = "ddlTipoSistema", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Sistema</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Sistema_Id, (SelectList)ViewBag.Sistema, "Seleccione", new { @class = "form-control", @id = "ddlSistema" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">Prioridad</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Prioridad_Id, (SelectList)ViewBag.Prioridad, "Seleccione", new { @class = "form-control", @id = "ddlPersonal", @required = true })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">Referente Funcional</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.Persona_Id_Referente_Funcional, (SelectList)ViewBag.PersonaReferenteFuncional, "Seleccione", new { @class = "form-control", @id = "ddlPrioridad", @required = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">Correo</div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.Correo, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">Objetivo a alcanzar</div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(x => x.Objetivo_alcanzar, new { @class = "form-control", @required = true })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">Descripción del Requerimiento</div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(x => x.Definicion_Requerimiento, new { @class = "form-control", @required = true })
+            </div>
+        </div>        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar" class="btn btn-primary" onsubmit="return confirm('¿Estas seguro de guardar el cierre?')" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a la Lista", "Listar", "CierreDigitacion", null, new { @class = "btn btn-warning" })
+</div>
+
+
